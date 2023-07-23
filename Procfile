@@ -1,1 +1,1 @@
-web: gunicorn AYA-TEEN-ROOM.wsgi
+web: gunicorn AYA_TEEN_ROOM.wsgi
