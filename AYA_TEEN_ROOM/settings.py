@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-sarahliz24-ayateenroom-cfcm4na4b6n.ws-eu102.gitpod.io', 'aya-teen-room.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['8000-sarahliz24-ayateenroom-cfcm4na4b6n.ws-eu102.gitpod.io', 'aya-teen-room-1764987b8851.herokuapp.com', 'aya-teen-room.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -44,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'cloudinary_storage',
-    'django.contrib.staticfiles',
-     'cloudinary',
+    'django.contrib.staticfiles', 
+    'cloudinary',
     'FEEDBACK',
 ]
 
