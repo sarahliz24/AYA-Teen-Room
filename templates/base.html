@@ -5,13 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AYA Teen Room Home Page</title>
-    <h2>This is the header</h2>
+    <h2>{% block title %}{% endblock %}This is the header</h2>
 </head>
+<header>
+    <div>
+        {% if request.user.is_authenticated %}
+            <ul>
+              <li {% if section == "dashboard" %} class="selected"{% endif %}>
+                <a href="{% url "dashboard" %}">Here is a personal dashboard</a>
+              </li>
+            </ul>
+        {% endif %}
+    </div>
+    <div>
+        {% if request.user.is_authenticated %}
+            Hi there, {{ request.user.username }}, <a href="{% url "logout" %}">Logout</a>
+        {% else %}
+            <a href="{% url "login" %}">Log in</a>
+        {% endif %}
+    </div>
+</header>
 <body>
     <div>
         <span>Feedback</span>
         </div>
-        <div>
+        <div>   
             {% block content %}
             {% endblock %}
         </div>

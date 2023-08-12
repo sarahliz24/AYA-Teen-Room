@@ -38,7 +38,7 @@ ALLOWED_HOSTS = ['8000-sarahliz24-ayateenroom-cfcm4na4b6n.ws-eu102.gitpod.io', '
 # Application definition
 
 INSTALLED_APPS = [
-    'account.apps.AccountConfig',
+    'account.apps.AccountConfig', # first so django uses custom auth templates
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -147,3 +147,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'dashboard' # send user to dashboard if != 'next' in request
+LOGIN_URL = 'login' 
+LOGOUT_URL = 'logout'
