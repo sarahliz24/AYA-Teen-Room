@@ -5,12 +5,12 @@ from .forms import FormLoggingIn
 
 def user_login(request):
     if request.method == "POST":
-        form == FormLoggingIn(request.POST) # create form instance
+        form = FormLoggingIn(request.POST) # create form instance
         if form.is_valid(): # validate form
-            cd = form.cleaned.data
+            cd = form.cleaned_data # 
             # check if user is in database
             user = authenticate(request,
-                                username=cd ['username'],
+                                username=cd['username'],
                                 password = cd['password'])
             if user is not None:
                 if user.is_active:
@@ -24,6 +24,6 @@ def user_login(request):
                 return HttpResponse('User not valid')
     else:
         form = FormLoggingIn()
-    return render(request, 'account/login.html', {'form': form})
+    return render(request, 'account/user_login.html', {'form': form})
 
 
