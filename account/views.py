@@ -28,8 +28,20 @@ def user_login(request):
     return render(request, 'account/login.html', {'form': form})
 
 
-@login_required # check is user is authenticated
+""" @login_required # check is user is authenticated
 def dashboard(request):
     return render(request,
                     'account/dashboard.html',
-                    {'section': 'dashboard'})
+                    {'section': 'dashboard'}) """
+
+
+@login_required # check is user is authenticated
+def feedback(request):
+    return render(request,
+                    'pages/feedback.html',
+                    {'section': 'feedback'})
+
+
+def logout(request):
+    logout(request)
+    return redirect('home')
