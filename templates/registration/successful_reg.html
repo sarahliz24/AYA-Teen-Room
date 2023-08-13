@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}
+Congrats {{ user.username }} - Your Sign Up was successful!
+{% endblock %}
+
+{% block content %}
+
+<h1>Log in here to get started with your feedback and view coming events! <a href="{% url 'login' %}">LOG IN HERE</a>Log In Here</h1>
+
+{% endblock %}

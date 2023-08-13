@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
-from .forms import FormLoggingIn
+from .forms import FormLoggingIn, UserSignUp
 from django.contrib.auth.decorators import login_required
 
 def user_login(request):
@@ -45,3 +45,19 @@ def feedback(request):
 def logout(request):
     logout(request)
     return redirect('home')
+
+
+def signup(request):
+    if request.method == 'POST':
+        signup_form = UserSignUp(request.POST) # create form instance
+        if signup_form.is_valid():
+            teen_user = signup_form.save(commit=False)
+            teen_user.set_password(
+                signup_form.cleaned_data['password'])
+            teen_user.save()
+            # login(request, user)
+            # return redirect('feedback')
+            return render(request, 'registration/successful_reg.html', {'teen_user': teen_user})
+    else:
+        signup_form = UserSignUp()
+    return render(request, 'registration/signup.html', {'signup_form': signup_form})

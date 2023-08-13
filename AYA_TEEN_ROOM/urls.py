@@ -24,4 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home'),
     path('account/', include('account.urls')),
+    # path('registration/', include('templates/registration/signup.html'))
+    # path('signup/', signup.view, include('account/signup.html'))
 ]
