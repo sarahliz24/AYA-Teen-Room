@@ -5,22 +5,23 @@ from .forms import FormLoggingIn, UserSignUp, EditUser, EditTeenUserProfile
 from django.contrib.auth.decorators import login_required
 from .models import TeenUserProfile
 
+
 def user_login(request):
     if request.method == "POST":
-        form = FormLoggingIn(request.POST) # create form instance
-        if form.is_valid(): # validate form
-            cd = form.cleaned_data # converts data to clean form
+        form = FormLoggingIn(request.POST)  # create form instance
+        if form.is_valid():  # validate form
+            cd = form.cleaned_data  # converts data to clean form
             # check if user is in database
             user = authenticate(request,
                                 username=cd['username'],
-                                password = cd['password'])
+                                password=cd['password'])
             if user is not None:
                 if user.is_active:
                     login(request, user)
                     return HttpResponse('User verified')
                 else:
                     # check if valid user is active
-                    return HttpResponse('User not active') 
+                    return HttpResponse('User not active')
             else:
                 # user not in database
                 return HttpResponse('User not valid')
@@ -36,11 +37,11 @@ def dashboard(request):
                     {'section': 'dashboard'}) """
 
 
-@login_required # check is user is authenticated
+@login_required  # check is user is authenticated
 def feedback(request):
     return render(request,
-                    'pages/feedback.html',
-                    {'section': 'feedback'})
+                  'pages/feedback.html',
+                  {'section': 'feedback'})
 
 
 def logout(request):
@@ -50,7 +51,7 @@ def logout(request):
 
 def signup(request):
     if request.method == 'POST':
-        signup_form = UserSignUp(request.POST) # create form instance
+        signup_form = UserSignUp(request.POST)  # create form instance
         if signup_form.is_valid():
             teen_user = signup_form.save(commit=False)
             teen_user.set_password(
@@ -81,5 +82,5 @@ def ProfileEdit(request):
         teen_user_profile = EditTeenUserProfile(
                                         instance=request.user.profile)
     return render(request, 'registration/edit.html',
-                            {'signup_form': signup_form,
-                            'teen_user_profile': teen_user_profile})
+                  {'signup_form': signup_form,
+                   'teen_user_profile': teen_user_profile})

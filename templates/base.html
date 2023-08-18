@@ -13,27 +13,27 @@
     <!-- <div>
         {% if request.user.is_authenticated %}
             <ul>
-              <li {% if section == "feedback" %} class="selected"{% endif %}>
+                <li {% if section == "feedback" %} class="selected"{% endif %}>
                 <a href="{% url 'feedback' %}">Here is a personal dashboard</a>
-              </li>
+                </li>
             </ul>
         {% endif %}
     </div> -->
     <div>
         {% if request.user.is_authenticated %}
-            Hi there, {{ request.user.username|capfirst}}, <a href="{% url 'logout' %}">Logout</a>
-            <a href="{% url 'edit' %}">Edit Profile</a>
+        Hi there, {{ request.user.username|capfirst}}, <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'edit' %}">Edit Profile</a>
         {% else %}
-            <p>Hi there, Stranger!</p>
-            <a href="{% url 'login' %}">Log in</a>
-            <p>Sign up here:</p>
-            <a href="{% url 'signup' %}">Sign up</a>
+        <p>Hi there, Stranger!</p>
+        <a href="{% url 'login' %}">Log in</a>
+        <p>Sign up here:</p>
+        <a href="{% url 'signup' %}">Sign up</a>
         {% endif %}
     </div>
 </header>
 
 <body>
-    <div style="background-color: yellowgreen">   
+    <div style="background-color: yellowgreen">
         {% block content %}
         {% endblock %}
     </div>
@@ -42,4 +42,5 @@
 <footer style="background-color: pink">
     <h2>This is the footer</h2>
 </footer>
+
 </html>
