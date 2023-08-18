@@ -12,6 +12,7 @@ urlpatterns = [
     # path('', views.dashboard, name="dashboard"),
     path('feedback/', views.feedback, name='feedback'),
     path('signup/', views.signup, name='signup'),
+    path('edit/', views.ProfileEdit, name='edit'),
 
     # path('signup/', signup.as_view(), name='signup'),
 ]

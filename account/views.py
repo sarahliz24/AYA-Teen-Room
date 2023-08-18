@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
-from .forms import FormLoggingIn, UserSignUp
+from .forms import FormLoggingIn, UserSignUp, EditUser, EditTeenUserProfile
 from django.contrib.auth.decorators import login_required
+from .models import TeenUserProfile
 
 def user_login(request):
     if request.method == "POST":
@@ -57,7 +58,28 @@ def signup(request):
             teen_user.save()
             # login(request, user)
             # return redirect('feedback')
+            TeenUserProfile.objects.create(user=teen_user)
             return render(request, 'registration/successful_reg.html', {'teen_user': teen_user})
     else:
         signup_form = UserSignUp()
     return render(request, 'registration/signup.html', {'signup_form': signup_form})
+
+
+@login_required
+def ProfileEdit(request):
+    if request.method == 'POST':
+        signup_form = EditUser(instance=request.user, data=request.POST)
+        teen_user_profile = EditTeenUserProfile(
+                                        instance=request.user.profile,
+                                        data=request.POST,
+                                        files=request.FILES)
+        if signup_form.is_valid() and teen_user_profile.is_valid():
+            signup_form.save()
+            teen_user_profile.save()
+    else:
+        signup_form = EditUser(instance=request.user)
+        teen_user_profile = EditTeenUserProfile(
+                                        instance=request.user.profile)
+    return render(request, 'registration/edit.html',
+                            {'signup_form': signup_form,
+                            'teen_user_profile': teen_user_profile})

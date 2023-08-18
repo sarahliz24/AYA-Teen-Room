@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add or change your profile details
+{% endblock %}
+
+{% block content %}
+
+    <h1>Your profile</h1>
+    <p>Add or change your profile details here:</p>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ signup_form.as_p }}
+        {{ teen_user_profile.as_p }}
+    <p><input type="submit" value="save details"></p>
+    </form>
+
+{% endblock %}
