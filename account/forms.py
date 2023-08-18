@@ -18,5 +18,6 @@ class UserSignUp(forms.ModelForm):
     def clean_password_repeat(self):
         cd = self.cleaned_data
         if cd['password'] != cd['password_repeat']:
-            raise forms.VaildationError('Your passwords are not the same!')
+            raise forms.ValidationError('Your passwords are not the same!')
         return cd['password_repeat']
+

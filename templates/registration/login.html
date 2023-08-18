@@ -11,7 +11,9 @@ Log in
     {% if form.errors %} 
     <p>Your log in details weren't correct - try again!</p>
     {% else %}
-    <p>Time to log-in:</p>
+    <p>Time to log-in:
+        (if you want to sign-up <a href="{% url 'signup' %}">click here)</a>
+    </p>
     {% endif %}
 
     <div>
