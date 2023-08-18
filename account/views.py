@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
 from .forms import FormLoggingIn, UserSignUp, EditUser, EditTeenUserProfile
 from django.contrib.auth.decorators import login_required
 from .models import TeenUserProfile
@@ -20,10 +21,12 @@ def user_login(request):
                     login(request, user)
                     return HttpResponse('User verified')
                 else:
-                    # check if valid user is active
+                    #  check if valid user is active
+                    #  messages.error(request, 'User not active - contact site admin')
                     return HttpResponse('User not active')
             else:
-                # user not in database
+                #  user not in database
+                 #  messages.error(request, 'User does not exist')
                 return HttpResponse('User not valid')
     else:
         form = FormLoggingIn()
@@ -57,11 +60,13 @@ def signup(request):
             teen_user.set_password(
                 signup_form.cleaned_data['password'])
             teen_user.save()
+            messages.success(request, "Signup was successful")
             # login(request, user)
             # return redirect('feedback')
             TeenUserProfile.objects.create(user=teen_user)
             return render(request, 'registration/successful_reg.html', {'teen_user': teen_user})
     else:
+        messages.error(request, 'Oops, something went wrong! Try again')
         signup_form = UserSignUp()
     return render(request, 'registration/signup.html', {'signup_form': signup_form})
 
@@ -77,7 +82,10 @@ def ProfileEdit(request):
         if signup_form.is_valid() and teen_user_profile.is_valid():
             signup_form.save()
             teen_user_profile.save()
+            messages.success(request, "Update of your details successful")
             return render(request, 'pages/feedback.html')
+        else:
+            messages.error(request, 'Oops, something went wrong!')
     else:
         signup_form = EditUser(instance=request.user)
         teen_user_profile = EditTeenUserProfile(
