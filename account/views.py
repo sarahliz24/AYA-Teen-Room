@@ -77,6 +77,7 @@ def ProfileEdit(request):
         if signup_form.is_valid() and teen_user_profile.is_valid():
             signup_form.save()
             teen_user_profile.save()
+            return render(request, 'pages/feedback.html')
     else:
         signup_form = EditUser(instance=request.user)
         teen_user_profile = EditTeenUserProfile(
