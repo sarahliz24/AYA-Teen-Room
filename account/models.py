@@ -18,7 +18,8 @@ class TeenUserProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL,
                                 on_delete=models.CASCADE, related_name='profile')
     date_of_birth = models.DateField(blank=True, null=True)
-    medical_id = models.IntegerField(blank=True, null=True,
+    # blank = False forces medical ID to be completed on form, but allows empty value in DB table (so no errors when profile view created but not yet filled out)
+    medical_id = models.IntegerField(blank=False, null=True,
                                      unique=True,
                                      help_text='This is used for safeguarding compliance only')
     fname = models.CharField(max_length=20, blank=True, null=True)
