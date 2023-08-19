@@ -64,9 +64,11 @@ def signup(request):
             # login(request, user)
             # return redirect('feedback')
             TeenUserProfile.objects.create(user=teen_user)
+            login(request, teen_user) # logs in user automatically
+            # TeenUserProfile.objects.create(user=teen_user)
             return render(request, 'registration/successful_reg.html', {'teen_user': teen_user})
     else:
-        messages.error(request, 'Oops, something went wrong! Try again')
+        # messages.error(request, 'Oops, something went wrong! Try again')
         signup_form = UserSignUp()
     return render(request, 'registration/signup.html', {'signup_form': signup_form})
 
