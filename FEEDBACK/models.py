@@ -44,9 +44,9 @@ class Feedback(models.Model):
         Order feedback posts by most recent date first in
         production mode (?doesn't work in SQL?)
         '''
-        ordering = ['-show_feedback']
+        ordering = ['-published']
         indexes = [
-            models.Index(fields=['-show_feedback']),
+            models.Index(fields=['-spublished']),
         ]
 
 
