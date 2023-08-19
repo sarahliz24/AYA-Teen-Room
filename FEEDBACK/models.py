@@ -3,12 +3,18 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
+class ApprovalManager(models.Manager):
+    '''
+    Custom model manager for posts set to OK for display in feed
+    '''
+    det get_queryset(self):
+    return super().get_queryset.filter(feedback_approval.FeedbackApproval.OK)
+
+
 class Feedback(models.Model):
     '''
     Docstring goes here
     '''
-
-
     class FeedbackApproval(models.TextChoices):
         PENDING = 'PD', 'Pending'
         OK = 'OK', 'Okay'
@@ -38,6 +44,8 @@ class Feedback(models.Model):
                              help_text='Choose the room your feedback is for')
     
 
+objects = models.Manager()
+approval = ApprovalManager()
 
     class Meta:
         '''
