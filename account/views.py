@@ -22,11 +22,9 @@ def user_login(request):
                     return HttpResponse('User verified')
                 else:
                     #  check if valid user is active
-                    #  messages.error(request, 'User not active - contact site admin')
                     return HttpResponse('User not active')
             else:
                 #  user not in database
-                 #  messages.error(request, 'User does not exist')
                 return HttpResponse('User not valid')
     else:
         form = FormLoggingIn()
@@ -61,16 +59,15 @@ def signup(request):
                 signup_form.cleaned_data['password'])
             teen_user.save()
             messages.success(request, "Signup was successful")
-            # login(request, user)
-            # return redirect('feedback')
             TeenUserProfile.objects.create(user=teen_user)
-            login(request, teen_user) # logs in user automatically
-            # TeenUserProfile.objects.create(user=teen_user)
-            return render(request, 'registration/successful_reg.html', {'teen_user': teen_user})
+            login(request, teen_user)  # log in user automatically
+            return render(request, 'registration/successful_reg.html',
+                          {'teen_user': teen_user})
     else:
         # messages.error(request, 'Oops, something went wrong! Try again')
         signup_form = UserSignUp()
-    return render(request, 'registration/signup.html', {'signup_form': signup_form})
+    return render(request, 'registration/signup.html',
+                  {'signup_form': signup_form})
 
 
 @login_required

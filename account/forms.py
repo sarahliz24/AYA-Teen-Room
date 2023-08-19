@@ -10,7 +10,8 @@ class FormLoggingIn(forms.Form):
 
 class UserSignUp(forms.ModelForm):
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password_repeat = forms.CharField(label='Enter password again',             widget=forms.PasswordInput)
+    password_repeat = forms.CharField(label='Enter password again',
+                                      widget=forms.PasswordInput)
 
     class Meta:
         model = User
