@@ -27,8 +27,9 @@ class Feedback(models.Model):
                                 related_name='feedback_post')
     content = models.TextField()
     show_feedback = models.TextField(max_length=500)
-    feedback_made = models.DateTimeField(default=timezone.now)
-    feedback_updated = models.DateTimeField(auto_now_add=True)
+    published = models.DateTimeField(default=timezone.now)
+    feedback_made = models.DateTimeField(auto_now_add=True)
+    feedback_updated = models.DateTimeField(auto_now=True)
     feedback_approval = models.CharField(max_length=2,
                                         choices=FeedbackApproval.choices,
                                         default=FeedbackApproval.PENDING)
