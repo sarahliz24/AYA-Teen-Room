@@ -7,8 +7,8 @@ class ApprovalManager(models.Manager):
     '''
     Custom model manager for posts set to OK for display in feed
     '''
-    det get_queryset(self):
-    return super().get_queryset.filter(feedback_approval.FeedbackApproval.OK)
+    def get_queryset(self):
+        return super().get_queryset().filter(feedback_approval=Feedback.FeedbackApproval.OK)
 
 
 class Feedback(models.Model):
@@ -44,8 +44,8 @@ class Feedback(models.Model):
                              help_text='Choose the room your feedback is for')
     
 
-objects = models.Manager()
-approval = ApprovalManager()
+    objects = models.Manager()
+    approved = ApprovalManager()
 
     class Meta:
         '''
@@ -54,7 +54,7 @@ approval = ApprovalManager()
         '''
         ordering = ['-published']
         indexes = [
-            models.Index(fields=['-spublished']),
+            models.Index(fields=['-published']),
         ]
 
 
