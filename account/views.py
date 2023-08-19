@@ -41,7 +41,7 @@ def dashboard(request):
 @login_required  # check is user is authenticated
 def feedback(request):
     return render(request,
-                  'pages/feedback.html',
+                  'feedback/feedback_list.html',
                   {'section': 'feedback'})
 
 
@@ -82,7 +82,7 @@ def ProfileEdit(request):
             signup_form.save()
             teen_user_profile.save()
             messages.success(request, "Update of your details successful")
-            return render(request, 'pages/feedback.html')
+            return render(request, 'feedback/feedback_list.html')
         else:
             messages.error(request, 'Oops, something went wrong!')
     else:
