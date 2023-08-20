@@ -149,6 +149,6 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'feedback' # send user to feedback page if != 'next' in request
+LOGIN_REDIRECT_URL = '/' # send user to feedback page if != 'next' in request
 LOGIN_URL = 'login' 
 LOGOUT_URL = 'logout'
