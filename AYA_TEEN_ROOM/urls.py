@@ -23,8 +23,9 @@ from PAGES.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home'),
+    path('feedback/', include('FEEDBACK.urls', namespace='feedback')),
     path('account/', include('account.urls')),
-    path('feedback/', include('FEEDBACK.urls', namespace='feedback'))
+    
     # path('registration/', include('templates/registration/signup.html'))
     # path('signup/', signup.view, include('account/signup.html'))
 ]

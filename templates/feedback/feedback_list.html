@@ -17,12 +17,12 @@ Here be the feedback
     <p class="date">
         Feedback {{ feedback.published }} by {{ feedback.author }}
     </p>
-    {{ feedback.content }}
+    {{ feedback.content|truncatewords:20|linebreaks }}
     {% empty %}
         <p>Sorry, no approved feedback just yet!</p>
     {% endfor %}
 </div>
 {% else %}
-<p>you do not have permission to view this page</p>
+    <p>you do not have permission to view this page</p>
 {% endif %}
 {% endblock content %}

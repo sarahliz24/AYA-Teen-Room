@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ feedback.title }}
+{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<div>
+    <h1>{{ feedback.title }}</h1>
+    <p class="date">
+        Feedback {{ feedback.published }} by {{ feedback.author }}
+    </p>
+    {{ feedback.content|linebreaks }}
+</div>
+{% else %}
+<p>you do not have permission to view this page</p>
+{% endif %}
+{% endblock content %}
