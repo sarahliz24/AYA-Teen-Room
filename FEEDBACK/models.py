@@ -60,3 +60,20 @@ class Feedback(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class FeedbackReply(models.Model):
+    feedback = models.ForeignKey(Feedback, on_delete=models.CASCADE,
+                                related_name="feedback_reply")
+    author = models.CharField(max_length=20)
+    content = models.TextField()
+    reply_made = models.DateTimeField(auto_now_add=True)
+    reply_updated = models.DateTimeField(auto_now=True)
+    allowed = models.BooleanField(default=True) # allows setting to False to turn off reply if required
+
+    class Meta():
+        ordering = ['reply_made']
+        indexes = [models.Index(fields=['reply_made']),]
+
+    def __str__(self):
+        return f'Reply by {self.author} on {self.feedback}'
