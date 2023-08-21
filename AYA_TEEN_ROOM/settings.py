@@ -39,6 +39,7 @@ ALLOWED_HOSTS = ['8000-sarahliz24-ayateenroom-cfcm4na4b6n.ws-eu102.gitpod.io', '
 
 INSTALLED_APPS = [
     'account.apps.AccountConfig', # first so django uses custom auth templates
+    'FEEDBACK.apps.FeedbackConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'cloudinary_storage',
     'django.contrib.staticfiles',
-    'FEEDBACK.apps.FeedbackConfig',
+    # 'FEEDBACK.apps.FeedbackConfig',
     'cloudinary',
     'PAGES',
      # 'FEEDBACK',

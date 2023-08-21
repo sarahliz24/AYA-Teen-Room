@@ -11,9 +11,13 @@ def feedback_list(request):
 def feedback_detail(request, id):
     feedback = get_object_or_404(Feedback, id=id,
                                  feedback_approval=Feedback.FeedbackApproval.OK)
-
+    feedback_reply = feedback.feedback_reply.filter(allowed=True)
+    form = FeedbackReply()
     return render(request, 'feedback/feedback_detail.html',
-                    {'feedback': feedback})
+                    {'feedback': feedback,
+                     'feedback_reply': feedback_reply,
+                     'form': form
+                    })
 
 @require_POST
 def post_reply(request, post_id):
@@ -24,7 +28,7 @@ def post_reply(request, post_id):
         reply = form.save(commit=False)
         reply.feedback = feedback
         reply.save()
-    return render(request, 'FEEDBACK/feedback/reply.html',
+    return render(request, 'feedback/reply.html',
                   {'feedback': feedback,
                    'form': form,
                    'reply': reply})
