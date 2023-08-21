@@ -10,15 +10,6 @@
 
 <header style="background-color: lightblue">
     <h2>{% block title %}{% endblock %}This is the header</h2>
-    <!-- <div>
-        {% if request.user.is_authenticated %}
-            <ul>
-                <li {% if section == "feedback" %} class="selected"{% endif %}>
-                <a href="{% url 'feedback' %}">Here is a personal dashboard</a>
-                </li>
-            </ul>
-        {% endif %}
-    </div> -->
     <div>
         {% if request.user.is_authenticated %}
         Hi there, {{ request.user.username|capfirst}}, <a href="{% url 'logout' %}">Logout</a>

@@ -1,5 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
+# from . import views
+from FEEDBACK.views import feedback_list
 from . import views
 
 # from .views import signup
@@ -11,7 +13,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
     # path('', views.dashboard, name="dashboard"),
-    path('feedback/', views.feedback, name='feedback'),
+    path('feedback/', feedback_list, name='feedback'),
     path('signup/', views.signup, name='signup'),
     path('edit/', views.ProfileEdit, name='edit'),
 
