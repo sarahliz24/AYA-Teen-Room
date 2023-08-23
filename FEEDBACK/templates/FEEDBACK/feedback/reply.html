@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'FEEDBACK/base.html' %}
 
 {% block title %}
 Add a reply
@@ -7,7 +7,7 @@ Add a reply
 {% block content %}
     {% if reply %}
         <h2>Your reply has been accepted and is awaiting approval</h2>
-        <p><a href="{{ reply.get_absolute_url }}">Go back to the feedback</a></p>
+        <p><a href="{% url 'FEEDBACK:feedback_detail' %}">Go back to the feedback</a></p>
     {% else %}
         {% include "FEEDBACK/feedback/includes/reply_form.html" %}
         {% endif %}

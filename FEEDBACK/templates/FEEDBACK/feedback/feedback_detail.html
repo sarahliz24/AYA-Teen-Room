@@ -20,15 +20,17 @@
             {% for reply in feedback_replys %}
             <div>
                 <p>
-                    Reply {{ forloop.counter }} by {{ reply.author}}
-                    {{reply.reply_made}}
+                    Reply {{ forloop.counter }} by {{ reply.author }}
+                    {{ reply.reply_made }}
                 </p>
-                {{reply.content|linebreaks }}
+                {{ reply.content|linebreaks }}
             </div>
         {% empty &}
             <p>there are no replies yet</p>
         {% endfor %}
+        {% comment %}
         {% include "FEEDBACK/feedback/includes/reply_form.html" %}
+        {% endcomment %}
         </div>
     {% else %}
     <p>you do not have permission to view this page</p>
