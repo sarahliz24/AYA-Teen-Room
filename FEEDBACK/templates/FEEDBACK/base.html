@@ -15,7 +15,7 @@
         Hi there, {{ request.user.username|capfirst}}, <a href="{% url 'logout' %}">Logout</a>
         <a href="{% url 'edit' %}">Edit Profile</a>
         <a href="{% url 'password_change' %}">Change Password</a>
-        <a href="{% url 'feedback' %}">View/Add Feedback</a>
+        <a href="{% url 'FEEDBACK:feedback_list' %}">View/Add Feedback</a>
         {% else %}
         <p>Hi there, Stranger!</p>
         <a href="{% url 'login' %}">Log in</a>

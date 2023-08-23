@@ -16,14 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from PAGES.views import (
+from FEEDBACK.views import (
     home_view,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home'),
-    path('feedback/', include('FEEDBACK.urls', namespace='feedback')),
+    path('FEEDBACK/', include('FEEDBACK.urls', namespace='FEEDBACK')),
     path('account/', include('account.urls')),
     
     # path('registration/', include('templates/registration/signup.html'))

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'FEEDBACK/base.html' %}
 
 {% block title %}
 Here be the feedback
@@ -10,7 +10,7 @@ Here be the feedback
     <h1>TEEN ROOM FEEDBACK</h1>
     {% for feedback in ok_feedback %}
     <h2>
-        <a href="{% url 'feedback:feedback_detail' feedback.id %}">
+        <a href="{% url 'FEEDBACK:feedback_detail' feedback.id %}">
             {{ feedback.title }}
         </a>
     </h2>
