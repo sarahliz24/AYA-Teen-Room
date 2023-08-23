@@ -1,0 +1,25 @@
+{% extends 'FEEDBACK/base.html' %}
+
+{% block title %}
+Submit your feedback here!
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <div>
+            <h2>Add your feedback here:</h2>
+            {% if submitted %}
+            Your feedback was submitted & is awaiting approval
+            {% else %}
+            <form action="{% url 'FEEDBACK:feedback_submission' %}", method="post">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <p><input type="submit" value="Submit feedback">
+                </p>
+            </form>
+            {% endif %}
+        </div>
+    {% else %}
+    <p>you do not have permission to view this page</p>
+    {% endif %}
+{% endblock content %}
