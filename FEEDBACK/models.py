@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 from django.urls import reverse
 
 
@@ -62,6 +63,13 @@ class Feedback(models.Model):
     def __str__(self):
         return self.title
 
+    # https://www.kodnito.com/posts/slugify-urls-django/
+    def save(self, *args, **kwargs):
+
+        if not self.slug:
+            self.slug = slugify(self.title)
+        return super().save(*args, **kwargs)
+    
     
     def get_absolute_url(self):
         return reverse('FEEDBACK:feedback_detail', args=[self.id])
