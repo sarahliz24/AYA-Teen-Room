@@ -91,6 +91,7 @@ def post_reply(request, feedback_id):
     form = ReplyForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
+            form.instance.author = request.user.username
             reply = form.save(commit=False)
             reply.feedback = feedback
             reply.save()
