@@ -15,8 +15,10 @@
             {{ feedback.content|linebreaks }}
 
             <p>
+                {% if request.user == feedback.author %}
                 <a href="feedback_edit/{{ feedback_id }}">
                     <button>Edit</button>
+                {% endif %}
                 </a>
             </p>
 
