@@ -116,7 +116,7 @@ def feedback_edit(request, feedback_id):
     '''
     feedback = get_object_or_404(Feedback, id=feedback_id)
 
-    if request.method == 'POST':
+    if request.method == 'POST' and feedback.author == request.user:
         form = FeedbackSubmission(request.POST, instance=feedback)
         if form.is_valid():
             form.save()
@@ -126,6 +126,9 @@ def feedback_edit(request, feedback_id):
                     {'ok_feedback': ok_feedback})   
         else:
             messages.error(request, 'Oops, something went wrong!')
+    else:
+        messages.error(request, "You cannot edit another users feedback")
+        # return render (request, 'FEEDBACK/feedback/feedback_list.html',)
 
     form = FeedbackSubmission(instance=feedback)
     context = {
