@@ -108,33 +108,10 @@ def post_reply(request, feedback_id):
                    'feedback': feedback,
                    'reply': reply })
 
-'''
-    form = reply_form(data=request.POST)
-    if form.is_valid():
-        reply = form.save(commit=False)
-        reply.feedback = feedback
-        reply.save()
-    return render(request, 'FEEDBACK/feedback/reply.html',
-                  {'feedback': feedback,
-                   'form': form,
-                   'reply': reply})
-                   '''
 
-'''
-                      form = FeedbackSubmission()
-    if request.method == 'POST':
-        form = FeedbackSubmission(request.POST)
-        # feedback_submission = FeedbackSubmission(instance=request.user, data=request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Your feedback has been submitted & is awaiting approval")
-            ok_feedback = Feedback.approved.all()
-            return render (request, 'FEEDBACK/feedback/feedback_list.html',
-                    {'ok_feedback': ok_feedback})
-        else:
-            messages.error(request, 'Oops, something went wrong!')
-    else:
-        form = FeedbackSubmission(instance=request.user)
-    return render(request, 'FEEDBACK/feedback/feedback_submission.html',
-                  {'form': form, })
-                  '''
+def feedback_update(request, feedback_id):
+    '''
+    Allow user to update feedback they have previously
+    created
+    '''
+    
