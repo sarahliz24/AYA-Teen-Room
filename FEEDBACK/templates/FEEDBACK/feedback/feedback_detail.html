@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+
     {% if request.user.is_authenticated %}
         <div>
             <h1>{{ feedback.title }}</h1>
@@ -12,27 +13,39 @@
                 Feedback {{ feedback.published }} by {{ feedback.author }}
             </p>
             {{ feedback.content|linebreaks }}
-            {% with feedback_replys.count as total_feedback_reply %}
+
+            {% with feedback_reply.count as total_feedback_reply %}
                 <h2>
-                    {{ total_feedback_reply }} reply{{ total_feedback_reply|pluralize }}
+                    {{ total_feedback_reply }} Feedback comment{{ total_feedback_reply|pluralize }}
                 </h2>
             {% endwith %}
-            {% for reply in feedback_replys %}
+            
+            {% for reply in feedback_reply %}
             <div>
                 <p>
                     Reply {{ forloop.counter }} by {{ reply.author }}
                     {{ reply.reply_made }}
                 </p>
-                {{ reply.content|linebreaks }}
+                <p>{{ reply.content }}</p>
             </div>
-        {% empty &}
-            <p>there are no replies yet</p>
-        {% endfor %}
+
+            {% empty %}
+                <p>there are no replies yet</p>
+                
+            {% endfor %}
+            
+        
+        {% include "FEEDBACK/feedback/includes/reply_form.html" %}
+
         {% comment %}
+        # <button><a href="{ 'FEEDBACK/' }">Reply</a></button>
         {% include "FEEDBACK/feedback/includes/reply_form.html" %}
         {% endcomment %}
+
         </div>
+
     {% else %}
     <p>you do not have permission to view this page</p>
     {% endif %}
+
 {% endblock content %}
