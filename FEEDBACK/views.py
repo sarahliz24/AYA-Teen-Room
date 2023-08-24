@@ -126,9 +126,6 @@ def feedback_edit(request, feedback_id):
                     {'ok_feedback': ok_feedback})   
         else:
             messages.error(request, 'Oops, something went wrong!')
-    else:
-        messages.error(request, "You cannot edit another users feedback")
-        # return render (request, 'FEEDBACK/feedback/feedback_list.html',)
 
     form = FeedbackSubmission(instance=feedback)
     context = {
