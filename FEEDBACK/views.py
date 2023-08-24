@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import Http404
 # from django.views import generic
 from django.contrib import messages
@@ -31,7 +31,9 @@ def feedback_submission(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Your feedback has been submitted & is awaiting approval")
-            return render(request, 'FEEDBACK/feedback/feedback_list.html')
+            ok_feedback = Feedback.approved.all()
+            return render (request, 'FEEDBACK/feedback/feedback_list.html',
+                    {'ok_feedback': ok_feedback})
         else:
             messages.error(request, 'Oops, something went wrong!')
     else:
