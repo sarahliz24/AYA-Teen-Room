@@ -82,7 +82,7 @@ class FeedbackReply(models.Model):
     content = models.TextField()
     reply_made = models.DateTimeField(auto_now_add=True)
     reply_updated = models.DateTimeField(auto_now=True)
-    allowed = models.BooleanField(default=True) # allows setting to False to turn off reply if required
+    allowed = models.BooleanField(default=False) # allows setting to False to turn off reply if required
 
     class Meta():
         ordering = ['reply_made']

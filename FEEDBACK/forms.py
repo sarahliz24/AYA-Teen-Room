@@ -19,4 +19,4 @@ class FeedbackSubmission(forms.ModelForm):
 class ReplyForm(forms.ModelForm):
     class Meta:
         model = FeedbackReply
-        fields = ['author', 'content']
+        fields = ['content']
