@@ -34,7 +34,14 @@
                     Reply {{ forloop.counter }} by {{ reply.author }}
                     {{ reply.reply_made }}
                 </p>
+                {% if request.user.username == reply.author %}
                 <p>{{ reply.content }}</p>
+                <a href="reply_edit/{{ reply_id }}">
+                    <button>Edit</button>
+                </a>
+                {% else %}
+                <p>{{ reply.content }}</p>
+                {% endif %}
             </div>
 
             {% empty %}

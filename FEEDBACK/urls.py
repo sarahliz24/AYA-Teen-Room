@@ -11,4 +11,5 @@ urlpatterns = [
     path('<int:feedback_id>/reply/', views.post_reply, name='post_reply'),
     # path('feedback-detail/', views.feedback_detail, name='feedback_detail'),
     path('<int:feedback_id>/feedback_edit/', views.feedback_edit, name='feedback_edit'),
+      path('<int:reply_id>/reply_edit/', views.reply_edit, name='reply_edit'),
 ]

@@ -132,3 +132,32 @@ def feedback_edit(request, feedback_id):
         'form': form
     }
     return render(request, 'FEEDBACK/feedback/feedback_edit.html', context)
+
+
+def reply_edit(request, reply_id):
+    '''
+    Allow user to update reply they have previously
+    created
+    '''
+    reply = get_object_or_404(FeedbackReply, id=reply_id)
+
+    if request.method == 'POST' and reply.author == request.user:
+        form = FeedbackReply(request.POST, instance=reply)
+        if form.is_valid():
+            reply = form.save(commit=False)
+            reply.feedback = feedback
+            reply.save()
+            messages.success(request, "Your reply has been submitted & is awaiting approval")
+            ok_feedback = Feedback.approved.all()
+            return render (request, 'FEEDBACK/feedback/feedback_list.html',
+                        {'ok_feedback': ok_feedback})
+        else:
+            messages.error(request, 'Oops, something went wrong!')
+    # else:
+        # form = FeedbackReply(instance=request.user)
+
+    form = FeedbackReply(instance=reply)
+    context = {
+        'form': form
+    }
+    return render(request, 'FEEDBACK/feedback/reply_edit.html', context)
