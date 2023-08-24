@@ -14,6 +14,12 @@
             </p>
             {{ feedback.content|linebreaks }}
 
+            <p>
+                <a href="feedback_edit/{{ feedback_id }}">
+                    <button>Edit</button>
+                </a>
+            </p>
+
             {% with feedback_reply.count as total_feedback_reply %}
                 <h2>
                     {{ total_feedback_reply }} Feedback comment{{ total_feedback_reply|pluralize }}

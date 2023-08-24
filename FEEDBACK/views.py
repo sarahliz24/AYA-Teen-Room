@@ -109,9 +109,26 @@ def post_reply(request, feedback_id):
                    'reply': reply })
 
 
-def feedback_update(request, feedback_id):
+def feedback_edit(request, feedback_id):
     '''
     Allow user to update feedback they have previously
     created
     '''
-    
+    feedback = get_object_or_404(Feedback, id=feedback_id)
+
+    if request.method == 'POST':
+        form = FeedbackSubmission(request.POST, instance=feedback)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your feedback has been submitted & is awaiting approval")
+            ok_feedback = Feedback.approved.all()
+            return render (request, 'FEEDBACK/feedback/feedback_list.html',
+                    {'ok_feedback': ok_feedback})   
+        else:
+            messages.error(request, 'Oops, something went wrong!')
+
+    form = FeedbackSubmission(instance=feedback)
+    context = {
+        'form': form
+    }
+    return render(request, 'FEEDBACK/feedback/feedback_edit.html', context)
