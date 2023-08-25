@@ -142,7 +142,7 @@ def reply_edit(request, reply_id):
     reply = get_object_or_404(FeedbackReply, id=reply_id)
 
     if request.method == 'POST' and reply.author == request.user:
-        form = FeedbackReply(request.POST, instance=reply)
+        form = ReplyForm(request.POST, instance=reply)
         if form.is_valid():
             reply = form.save(commit=False)
             reply.feedback = feedback
@@ -156,7 +156,7 @@ def reply_edit(request, reply_id):
     # else:
         # form = FeedbackReply(instance=request.user)
 
-    form = FeedbackReply(instance=reply)
+    form = ReplyForm(instance=reply)
     context = {
         'form': form
     }
