@@ -174,3 +174,17 @@ def delete_feedback(request, feedback_id):
         return redirect(feedback_list)
     
     return render(request, 'FEEDBACK/feedback/delete_feedback.html')
+
+
+def delete_reply(request, id):
+    '''
+    Allow user to delete own feedback reply
+    '''
+    # feedback = get_object_or_404(Feedback, id=feedback_id)
+    reply = get_object_or_404(FeedbackReply, id=id)
+
+    if request.method == 'POST':
+        reply.delete()
+        return redirect(feedback_list)
+    
+    return render(request, 'FEEDBACK/feedback/delete_reply.html')
