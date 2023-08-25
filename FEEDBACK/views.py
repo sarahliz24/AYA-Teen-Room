@@ -161,3 +161,16 @@ def reply_edit(request, reply_id):
         'form': form
     }
     return render(request, 'FEEDBACK/feedback/reply_edit.html', context)
+
+
+def delete_feedback(request, feedback_id):
+    '''
+    Allow user to delete own feedback
+    '''
+    feedback = get_object_or_404(Feedback, id=feedback_id)
+
+    if request.method == 'POST':
+        feedback.delete()
+        return redirect(feedback_list)
+    
+    return render(request, 'FEEDBACK/feedback/delete_feedback.html')

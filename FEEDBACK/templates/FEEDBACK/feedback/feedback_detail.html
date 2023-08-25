@@ -18,6 +18,8 @@
                 {% if request.user == feedback.author %}
                 <a href="feedback_edit/{{ feedback_id }}">
                     <button>Edit</button>
+                    <a href="delete_feedback/{{ feedback_id }}">
+                        <button>Delete</button>
                 {% endif %}
                 </a>
             </p>
