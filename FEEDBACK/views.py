@@ -64,7 +64,7 @@ def post_reply(request, feedback_id):
             reply.feedback = feedback
             reply.save()
             messages.success(request, "Your reply has been submitted & is awaiting approval")
-            ok_feedback = Feedback.approved.all()
+            ok_feedback = FeedbackPost.approved.all()
             return render (request, 'FEEDBACK/feedback/feedback_list.html',
                         {'ok_feedback': ok_feedback})
         else:

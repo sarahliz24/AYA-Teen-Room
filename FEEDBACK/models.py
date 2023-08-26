@@ -40,7 +40,7 @@ class FeedbackPost(models.Model):
     feedback_updated = models.DateTimeField(auto_now=True)
     feedback_approval = models.CharField(max_length=2,
                                         choices=FeedbackApproval.choices,
-                                        default=FeedbackApproval.PENDING)
+                                        default=FeedbackApproval.OK)
     room = models.CharField(max_length=3, choices=Room.choices,
                              default=Room.CHI,
                              help_text='Choose the room your feedback is for')
@@ -82,7 +82,7 @@ class FeedbackReply(models.Model):
     content = models.TextField()
     reply_made = models.DateTimeField(auto_now_add=True)
     reply_updated = models.DateTimeField(auto_now=True)
-    allowed = models.BooleanField(default=False) # allows setting to False to turn off reply if required
+    allowed = models.BooleanField(default=True) # allows setting to False to turn off reply if required
 
     class Meta():
         ordering = ['reply_made']
