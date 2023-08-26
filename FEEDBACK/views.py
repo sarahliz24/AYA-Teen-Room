@@ -21,7 +21,10 @@ def feedback_submission(request):
         form = FeedbackSubmission(request.POST)
         # feedback_submission = FeedbackSubmission(instance=request.user, data=request.POST)
         if form.is_valid():
-            form.save()
+            new_form = form.save()
+            new_form.author = request.user
+            new_form.save()
+            # form.save()
             messages.success(request, "Your feedback has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()
             return render (request, 'FEEDBACK/feedback/feedback_list.html',
@@ -32,6 +35,18 @@ def feedback_submission(request):
         form = FeedbackSubmission(instance=request.user)
     return render(request, 'FEEDBACK/feedback/feedback_submission.html',
                   {'form': form, })
+
+""" def upload_video(request):
+    if request.method == "POST":
+        form = VideoPostForm(request.POST, request.FILES or None)
+        if form.is_valid():
+            new_videopost = form.save()
+            new_videopost.author = request.user
+            new_videopost.save()
+            return redirect('home')
+    else:
+        form = VideoPostForm()
+    return render(request, 'upload_video.html', {'form': form}) """
 
 
 def feedback_list(request):

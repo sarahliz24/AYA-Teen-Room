@@ -18,7 +18,7 @@ class TeenUserProfile(models.Model):
                                   help_text='Required: this is a 7 digit number found on your wristband',
                                   max_length=7,
                                   validators=[int_list_validator(sep=''),MinLengthValidator(7), ])
-    fname = models.CharField(max_length=20, blank=True, null=True)
+    fname = models.CharField(max_length=20, blank=True, null=True, verbose_name="first name")
 
     def __str__(self):
         return f'{self.user.username}: Your Profile'

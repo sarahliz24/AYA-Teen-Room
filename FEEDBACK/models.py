@@ -65,7 +65,6 @@ class FeedbackPost(models.Model):
 
     # https://www.kodnito.com/posts/slugify-urls-django/
     def save(self, *args, **kwargs):
-
         if not self.slug:
             self.slug = slugify(self.title)
         return super().save(*args, **kwargs)
