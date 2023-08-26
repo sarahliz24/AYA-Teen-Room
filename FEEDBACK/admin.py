@@ -1,7 +1,6 @@
 from django.contrib import admin
 from .models import Feedback, FeedbackReply
 
-# admin.site.register(Feedback)
 
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
