@@ -47,10 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'cloudinary_storage',
     'django.contrib.staticfiles',
-    # 'FEEDBACK.apps.FeedbackConfig',
     'cloudinary',
-    'PAGES',
-     # 'FEEDBACK',
 ]
 
 MIDDLEWARE = [

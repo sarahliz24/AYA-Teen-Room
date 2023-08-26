@@ -5,6 +5,7 @@ Edit you feedback here!
 {% endblock %}
 
 {% block content %}
+
     {% if request.user.is_authenticated %}
         <div>
             <h2>Edit your feedback here:</h2>
@@ -22,4 +23,5 @@ Edit you feedback here!
     {% else %}
     <p>you do not have permission to view this page</p>
     {% endif %}
+
 {% endblock content %}

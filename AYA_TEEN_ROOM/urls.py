@@ -26,6 +26,6 @@ urlpatterns = [
     path('FEEDBACK/', include('FEEDBACK.urls', namespace='FEEDBACK')),
     path('account/', include('account.urls')),
     
-    # path('registration/', include('templates/registration/signup.html'))
-    # path('signup/', signup.view, include('account/signup.html'))
+# path('registration/', include('templates/registration/signup.html'))
+# path('signup/', signup.view, include('account/signup.html'))
 ]
