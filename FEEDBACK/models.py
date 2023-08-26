@@ -34,7 +34,7 @@ class FeedbackPost(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                 related_name='feedback_post')
     content = models.TextField()
-    show_feedback = models.TextField(max_length=500)
+    show_feedback = models.TextField(max_length=500, default='empty')
     published = models.DateTimeField(default=timezone.now)
     feedback_made = models.DateTimeField(auto_now_add=True)
     feedback_updated = models.DateTimeField(auto_now=True)
