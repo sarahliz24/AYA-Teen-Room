@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import Http404
 # from django.views import generic
 from django.contrib import messages
-from .models import Feedback, FeedbackReply
+from .models import FeedbackPost, FeedbackReply
 from .forms import FeedbackSubmission, ReplyForm
 from django.views.decorators.http import require_POST
 from django.views.generic import ListView
@@ -23,7 +23,7 @@ def feedback_submission(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Your feedback has been submitted & is awaiting approval")
-            ok_feedback = Feedback.approved.all()
+            ok_feedback = FeedbackPost.approved.all()
             return render (request, 'FEEDBACK/feedback/feedback_list.html',
                     {'ok_feedback': ok_feedback})
         else:
@@ -35,14 +35,14 @@ def feedback_submission(request):
 
 
 def feedback_list(request):
-    ok_feedback = Feedback.approved.all()
+    ok_feedback = FeedbackPost.approved.all()
     return render (request, 'FEEDBACK/feedback/feedback_list.html',
                     {'ok_feedback': ok_feedback})
 
 
 def feedback_detail(request, id):
-    feedback = get_object_or_404(Feedback, id=id,
-                                 feedback_approval=Feedback.FeedbackApproval.OK)
+    feedback = get_object_or_404(FeedbackPost, id=id,
+                                 feedback_approval=FeedbackPost.FeedbackApproval.OK)
     feedback_reply = feedback.feedback_reply.filter(allowed=True)
     form = ReplyForm()
     return render(request, 'FEEDBACK/feedback/feedback_detail.html',
@@ -54,7 +54,7 @@ def feedback_detail(request, id):
 
 @require_POST
 def post_reply(request, feedback_id):
-    feedback = get_object_or_404(Feedback, id=feedback_id, feedback_approval=Feedback.FeedbackApproval.OK)
+    feedback = get_object_or_404(FeedbackPost, id=feedback_id, feedback_approval=FeedbackPost.FeedbackApproval.OK)
     reply = None
     form = ReplyForm(request.POST)
     if request.method == 'POST':
@@ -82,14 +82,14 @@ def feedback_edit(request, feedback_id):
     Allow user to update feedback they have previously
     created
     '''
-    feedback = get_object_or_404(Feedback, id=feedback_id)
+    feedback = get_object_or_404(FeedbackPost, id=feedback_id)
 
     if request.method == 'POST' and feedback.author == request.user:
         form = FeedbackSubmission(request.POST, instance=feedback)
         if form.is_valid():
             form.save()
             messages.success(request, "Your feedback has been submitted & is awaiting approval")
-            ok_feedback = Feedback.approved.all()
+            ok_feedback = FeedbackPost.approved.all()
             return render (request, 'FEEDBACK/feedback/feedback_list.html',
                     {'ok_feedback': ok_feedback})   
         else:
@@ -135,7 +135,7 @@ def delete_feedback(request, feedback_id):
     '''
     Allow user to delete own feedback
     '''
-    feedback = get_object_or_404(Feedback, id=feedback_id)
+    feedback = get_object_or_404(FeedbackPost, id=feedback_id)
 
     if request.method == 'POST':
         feedback.delete()
@@ -148,7 +148,7 @@ def delete_reply(request, id):
     '''
     Allow user to delete own feedback reply
     '''
-    # feedback = get_object_or_404(Feedback, id=feedback_id)
+
     reply = get_object_or_404(FeedbackReply, id=id)
 
     if request.method == 'POST':

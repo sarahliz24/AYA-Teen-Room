@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Feedback, FeedbackReply
+from .models import FeedbackPost, FeedbackReply
 
 
-@admin.register(Feedback)
-class FeedbackAdmin(admin.ModelAdmin):
+@admin.register(FeedbackPost)
+class FeedbackPostAdmin(admin.ModelAdmin):
     list_display = ['title', 'slug', 'author', 'room', 'feedback_approval']
     list_filter = ['author',  'room', 'feedback_approval', 'feedback_made']
     search_fields = ['title', 'content']

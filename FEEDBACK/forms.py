@@ -1,15 +1,15 @@
 from django import forms
 # from django.contrib.auth.models import User
-from .models import Feedback, FeedbackReply
+from .models import FeedbackPost, FeedbackReply
 
 
 class FeedbackSubmission(forms.ModelForm):
     '''
     Creates a form for user to submit feedback.
-    Based on Feedback model. 
+    Based on FeedbackPost model. 
     '''
     class Meta:
-        model = Feedback
+        model = FeedbackPost
         fields = [
            'title', 'author',
             'content', 'room'

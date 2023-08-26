@@ -10,10 +10,10 @@ class ApprovalManager(models.Manager):
     Custom model manager for posts set to OK for display in feed
     '''
     def get_queryset(self):
-        return super().get_queryset().filter(feedback_approval=Feedback.FeedbackApproval.OK)
+        return super().get_queryset().filter(feedback_approval=FeedbackPost.FeedbackApproval.OK)
 
 
-class Feedback(models.Model):
+class FeedbackPost(models.Model):
     '''
     Docstring goes here
     '''
@@ -76,7 +76,7 @@ class Feedback(models.Model):
 
 
 class FeedbackReply(models.Model):
-    feedback = models.ForeignKey(Feedback, on_delete=models.CASCADE,
+    feedback = models.ForeignKey(FeedbackPost, on_delete=models.CASCADE,
                                 related_name="feedback_reply")
     author = models.CharField(max_length=20)
     content = models.TextField()
