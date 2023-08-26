@@ -5,11 +5,22 @@
 
 {% block content %}
 
-<h2>Sign UP Here!</h2>
+<!-- <h2>Sign UP Here!</h2>
 <form method="post" name="UserSignUp" action="">
     {% csrf_token %}
     {{ signup_form.as_p }}
     <button type="submit">Sign Up</button>
-</form>
+</form> -->
 
+<div class="container
+ my-auto ">
+    <form class="form-signin" name="UserSignUp" method="post">
+        <h1 class="h3 mb-3 font-weight-normal">
+        Sign Up Here!</h1>
+        {{ signup_form.as_p }}
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
+        <p><input type="submit" value="Log-in"></p>
+    </form>
+</div> 
 {% endblock %}
