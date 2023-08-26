@@ -1,0 +1,39 @@
+/*   html {
+    font-size: 14px;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  .container {
+    max-width: 960px;
+  }
+
+  .pricing-header {
+    max-width: 700px;
+  }
+
+  .card-deck .card {
+    min-width: 220px;
+  } */
+
+.main{
+    min-height: 100vh;
+    height: 100%;
+}
+  
+body {
+    padding-bottom: 20px;
+  }
+
+.navbar {
+    margin-bottom: 20px;
+  }
+
+.footer{
+    min-height: 100px;
+    border-style: double;
+}
