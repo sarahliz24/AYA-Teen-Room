@@ -1,16 +1,15 @@
 {% extends 'FEEDBACK/base.html' %}
 
 {% block title %}
-Logging Out
+Logged Out
 {% endblock %}
 
 {% block content %}
-
-    <h1>Logging out</h1>
-    <p>You are now logged out.
-    Log in again here: <a href="{% url 'login' %}">LOG IN</a>.
-    </p>
-    <p>Return to home page: <a href="{% url 'home' %}">HOME</a>.
+    <div class="container my-auto">
+        <h1 class="h3 mb-3 font-weight-normal"> You have logged out</h1>
+        <p>Log in again here:<a href="{% url 'login' %}"> Log in</a>
         </p>
-
+        <p>Return to home page: <a href="{% url 'home' %}"> Home</a>
+        </p>
+    </div> 
 {% endblock %}

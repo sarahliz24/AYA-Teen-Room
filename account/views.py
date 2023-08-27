@@ -8,7 +8,7 @@ from .models import TeenUserProfile
 from FEEDBACK.views import feedback_detail
 
 
-def user_login(request):
+""" def user_login(request):
     if request.method == "POST":
         form = FormLoggingIn(request.POST)  # create form instance
         if form.is_valid():  # validate form
@@ -29,7 +29,7 @@ def user_login(request):
                 return HttpResponse('User not valid')
     else:
         form = FormLoggingIn()
-    return render(request, 'account/login.html', {'form': form})
+    return render(request, 'account/login.html', {'form': form}) """
 
 
 @login_required  # check is user is authenticated
