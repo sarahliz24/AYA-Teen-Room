@@ -161,7 +161,7 @@ def delete_feedback(request, feedback_id):
         return render (request, 'feedback/feedback_list.html',
             {'ok_feedback': ok_feedback})
     
-    return render(request, 'FEEDBACK/feedback/delete_feedback.html')
+    return render(request, 'feedback/delete_feedback.html')
 
 
 def delete_reply(request, id):
