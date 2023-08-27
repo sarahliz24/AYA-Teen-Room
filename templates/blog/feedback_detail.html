@@ -6,26 +6,24 @@
 
 {% block content %}
 
-    {% if request.user.is_authenticated %}
-        <div>
-            <h1>{{ feedback_post.title }}</h1>
-            <p class="date">
+{% if request.user.is_authenticated %}
+    <div>
+        <h1>{{ feedback_post.title }}</h1>
+        <p class="date">
             Feedback {{ feedback_post.published }} by {{ feedback_post.author }}
-            </p>
-            {{ feedback_post.content|linebreaks }}
-
-            <p>
-                {% if request.user == feedback.author %}
-                <a href="blog/feedback_edit/{{ feedback_id }}">
-                    <button>Edit</button>
-                    <a href="blog/delete_feedback/{{ feedback_id }}">
+        </p>
+        {{ feedback_post.content|linebreaks }}
+    
+        <p>
+            {% if request.user == feedback_post.author %}
+            <a href="{% url  'blog:feedback_edit' feedback_post.slug %}">
+                <button>Edit</button>
+                <a href="{% url  'blog:delete_feedback' feedback_post.slug %}">
                     <button>Delete</button>
-                {% endif %}
+                    {% endif %}
                 </a>
-            </p>
-
-        
-        </div>
+        </p>
+    </div>
 
     {% else %}
     <p>you do not have permission to view this page</p>

@@ -11,10 +11,10 @@ urlpatterns = [
 
     path('<slug>/', views.feedback_detail, name='feedback_detail'),
 
-    path('<int:blog_id>/feedback_edit/', views.feedback_edit, 
+    path('<slug>/feedback_edit/', views.feedback_edit, 
          name='feedback_edit'),
     
-    path('<int:blog_id>/delete_feedback/', views.delete_feedback, 
+    path('<slug>/delete_feedback/', views.delete_feedback, 
          name='delete_feedback'),
 
 ]

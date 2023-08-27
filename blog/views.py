@@ -59,15 +59,15 @@ def feedback_detail(request, slug):
                     {'feedback_post': feedback_post })
 
 
-def feedback_edit(request, id):
+def feedback_edit(request, slug):
     '''
     Allow user to update feedback they have previously
     created
     '''
-    feedback = get_object_or_404(FeedbackPost, id=id)
+    feedback_post = get_object_or_404(FeedbackPost, slug=slug)
 
-    if request.method == 'POST' and feedback.author == request.user:
-        form = FeedbackSubmission(request.POST, instance=feedback)
+    if request.method == 'POST' and feedback_post.author == request.user:
+        form = FeedbackSubmission(request.POST, instance=feedback_post)
         if form.is_valid():
             form.save()
             messages.success(request, "Your feedback has been submitted & is awaiting approval")
@@ -77,23 +77,23 @@ def feedback_edit(request, id):
         else:
             messages.error(request, 'Oops, something went wrong!')
 
-    form = FeedbackSubmission(instance=feedback)
+    form = FeedbackSubmission(instance=feedback_post)
     context = {
         'form': form
     }
     return render(request, 'blog/feedback_edit.html', context)
 
 
-def delete_feedback(request, id):
+def delete_feedback(request, slug):
     '''
     Allow user to delete own feedback
     '''
-    feedback = get_object_or_404(FeedbackPost, id=id)
+    feedback = get_object_or_404(FeedbackPost, slug=slug)
 
     if request.method == 'POST':
         feedback.delete()
         ok_feedback = FeedbackPost.approved.all()
-        return render (request, 'feedback/feedback_list.html',
+        return render (request, 'blog/feedback_list.html',
             {'ok_feedback': ok_feedback})
     
     return render(request, 'blog/delete_feedback.html')
