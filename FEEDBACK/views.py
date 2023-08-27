@@ -89,7 +89,7 @@ def post_reply(request, feedback_id):
             messages.error(request, 'Oops, something went wrong!')
     else:
         form = ReplyForm(instance=request.user)
-    return render(request, 'FEEDBACK/feedback/reply_form.html',
+    return render(request, 'feedback/reply_form.html',
                   {'form': form,
                    'feedback': feedback,
                    'reply': reply })
@@ -146,7 +146,7 @@ def reply_edit(request, reply_id):
     context = {
         'form': form
     }
-    return render(request, 'FEEDBACK/feedback/reply_edit.html', context)
+    return render(request, 'feedback/reply_edit.html', context)
 
 
 def delete_feedback(request, feedback_id):
@@ -175,4 +175,4 @@ def delete_reply(request, id):
         reply.delete()
         return redirect(feedback_list)
     
-    return render(request, 'FEEDBACK/feedback/delete_reply.html')
+    return render(request, 'feedback/delete_reply.html')
