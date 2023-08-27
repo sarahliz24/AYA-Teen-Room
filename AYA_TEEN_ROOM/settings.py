@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['8000-sarahliz24-ayateenroom-cfcm4na4b6n.ws-eu102.gitpod.io', '
 # Application definition
 
 INSTALLED_APPS = [
+     "django_rename_app",
     'account.apps.AccountConfig', # first so django uses custom auth templates
     'FEEDBACK.apps.FeedbackConfig',
     'django.contrib.admin',
