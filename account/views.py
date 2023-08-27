@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
@@ -76,7 +76,7 @@ def ProfileEdit(request):
             signup_form.save()
             teen_user_profile.save()
             messages.success(request, "Update of your details successful")
-            return render(request, 'feedback/feedback_list.html')
+            return redirect('home')
         else:
             messages.error(request, 'Oops, something went wrong!')
     else:
