@@ -117,7 +117,7 @@ def feedback_edit(request, feedback_id):
     context = {
         'form': form
     }
-    return render(request, 'FEEDBACK/feedback/feedback_edit.html', context)
+    return render(request, 'feedback/feedback_edit.html', context)
 
 
 def reply_edit(request, reply_id):
