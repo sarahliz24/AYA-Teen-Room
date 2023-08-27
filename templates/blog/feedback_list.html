@@ -8,19 +8,16 @@ Here be the feedback
 {% if request.user.is_authenticated %}
 <div>
     <h1>TEEN ROOM FEEDBACK</h1>
-    {% for feedback in ok_feedback %}
+    {% for feedback_post in ok_feedback %}
     <h2>
-        <a href="/{{id}}/">
-            {{ feedback.title }}
+        <a href="{% url  'blog:feedback_detail' feedback_post.slug %}">
+            {{ feedback_post.title }}
         </a>
-<!--         <a href="{{ blog.get_absolute_url }}">
-            {{ feedback.title }}
-        </a> -->
     </h2>
     <p class="date">
-        Feedback {{ feedback.published }} by {{ feedback.author }}
+        Feedback {{ feedback_post.published }} by {{ feedback_post.author }}
     </p>
-    {{ feedback.content|truncatewords:20|linebreaks }}
+    {{ feedback_post.content|truncatewords:20|linebreaks }}
     {% empty %}
         <p>Sorry, no approved feedback just yet!</p>
     {% endfor %}

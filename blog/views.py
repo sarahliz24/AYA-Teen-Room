@@ -46,49 +46,25 @@ def feedback_list(request):
                     {'ok_feedback': ok_feedback})
 
 
-def feedback_detail(request, id):
-    feedback_post = get_object_or_404(FeedbackPost, id=id,
+def feedback_detail(request, slug):
+
+    
+    feedback_post = get_object_or_404(FeedbackPost, slug=slug,
                                  feedback_approval=FeedbackPost.FeedbackApproval.OK)
-    feedback_reply = feedback_post.feedback_reply.filter(allowed=True)
-    form = ReplyForm()
+
+    """ feedback_reply = feedback_post.feedback_reply.filter(allowed=True)
+    form = ReplyForm() """
+
     return render(request, 'blog/feedback_detail.html',
-                    {'feedback_post': feedback_post,
-                     'feedback_reply': feedback_reply,
-                     'form': form
-                    })
+                    {'feedback_post': feedback_post })
 
 
-@require_POST
-def post_reply(request, blog_id):
-    feedback = get_object_or_404(FeedbackPost, id=blog_id, feedback_approval=FeedbackPost.FeedbackApproval.OK)
-    reply = None
-    form = ReplyForm(request.POST)
-    if request.method == 'POST':
-        if form.is_valid():
-            form.instance.author = request.user.username
-            reply = form.save(commit=False)
-            reply.feedback = feedback
-            reply.save()
-            messages.success(request, "Your reply has been submitted & is awaiting approval")
-            ok_feedback = FeedbackPost.approved.all()
-            return render (request, 'blog/feedback_list.html',
-                        {'ok_feedback': ok_feedback})
-        else:
-            messages.error(request, 'Oops, something went wrong!')
-    else:
-        form = ReplyForm(instance=request.user)
-    return render(request, 'blog/post_reply.html',
-                  {'form': form,
-                   'feedback': feedback,
-                   'reply': reply })
-
-
-def feedback_edit(request, blog_id):
+def feedback_edit(request, id):
     '''
     Allow user to update feedback they have previously
     created
     '''
-    feedback = get_object_or_404(FeedbackPost, id=blog_id)
+    feedback = get_object_or_404(FeedbackPost, id=id)
 
     if request.method == 'POST' and feedback.author == request.user:
         form = FeedbackSubmission(request.POST, instance=feedback)
@@ -108,40 +84,11 @@ def feedback_edit(request, blog_id):
     return render(request, 'blog/feedback_edit.html', context)
 
 
-def reply_edit(request, reply_id):
-    '''
-    Allow user to update reply they have previously
-    created
-    '''
-    reply = get_object_or_404(FeedbackReply, id=reply_id)
-
-    if request.method == 'POST' and reply.author == request.user:
-        form = ReplyForm(request.POST, instance=reply)
-        if form.is_valid():
-            reply = form.save(commit=False)
-            reply.feedback = feedback
-            reply.save()
-            messages.success(request, "Your reply has been submitted & is awaiting approval")
-            ok_feedback = FeedbackPost.approved.all()
-            return render (request, 'blog/feedback_list.html',
-                    {'ok_feedback': ok_feedback})   
-        else:
-            messages.error(request, 'Oops, something went wrong!')
-    # else:
-        # form = FeedbackReply(instance=request.user)
-
-    form = ReplyForm(instance=reply)
-    context = {
-        'form': form
-    }
-    return render(request, 'blog/reply_edit.html', context)
-
-
-def delete_feedback(request, blog_id):
+def delete_feedback(request, id):
     '''
     Allow user to delete own feedback
     '''
-    feedback = get_object_or_404(FeedbackPost, id=blog_id)
+    feedback = get_object_or_404(FeedbackPost, id=id)
 
     if request.method == 'POST':
         feedback.delete()
@@ -150,16 +97,3 @@ def delete_feedback(request, blog_id):
             {'ok_feedback': ok_feedback})
     
     return render(request, 'blog/delete_feedback.html')
-
-
-def delete_reply(request, id):
-    '''
-    Allow user to delete own feedback reply
-    '''
-    reply = get_object_or_404(FeedbackReply, id=id)
-
-    if request.method == 'POST':
-        reply.delete()
-        return redirect(feedback_list)
-    
-    return render(request, 'blog/delete_reply.html')

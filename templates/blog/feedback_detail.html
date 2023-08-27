@@ -8,11 +8,11 @@
 
     {% if request.user.is_authenticated %}
         <div>
-            <h1>{{ feedback.title }}</h1>
+            <h1>{{ feedback_post.title }}</h1>
             <p class="date">
-            Feedback {{ feedback.published }} by {{ feedback.author }}
+            Feedback {{ feedback_post.published }} by {{ feedback_post.author }}
             </p>
-            {{ feedback.content|linebreaks }}
+            {{ feedback_post.content|linebreaks }}
 
             <p>
                 {% if request.user == feedback.author %}
@@ -24,45 +24,7 @@
                 </a>
             </p>
 
-            {% with feedback_reply.count as total_feedback_reply %}
-                <h2>
-                    {{ total_feedback_reply }} comment{{ total_feedback_reply|pluralize }}
-                </h2>
-            {% endwith %}
-            
-            {% for reply in feedback_reply %}
-
-            <div>
-                <p>
-                    Reply {{ forloop.counter }} by {{ reply.author }}
-                    {{ reply.reply_made }}
-                </p>
-                {% if request.user.username == reply.author %}
-                <p>{{ reply.content }}</p>
-                <a href="blog/reply_edit/{{ reply_id }}">
-                    <button>Edit</button>
-                </a>
-                <a href="blog/delete_reply/">
-                    <button>Delete</button>
-                </a>
-                {% else %}
-                <p>{{ reply.content }}</p>
-                {% endif %}
-            </div>
-
-            {% empty %}
-                <p>there are no replies yet</p>
-                
-            {% endfor %}
-            
         
-        {% include "blog/post_reply.html" %}
-
-        {% comment %}
-        # <button><a href="{ 'blog/' }">Reply</a></button>
-        {% include "blog/post_reply.html" %}
-        {% endcomment %}
-
         </div>
 
     {% else %}
