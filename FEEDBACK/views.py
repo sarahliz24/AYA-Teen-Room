@@ -36,7 +36,7 @@ def feedback_submission(request):
             messages.error(request, 'Oops, something went wrong!')
     else:
         form = FeedbackSubmission(instance=request.user)
-    return render(request, 'FEEDBACK/feedback/feedback_submission.html',
+    return render(request, 'feedback/feedback_submission.html',
                   {'form': form, })
 
 """ def upload_video(request):
