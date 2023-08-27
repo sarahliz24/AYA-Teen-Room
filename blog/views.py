@@ -49,18 +49,18 @@ def feedback_list(request):
 def feedback_detail(request, id):
     feedback_post = get_object_or_404(FeedbackPost, id=id,
                                  feedback_approval=FeedbackPost.FeedbackApproval.OK)
-    # feedback_reply = blog.feedback_reply.filter(allowed=True)
-    # form = ReplyForm()
+    feedback_reply = feedback_post.feedback_reply.filter(allowed=True)
+    form = ReplyForm()
     return render(request, 'blog/feedback_detail.html',
                     {'feedback_post': feedback_post,
-                     # 'feedback_reply': feedback_reply,
-                     # 'form': form
+                     'feedback_reply': feedback_reply,
+                     'form': form
                     })
 
 
 @require_POST
-def post_reply(request, feedback_id):
-    feedback = get_object_or_404(FeedbackPost, id=feedback_id, feedback_approval=FeedbackPost.FeedbackApproval.OK)
+def post_reply(request, blog_id):
+    feedback = get_object_or_404(FeedbackPost, id=blog_id, feedback_approval=FeedbackPost.FeedbackApproval.OK)
     reply = None
     form = ReplyForm(request.POST)
     if request.method == 'POST':
@@ -77,18 +77,18 @@ def post_reply(request, feedback_id):
             messages.error(request, 'Oops, something went wrong!')
     else:
         form = ReplyForm(instance=request.user)
-    return render(request, 'blog/reply_form.html',
+    return render(request, 'blog/post_reply.html',
                   {'form': form,
                    'feedback': feedback,
                    'reply': reply })
 
 
-def feedback_edit(request, feedback_id):
+def feedback_edit(request, blog_id):
     '''
     Allow user to update feedback they have previously
     created
     '''
-    feedback = get_object_or_404(FeedbackPost, id=feedback_id)
+    feedback = get_object_or_404(FeedbackPost, id=blog_id)
 
     if request.method == 'POST' and feedback.author == request.user:
         form = FeedbackSubmission(request.POST, instance=feedback)
@@ -137,11 +137,11 @@ def reply_edit(request, reply_id):
     return render(request, 'blog/reply_edit.html', context)
 
 
-def delete_feedback(request, feedback_id):
+def delete_feedback(request, blog_id):
     '''
     Allow user to delete own feedback
     '''
-    feedback = get_object_or_404(FeedbackPost, id=feedback_id)
+    feedback = get_object_or_404(FeedbackPost, id=blog_id)
 
     if request.method == 'POST':
         feedback.delete()

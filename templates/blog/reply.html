@@ -9,6 +9,6 @@ Add a reply
         <h2>Your reply has been accepted and is awaiting approval</h2>
         <p><a href="{{ blog.get_abolute_url }}">Go back to the feedback</a></p>
     {% else %}
-        {% include "blog/reply_form.html" %}
+        {% include "blog/post_reply.html" %}
         {% endif %}
 {% endblock content %}
