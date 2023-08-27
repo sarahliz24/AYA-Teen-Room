@@ -9,7 +9,7 @@
         <div>
             <h1>{{ feedback.title }}</h1>
             <p class="date">
-                Feedback {{ feedback.published }} by {{ feedback.author }}
+            Feedback {{ feedback.published }} by {{ feedback.author }}
             </p>
             {{ feedback.content|linebreaks }}
 
@@ -18,7 +18,7 @@
                 <a href="feedback_edit/{{ feedback_id }}">
                     <button>Edit</button>
                     <a href="delete_feedback/{{ feedback_id }}">
-                        <button>Delete</button>
+                    <button>Delete</button>
                 {% endif %}
                 </a>
             </p>
@@ -30,6 +30,7 @@
             {% endwith %}
             
             {% for reply in feedback_reply %}
+
             <div>
                 <p>
                     Reply {{ forloop.counter }} by {{ reply.author }}

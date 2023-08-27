@@ -10,7 +10,11 @@ Delete Reply
     {% csrf_token %}
     <h1>Do you really want to delete your reply???</h1><br>
     <input class="btn btn-danger" type="submit" value="YES - DELETE IT!" />
-   <button><a href="{% url 'FEEDBACK:feedback_list' %}"><div class="btn btn-primary">Oops No - Return to safety at once!!</div></a></button>
+    <button>
+      <a href="{% url 'FEEDBACK:feedback_list' %}">
+      <div class="btn btn-primary">Oops No - Return to safety at once!!</div>
+      </a>
+    </button>
  </form>
 
 {% endblock content %}

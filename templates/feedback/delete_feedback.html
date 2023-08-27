@@ -11,13 +11,13 @@ https://www.arbcoms.com/19-how-to-delete-data-in-django-with-confirm-delete-prom
 {% endcomment %}
 
 <form method="POST" action="">
-    {% csrf_token %}
-    <h1>Do you really want to delete your feedback???</h1><br>
-    <input class="btn btn-danger" type="submit" value="YES - DELETE IT!"/>
+  {% csrf_token %}
+  <h1>Do you really want to delete your feedback???</h1><br>
+  <input class="btn btn-danger" type="submit" value="YES - DELETE IT!" />
 </form>
 
- <a href="{% url 'FEEDBACK:feedback_list' %}">  
-  <button class="btn btn-success">Oops No!!</button>  
+<a href="{% url 'FEEDBACK:feedback_list' %}">
+  <button class="btn btn-success">Oops No!!</button>
 </a>
 
 {% endblock content %}

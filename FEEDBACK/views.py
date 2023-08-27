@@ -39,18 +39,6 @@ def feedback_submission(request):
     return render(request, 'feedback/feedback_submission.html',
                   {'form': form, })
 
-""" def upload_video(request):
-    if request.method == "POST":
-        form = VideoPostForm(request.POST, request.FILES or None)
-        if form.is_valid():
-            new_videopost = form.save()
-            new_videopost.author = request.user
-            new_videopost.save()
-            return redirect('home')
-    else:
-        form = VideoPostForm()
-    return render(request, 'upload_video.html', {'form': form}) """
-
 
 def feedback_list(request):
     ok_feedback = FeedbackPost.approved.all()
@@ -168,7 +156,6 @@ def delete_reply(request, id):
     '''
     Allow user to delete own feedback reply
     '''
-
     reply = get_object_or_404(FeedbackReply, id=id)
 
     if request.method == 'POST':
