@@ -1,20 +1,21 @@
-{% extends 'FEEDBACK/base.html' %}
+{% extends 'blog/base.html' %}
 
 {% block title %}
 Edit you feedback here!
 {% endblock %}
 
 {% block content %}
+
     {% if request.user.is_authenticated %}
         <div>
-            <h2>Edit your reply here:</h2>
+            <h2>Edit your feedback here:</h2>
             {% if submitted %}
             Your feedback was submitted & is awaiting approval
             {% else %}
             <form method="post">
                 {{ form.as_p }}
                 {% csrf_token %}
-                <p><input type="submit" value="Update reply">
+                <p><input type="submit" value="Update feedback">
                 </p>
             </form>
             {% endif %}
@@ -22,4 +23,5 @@ Edit you feedback here!
     {% else %}
     <p>you do not have permission to view this page</p>
     {% endif %}
+
 {% endblock content %}

@@ -1,4 +1,5 @@
-{% extends 'feedback/base.html' %}
+{% extends 'blog/base.html' %}
+
 {% block title %}
 {{ feedback.title }}
 {% endblock %}
@@ -15,9 +16,9 @@
 
             <p>
                 {% if request.user == feedback.author %}
-                <a href="feedback_edit/{{ feedback_id }}">
+                <a href="blog/feedback_edit/{{ feedback_id }}">
                     <button>Edit</button>
-                    <a href="delete_feedback/{{ feedback_id }}">
+                    <a href="blog/delete_feedback/{{ feedback_id }}">
                     <button>Delete</button>
                 {% endif %}
                 </a>
@@ -38,10 +39,10 @@
                 </p>
                 {% if request.user.username == reply.author %}
                 <p>{{ reply.content }}</p>
-                <a href="reply_edit/{{ reply_id }}">
+                <a href="blog/reply_edit/{{ reply_id }}">
                     <button>Edit</button>
                 </a>
-                <a href="delete_reply/">
+                <a href="blog/delete_reply/">
                     <button>Delete</button>
                 </a>
                 {% else %}
@@ -58,8 +59,8 @@
         {% include "feedback/reply_form.html" %}
 
         {% comment %}
-        # <button><a href="{ 'FEEDBACK/' }">Reply</a></button>
-        {% include "feedback/reply_form.html" %}
+        # <button><a href="{ 'blog/' }">Reply</a></button>
+        {% include "blog/reply_form.html" %}
         {% endcomment %}
 
         </div>

@@ -71,7 +71,7 @@ class FeedbackPost(models.Model):
     
     
     def get_absolute_url(self):
-        return reverse('FEEDBACK:feedback_detail', args=[self.id])
+        return reverse('blog/feedback_detail', args=[self.id])
 
 
 class FeedbackReply(models.Model):

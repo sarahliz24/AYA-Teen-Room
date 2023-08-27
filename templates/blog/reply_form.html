@@ -1,5 +1,5 @@
 <h2>Reply to feedback</h2>
-<form action="{% url 'FEEDBACK:post_reply' feedback.id %}" method="post">
+<form action="{% url 'blog:post_reply' feedback.id %}" method="post">
     {{ form.as_p }}
     {% csrf_token %}
     <p><input type="submit" value="Reply to feedback"></p>

@@ -1,4 +1,4 @@
-{% extends 'feedback/base.html' %}
+{% extends 'blog/base.html' %}
 
 {% block title %}
 Here be the feedback
@@ -10,9 +10,12 @@ Here be the feedback
     <h1>TEEN ROOM FEEDBACK</h1>
     {% for feedback in ok_feedback %}
     <h2>
-        <a href="{{ feedback.get_absolute_url }}">
+        <a href="/{{id}}/">
             {{ feedback.title }}
         </a>
+<!--         <a href="{{ blog.get_absolute_url }}">
+            {{ feedback.title }}
+        </a> -->
     </h2>
     <p class="date">
         Feedback {{ feedback.published }} by {{ feedback.author }}

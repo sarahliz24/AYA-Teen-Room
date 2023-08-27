@@ -12,7 +12,7 @@ def home_view(request):
     '''
     send user to home page
     '''
-    return render(request, "feedback/home.html", {})
+    return render(request, "blog/home.html", {})
 
 
 def feedback_submission(request):
@@ -30,31 +30,31 @@ def feedback_submission(request):
             form.save()
             messages.success(request, "Your feedback has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()
-            return render (request, 'feedback/feedback_list.html',
+            return render (request, 'blog/feedback_list.html',
                     {'ok_feedback': ok_feedback})
         else:
             messages.error(request, 'Oops, something went wrong!')
     else:
         form = FeedbackSubmission(instance=request.user)
-    return render(request, 'feedback/feedback_submission.html',
+    return render(request, 'blog/feedback_submission.html',
                   {'form': form, })
 
 
 def feedback_list(request):
     ok_feedback = FeedbackPost.approved.all()
-    return render (request, 'feedback/feedback_list.html',
+    return render (request, 'blog/feedback_list.html',
                     {'ok_feedback': ok_feedback})
 
 
 def feedback_detail(request, id):
-    feedback = get_object_or_404(FeedbackPost, id=id,
+    feedback_post = get_object_or_404(FeedbackPost, id=id,
                                  feedback_approval=FeedbackPost.FeedbackApproval.OK)
-    feedback_reply = feedback.feedback_reply.filter(allowed=True)
-    form = ReplyForm()
-    return render(request, 'feedback/feedback_detail.html',
-                    {'feedback': feedback,
-                     'feedback_reply': feedback_reply,
-                     'form': form
+    # feedback_reply = blog.feedback_reply.filter(allowed=True)
+    # form = ReplyForm()
+    return render(request, 'blog/feedback_detail.html',
+                    {'feedback_post': feedback_post,
+                     # 'feedback_reply': feedback_reply,
+                     # 'form': form
                     })
 
 
@@ -71,13 +71,13 @@ def post_reply(request, feedback_id):
             reply.save()
             messages.success(request, "Your reply has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()
-            return render (request, 'feedback/feedback_list.html',
+            return render (request, 'blog/feedback_list.html',
                         {'ok_feedback': ok_feedback})
         else:
             messages.error(request, 'Oops, something went wrong!')
     else:
         form = ReplyForm(instance=request.user)
-    return render(request, 'feedback/reply_form.html',
+    return render(request, 'blog/reply_form.html',
                   {'form': form,
                    'feedback': feedback,
                    'reply': reply })
@@ -96,7 +96,7 @@ def feedback_edit(request, feedback_id):
             form.save()
             messages.success(request, "Your feedback has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()
-            return render (request, 'feedback/feedback_list.html',
+            return render (request, 'blog/feedback_list.html',
                     {'ok_feedback': ok_feedback})   
         else:
             messages.error(request, 'Oops, something went wrong!')
@@ -105,7 +105,7 @@ def feedback_edit(request, feedback_id):
     context = {
         'form': form
     }
-    return render(request, 'feedback/feedback_edit.html', context)
+    return render(request, 'blog/feedback_edit.html', context)
 
 
 def reply_edit(request, reply_id):
@@ -123,7 +123,7 @@ def reply_edit(request, reply_id):
             reply.save()
             messages.success(request, "Your reply has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()
-            return render (request, 'feedback/feedback_list.html',
+            return render (request, 'blog/feedback_list.html',
                     {'ok_feedback': ok_feedback})   
         else:
             messages.error(request, 'Oops, something went wrong!')
@@ -134,7 +134,7 @@ def reply_edit(request, reply_id):
     context = {
         'form': form
     }
-    return render(request, 'feedback/reply_edit.html', context)
+    return render(request, 'blog/reply_edit.html', context)
 
 
 def delete_feedback(request, feedback_id):
@@ -149,7 +149,7 @@ def delete_feedback(request, feedback_id):
         return render (request, 'feedback/feedback_list.html',
             {'ok_feedback': ok_feedback})
     
-    return render(request, 'feedback/delete_feedback.html')
+    return render(request, 'blog/delete_feedback.html')
 
 
 def delete_reply(request, id):
@@ -162,4 +162,4 @@ def delete_reply(request, id):
         reply.delete()
         return redirect(feedback_list)
     
-    return render(request, 'feedback/delete_reply.html')
+    return render(request, 'blog/delete_reply.html')

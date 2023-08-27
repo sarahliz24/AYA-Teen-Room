@@ -1,4 +1,4 @@
-{% extends 'feedback/base.html' %}
+{% extends 'blog/base.html' %}
 
 {% block title %}
 Submit your feedback here!
@@ -13,7 +13,7 @@ Submit your feedback here!
             {% if submitted %}
             Your feedback was submitted & is awaiting approval
             {% else %}
-            <form class="form-signin" action="{% url 'FEEDBACK:feedback_submission' %}", method="post">
+            <form class="form-signin" action="{% url 'blog:feedback_submission' %}", method="post">
                 {{ form.as_p }}
                 {% csrf_token %}
                 <p><input type="submit" value="Submit Feedback"></p>
