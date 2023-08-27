@@ -1,9 +1,5 @@
 {% extends 'blog/base.html' %}
 
-{% block title %}
-Here be the feedback
-{% endblock %}
-
 {% block content %}
 {% if request.user.is_authenticated %}
 <div>
@@ -21,6 +17,50 @@ Here be the feedback
     {% empty %}
         <p>Sorry, no approved feedback just yet!</p>
     {% endfor %}
+</div>
+{% else %}
+    <p>you do not have permission to view this page</p>
+{% endif %}
+
+
+
+<div class="container">
+{% if request.user.is_authenticated %}
+{% for feedback_post in ok_feedback %}
+
+    <div class="card-deck mb-3 text-center">
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">
+                    <a href="{% url  'blog:feedback_detail' feedback_post.slug %}">
+                        {{ feedback_post.title }}</a>
+                </h4>
+            </div>
+
+            <div class="card-body">
+
+                <h1 class="card-title pricing-card-title">
+                    <small class="text-muted">
+                    {{ feedback_post.content|truncatewords:20|linebreaks }}
+                    </small>
+                </h1>
+
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li>Feedback {{ feedback_post.published }} by {{ feedback_post.author }}</li>
+                </ul>
+
+                <button type="button" class="btn btn-sm btn-outline-primary">Edit</button>
+                <button type="button" class="btn btn-sm  btn-outline-primary">Delete</button>
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+{% empty %}
+<p>Sorry, no approved feedback just yet!</p>
+{% endfor %}
 </div>
 {% else %}
     <p>you do not have permission to view this page</p>
