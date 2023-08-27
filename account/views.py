@@ -32,16 +32,16 @@ from .models import TeenUserProfile
     return render(request, 'account/login.html', {'form': form}) """
 
 
-@login_required  # check is user is authenticated
+""" @login_required  # check is user is authenticated
 def feedback(request):
     return render(request,
                   'feedback/feedback_list.html',
-                  {'section': 'feedback'})
+                  {'section': 'feedback'}) """
 
 
-def logout(request):
+""" def logout(request):
     logout(request)
-    return redirect('home')
+    return redirect('home') """
 
 
 def signup(request):
