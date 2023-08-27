@@ -5,7 +5,7 @@ from django.contrib import messages
 from .forms import FormLoggingIn, UserSignUp, EditUser, EditTeenUserProfile
 from django.contrib.auth.decorators import login_required
 from .models import TeenUserProfile
-from FEEDBACK.views import feedback_detail
+# from FEEDBACK.views import feedback_detail
 
 
 """ def user_login(request):

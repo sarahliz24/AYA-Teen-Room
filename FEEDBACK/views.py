@@ -9,7 +9,10 @@ from django.views.generic import ListView
 
 
 def home_view(request):
-    return render(request, "FEEDBACK/home.html", {})
+    '''
+    send user to home page
+    '''
+    return render(request, "feedback/home.html", {})
 
 
 def feedback_submission(request):
@@ -21,13 +24,13 @@ def feedback_submission(request):
         form = FeedbackSubmission(request.POST)
         # feedback_submission = FeedbackSubmission(instance=request.user, data=request.POST)
         if form.is_valid():
-            new_form = form.save()
-            new_form.author = request.user
-            new_form.save()
-            # form.save()
+            # new_form = form.save()
+            # new_form.author = request.user
+            # new_form.save()
+            form.save()
             messages.success(request, "Your feedback has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()
-            return render (request, 'FEEDBACK/feedback/feedback_list.html',
+            return render (request, 'feedback/feedback_list.html',
                     {'ok_feedback': ok_feedback})
         else:
             messages.error(request, 'Oops, something went wrong!')
@@ -51,7 +54,7 @@ def feedback_submission(request):
 
 def feedback_list(request):
     ok_feedback = FeedbackPost.approved.all()
-    return render (request, 'FEEDBACK/feedback/feedback_list.html',
+    return render (request, 'feedback/feedback_list.html',
                     {'ok_feedback': ok_feedback})
 
 
@@ -60,7 +63,7 @@ def feedback_detail(request, id):
                                  feedback_approval=FeedbackPost.FeedbackApproval.OK)
     feedback_reply = feedback.feedback_reply.filter(allowed=True)
     form = ReplyForm()
-    return render(request, 'FEEDBACK/feedback/feedback_detail.html',
+    return render(request, 'feedback/feedback_detail.html',
                     {'feedback': feedback,
                      'feedback_reply': feedback_reply,
                      'form': form
@@ -80,7 +83,7 @@ def post_reply(request, feedback_id):
             reply.save()
             messages.success(request, "Your reply has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()
-            return render (request, 'FEEDBACK/feedback/feedback_list.html',
+            return render (request, 'feedback/feedback_list.html',
                         {'ok_feedback': ok_feedback})
         else:
             messages.error(request, 'Oops, something went wrong!')
@@ -105,7 +108,7 @@ def feedback_edit(request, feedback_id):
             form.save()
             messages.success(request, "Your feedback has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()
-            return render (request, 'FEEDBACK/feedback/feedback_list.html',
+            return render (request, 'feedback/feedback_list.html',
                     {'ok_feedback': ok_feedback})   
         else:
             messages.error(request, 'Oops, something went wrong!')
@@ -131,9 +134,9 @@ def reply_edit(request, reply_id):
             reply.feedback = feedback
             reply.save()
             messages.success(request, "Your reply has been submitted & is awaiting approval")
-            ok_feedback = Feedback.approved.all()
-            return render (request, 'FEEDBACK/feedback/feedback_list.html',
-                        {'ok_feedback': ok_feedback})
+            ok_feedback = FeedbackPost.approved.all()
+            return render (request, 'feedback/feedback_list.html',
+                    {'ok_feedback': ok_feedback})   
         else:
             messages.error(request, 'Oops, something went wrong!')
     # else:
@@ -154,7 +157,9 @@ def delete_feedback(request, feedback_id):
 
     if request.method == 'POST':
         feedback.delete()
-        return redirect(feedback_list)
+        ok_feedback = FeedbackPost.approved.all()
+        return render (request, 'feedback/feedback_list.html',
+            {'ok_feedback': ok_feedback})
     
     return render(request, 'FEEDBACK/feedback/delete_feedback.html')
 

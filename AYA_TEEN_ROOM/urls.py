@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home'),
     path('FEEDBACK/', include('FEEDBACK.urls', namespace='FEEDBACK')),
+    # path('feedback/', include('feedback.urls', namespace='feedback')),
     path('account/', include('account.urls')),
     
 # path('registration/', include('templates/registration/signup.html'))
