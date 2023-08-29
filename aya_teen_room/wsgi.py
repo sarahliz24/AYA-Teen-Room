@@ -1,5 +1,5 @@
 """
-WSGI config for AYA_TEEN_ROOM project.
+WSGI config for aya_teen_room project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'AYA_TEEN_ROOM.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'aya_teen_room.settings')
 
 application = get_wsgi_application()

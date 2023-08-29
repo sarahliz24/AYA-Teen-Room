@@ -1,5 +1,5 @@
 """
-ASGI config for AYA_TEEN_ROOM project.
+ASGI config for aya_teen_room project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'AYA_TEEN_ROOM.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'aya_teen_room.settings')
 
 application = get_asgi_application()
