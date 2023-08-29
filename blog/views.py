@@ -32,7 +32,7 @@ def feedback_submission(request):
             instance = form.save(commit=False)
             instance.author = request.user
             instance.save()
-            form.save()
+            # form.save()
             messages.success(request, "Your feedback has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()
             return render (request, 'blog/feedback_list.html',
@@ -79,7 +79,7 @@ def feedback_edit(request, slug):
             instance = form.save(commit=False)
             instance.author = request.user
             instance.save()
-            form.save()
+            # form.save()
             messages.success(request, "Your feedback has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()
             return render (request, 'blog/feedback_list.html',
