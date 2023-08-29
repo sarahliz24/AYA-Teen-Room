@@ -21,12 +21,17 @@ def feedback_submission(request):
     '''
     form = FeedbackSubmission()
     if request.method == 'POST':
+        feedback_added = False
         form = FeedbackSubmission(request.POST)
         # feedback_submission = FeedbackSubmission(instance=request.user, data=request.POST)
         if form.is_valid():
             # new_form = form.save()
             # new_form.author = request.user
             # new_form.save()
+            feedback_added = True
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
             form.save()
             messages.success(request, "Your feedback has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()
@@ -65,10 +70,15 @@ def feedback_edit(request, slug):
     created
     '''
     feedback_post = get_object_or_404(FeedbackPost, slug=slug)
+    feedback_added = False
 
     if request.method == 'POST' and feedback_post.author == request.user:
         form = FeedbackSubmission(request.POST, instance=feedback_post)
         if form.is_valid():
+            feedback_added = True
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
             form.save()
             messages.success(request, "Your feedback has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()

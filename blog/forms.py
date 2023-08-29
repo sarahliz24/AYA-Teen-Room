@@ -11,7 +11,7 @@ class FeedbackSubmission(forms.ModelForm):
     class Meta:
         model = FeedbackPost
         fields = [
-           'title', 'author',
+           'title', 
             'content', 'room'
         ]
 
