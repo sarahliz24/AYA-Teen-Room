@@ -33,8 +33,8 @@ def feedback_submission(request):
             instance.author = request.user
             instance.save()
             # form.save()
-            messages.success(request, "Your feedback has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()
+            messages.success(request, "Your feedback has been submitted")
             return render (request, 'blog/feedback_list.html',
                     {'ok_feedback': ok_feedback})
         else:
@@ -80,8 +80,8 @@ def feedback_edit(request, slug):
             instance.author = request.user
             instance.save()
             # form.save()
-            messages.success(request, "Your feedback has been submitted & is awaiting approval")
             ok_feedback = FeedbackPost.approved.all()
+            messages.success(request, "Your edit was successful")
             return render (request, 'blog/feedback_list.html',
                     {'ok_feedback': ok_feedback})   
         else:
@@ -103,6 +103,7 @@ def delete_feedback(request, slug):
     if request.method == 'POST':
         feedback.delete()
         ok_feedback = FeedbackPost.approved.all()
+        messages.success(request, "Your deletion was successful")
         return render (request, 'blog/feedback_list.html',
             {'ok_feedback': ok_feedback})
     

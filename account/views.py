@@ -52,14 +52,14 @@ def signup(request):
             teen_user.set_password(
                 signup_form.cleaned_data['password'])
             teen_user.save()
-            messages.success(request, "Signup was successful")
             TeenUserProfile.objects.create(user=teen_user)
             login(request, teen_user)  # log in user automatically
+            messages.success(request, "Signup was successful")
             return render(request, 'registration/successful_reg.html',
                           {'teen_user': teen_user})
     else:
-        # messages.error(request, 'Oops, something went wrong! Try again')
         signup_form = UserSignUp()
+        messages.error(request, 'Oops, something went wrong! Try again')
     return render(request, 'registration/signup.html',
                   {'signup_form': signup_form})
 
@@ -75,7 +75,7 @@ def ProfileEdit(request):
         if signup_form.is_valid() and teen_user_profile.is_valid():
             signup_form.save()
             teen_user_profile.save()
-            messages.success(request, "Update of your details successful")
+            messages.success(request, "Update of your details was successful")
             return redirect('home')
         else:
             messages.error(request, 'Oops, something went wrong!')
