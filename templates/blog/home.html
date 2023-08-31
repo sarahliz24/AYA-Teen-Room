@@ -8,13 +8,17 @@
     <div class="row">
       <div class="col-lg-5 pt-5 ml-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
         <h1>AYA TEEN ROOM</h1>
-        <h2>Are you a teen room user?</h2>
-        <h2>Give us your feedback in a secure space</h2>
-        <h2>& help to make the rooms even better!</h2>
+        <br>
+        <h3>Are you a teen room user?</h3>
+        <h2>We want your feedback!</h2>
+        <br>
+        <p>Help to make the rooms more awesome for you and the rest of the teen room community</p>
+        <p>Give us your thoughts about the teen room facilities... all in a secure web-space!</p>
+        {% if not request.user.is_authenticated %}
         <div class="d-flex">
-          <a href="#" class="btn-get-started scroll-to">Sign Up!</a>
-          <a href="#">About</a>
+          <a href="{% url 'signup' %}" class="btn-get-started">Sign Up!</a>
         </div>
+        {% endif %}
       </div>
       <div class="order 1 order-lg-2 hero-img mx-auto">
         <img
