@@ -7,14 +7,16 @@
 
 {% block content %}
 
-<div class="container my-auto ">
-    <form class="form-signin" name="UserSignUp" method="post">
-        <h1 class="h3 mb-3 font-weight-normal">
-        Sign Up Here!</h1>
-        {{ signup_form|crispy }}
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next }}" />
-        <p><input type="submit" value="Complete your profile details"></p>
-    </form>
+<div class="container">
+    <div  class="mx-auto pt-3 col-md-6">
+        <form class="form-signin" name="UserSignUp" method="post">
+            <h1 class="h3 mb-3 font-weight-normal">
+            Sign Up Here!</h1>
+            {{ signup_form|crispy }}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <p><input type="submit" value="Complete your profile details"></p>
+        </form>
+    </div>
 </div> 
 {% endblock %}
