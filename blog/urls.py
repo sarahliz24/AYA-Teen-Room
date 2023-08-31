@@ -4,6 +4,8 @@ from . import views
 app_name = 'blog'
 
 urlpatterns = [
+     path('about/', views.about, name='about'),
+
     path('', views.feedback_list, name='feedback_list'),
 
     path('feedback_submission/', views.feedback_submission, 

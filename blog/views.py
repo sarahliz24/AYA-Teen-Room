@@ -15,6 +15,13 @@ def home_view(request):
     return render(request, "blog/home.html", {})
 
 
+def about(request):
+    '''
+    send user to about page
+    '''
+    return render(request, "blog/about.html")
+
+
 def feedback_submission(request):
     '''
   
