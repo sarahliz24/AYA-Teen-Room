@@ -6,6 +6,7 @@
 <!-- CSS style sheet -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
+<!-- https://stackoverflow.com/questions/39639264/django-highlight-current-page-in-navbar -->
 {% with url_name=request.resolver_match.url_name %}
 <nav class="navbar navbar-expand-md navbar-light header-custom">
   <div class="align-items-center">
@@ -28,13 +29,13 @@
       <li class="nav-item {% if url_name == 'home' %}active{% endif %}">
         <a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item {% if url_name == 'blog:about' %}active{% endif %}">
+      <li class="nav-item {% if url_name == 'about' %}active{% endif %}">
         <a class="nav-link" href="{% url 'blog:about' %}">About</a>
       </li>
-      <li class="nav-item {% if url_name == 'blog:feedback_list' %}active{% endif %}">
+      <li class="nav-item {% if url_name == 'feedback_list' %}active{% endif %}">
         <a class="nav-link" href="{% url 'blog:feedback_list' %}">View Feedback</a>
       </li>
-      <li class="nav-item {% if url_name == 'blog:feedback_submission' %}active{% endif %}">
+      <li class="nav-item {% if url_name == 'feedback_submission' %}active{% endif %}">
         <a class="nav-link" href="{% url 'blog:feedback_submission' %}">Submit Feedback</a>
       </li>
       <li class="nav-item dropdown">
@@ -55,7 +56,7 @@
       <li class="nav-item {% if url_name == 'home' %}active{% endif %}">
         <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item {% if url_name == 'blog:about' %}active{% endif %}">
+      <li class="nav-item {% if url_name == 'about' %}active{% endif %}">
         <a class="nav-link" href="{% url 'blog:about' %}">About</a>
       </li>
     </ul> 
