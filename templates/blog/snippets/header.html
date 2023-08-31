@@ -6,6 +6,7 @@
 <!-- CSS style sheet -->
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
+{% with url_name=request.resolver_match.url_name %}
 <nav class="navbar navbar-expand-md navbar-light header-custom">
   <div class="align-items-center">
     <a class="navbar-brand" href="{% url 'home' %}">
@@ -21,19 +22,19 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarsExample04">
+  <div class="collapse navbar-collapse" id="navbarsExample04" role="navigation">
     {% if request.user.is_authenticated %}
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item {% if url_name == 'home' %}active{% endif %}">
         <a class="nav-link" href="{% url 'home' %}">Home<span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item {% if url_name == 'blog:about' %}active{% endif %}">
         <a class="nav-link" href="{% url 'blog:about' %}">About</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item {% if url_name == 'blog:feedback_list' %}active{% endif %}">
         <a class="nav-link" href="{% url 'blog:feedback_list' %}">View Feedback</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item {% if url_name == 'blog:feedback_submission' %}active{% endif %}">
         <a class="nav-link" href="{% url 'blog:feedback_submission' %}">Submit Feedback</a>
       </li>
       <li class="nav-item dropdown">
@@ -51,10 +52,10 @@
     </li>
     {% else %}
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item {% if url_name == 'home' %}active{% endif %}">
         <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item {% if url_name == 'blog:about' %}active{% endif %}">
         <a class="nav-link" href="{% url 'blog:about' %}">About</a>
       </li>
     </ul> 
@@ -69,6 +70,7 @@
     {% endif %}
   </div>
 </nav>
+{% endwith %}
 </header>
 
 <!-- {% if messages %}
