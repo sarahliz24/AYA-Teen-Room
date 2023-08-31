@@ -1,34 +1,69 @@
 {% extends 'blog/base.html' %}
 
-{% block title %}
-{{ feedback.title }}
-{% endblock %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
 {% if request.user.is_authenticated %}
-    <div class="mx-auto pt-3 col-lg-6">
-        <h1>{{ feedback_post.title }}</h1>
-        <p class="date">
-            Feedback {{ feedback_post.published }} by {{ feedback_post.author }}
-        </p>
-        <hr class="featurette-divider">
-        {{ feedback_post.content|linebreaks }}
-    
-        <p>
+    <div class="container mx-auto pt-3 col-lg-6">
+        <div>
+            <h1>{{ feedback_post.title }}</h1>
+            <p class="date">
+                Feedback by {{ feedback_post.author }}, on {{ feedback_post.published }}
+            </p>
+            <hr class="featurette-divider">
+            {{ feedback_post.content|linebreaks }}
             <hr class="featurette-divider">
             {% if request.user == feedback_post.author %}
             <a href="{% url  'blog:feedback_edit' feedback_post.slug %}">
-                <button>Edit</button>
-                <a href="{% url  'blog:delete_feedback' feedback_post.slug %}">
-                    <button>Delete</button>
-                    {% endif %}
-                </a>
-        </p>
+                <button>Edit</button></a>
+            <a href="{% url  'blog:delete_feedback' feedback_post.slug %}">
+                <button>Delete</button>
+                {% endif %}
+            </a>
+        </div>
+        <div>
+            <a href="#">Add comment</a>
+        </div>
+        <div>
+            {% for comment in comments %}
+            <p>{{ comment.name }}
+                <span>
+                {{ comment.comment_made }}
+                </span>
+            </p>
+            {{ comment.content }}
+            {% endfor %}
+            <div>
+                <div>
+                    {% if new_comment %}
+                    <messages class="success">Your comment has been posted</messages>
+                </div>
+                {% else %}
+                <div class="mx-auto pt-3 col-lg-6">
+                    <h4>AYA staff: Reply to feedback</h4>
+                    <form method="post">
+                        {{ comment_form|crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                    </form>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+                {% endif %}
+
+                {% if request.user.username == comment.author %}
+                {{ comment.content }}
+                <a href="#">Edit</a>
+                <a href="#">Delete</a>
+                {% endif %}
+            </div>
     </div>
-
-    {% else %}
-    <p>you do not have permission to view this page</p>
-    {% endif %}
-
+{% else %}
+<p>you do not have permission to view this page</p>
+{% endif %}
+    
 {% endblock content %}

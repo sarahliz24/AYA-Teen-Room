@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import FeedbackPost, FeedbackReply
+from .models import FeedbackPost, FeedbackComment
 
 
 @admin.register(FeedbackPost)
@@ -13,8 +13,8 @@ class FeedbackPostAdmin(admin.ModelAdmin):
     ordering = ['feedback_approval', 'published']
 
 
-@admin.register(FeedbackReply)
-class ReplyAdmin(admin.ModelAdmin):
-    list_display = ['author', 'content', 'reply_made', 'allowed',]
-    list_filter = ['allowed', 'reply_made', 'reply_updated']
+@admin.register(FeedbackComment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['author', 'content', 'comment_made', 'allowed',]
+    list_filter = ['allowed', 'comment_made', 'comment_updated']
     search_fields = ['author', 'content']

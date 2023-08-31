@@ -1,6 +1,6 @@
 from django import forms
 # from django.contrib.auth.models import User
-from .models import FeedbackPost, FeedbackReply
+from .models import FeedbackPost, FeedbackComment
 
 
 class FeedbackSubmission(forms.ModelForm):
@@ -16,7 +16,7 @@ class FeedbackSubmission(forms.ModelForm):
         ]
 
 
-class ReplyForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
-        model = FeedbackReply
+        model = FeedbackComment
         fields = ['content']

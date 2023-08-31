@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import Http404
 from django.contrib import messages
-from .models import FeedbackPost, FeedbackReply
-from .forms import FeedbackSubmission, ReplyForm
+from .models import FeedbackPost, FeedbackComment
+from .forms import FeedbackSubmission, CommentForm
 from django.views.decorators.http import require_POST
 from django.views.generic import ListView
 
@@ -63,12 +63,22 @@ def feedback_detail(request, slug):
     '''
     feedback_post = get_object_or_404(FeedbackPost, slug=slug,
                                  feedback_approval=FeedbackPost.FeedbackApproval.OK)
-
-    """ feedback_reply = feedback_post.feedback_reply.filter(allowed=True)
-    form = ReplyForm() """
+    comments = feedback_post.comments.filter(allowed=True)
+    new_comment = None
+    if request.method == 'POST':
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.feedback_post = feedback_post
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
 
     return render(request, 'blog/feedback_detail.html',
-                    {'feedback_post': feedback_post })
+                    {'feedback_post': feedback_post,
+                    'comments': comments,
+                    'new_comment': new_comment,
+                    'comment_form': comment_form })
 
 
 def feedback_edit(request, slug):
@@ -115,3 +125,4 @@ def delete_feedback(request, slug):
             {'ok_feedback': ok_feedback})
     
     return render(request, 'blog/delete_feedback.html')
+

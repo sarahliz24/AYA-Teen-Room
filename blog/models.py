@@ -74,18 +74,18 @@ class FeedbackPost(models.Model):
         return reverse('blog/feedback_detail', args=[self.id])
 
 
-class FeedbackReply(models.Model):
-    feedback = models.ForeignKey(FeedbackPost, on_delete=models.CASCADE,
-                                related_name="feedback_reply")
+class FeedbackComment(models.Model):
+    feedback_post = models.ForeignKey(FeedbackPost, on_delete=models.CASCADE,
+                                related_name="comments")
     author = models.CharField(max_length=20)
     content = models.TextField()
-    reply_made = models.DateTimeField(auto_now_add=True)
-    reply_updated = models.DateTimeField(auto_now=True)
+    comment_made = models.DateTimeField(auto_now_add=True)
+    comment_updated = models.DateTimeField(auto_now=True, null=True, blank=True)
     allowed = models.BooleanField(default=True) # allows setting to False to turn off reply if required
 
     class Meta():
-        ordering = ['reply_made']
-        indexes = [models.Index(fields=['reply_made']),]
+        ordering = ['comment_made']
+        indexes = [models.Index(fields=['comment_made']),]
 
     def __str__(self):
-        return f'Reply by {self.author} on {self.feedback}'
+        return f'Reply by AYA team member: {self.author}'
