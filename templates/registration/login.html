@@ -1,5 +1,7 @@
 {% extends 'blog/base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}
 Log in
 {% endblock %}
@@ -16,7 +18,7 @@ Log in
         <p>(if you want to sign-up <a href="{% url 'signup' %}">click here)</a>
         </p>
         {% endif %}
-        {{ form.as_p }}
+        {{ form|crispy }}
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}" />
         <p><input type="submit" value="Log-in"></p>

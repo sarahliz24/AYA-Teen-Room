@@ -1,17 +1,19 @@
 {% extends 'blog/base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}
 Add or change your profile details
 {% endblock %}
 
 {% block content %}
 
-<div class="container my-auto ">
+<div class="container mx-auto pt-3 col-lg-6">
     <form class="form-signin" enctype="multipart/form-data" method="post">
         <h1 class="h3 mb-3 font-weight-normal">Your profile</h1>
             <p>Add or change your profile details here:</p>
-            {{ signup_form.as_p }}
-            {{ teen_user_profile.as_p }}
+            {{ signup_form|crispy }}
+            {{ teen_user_profile|crispy }}
             {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}" />
         <p><input type="submit" value="Save Details"></p>

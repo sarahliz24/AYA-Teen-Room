@@ -1,5 +1,7 @@
 {% extends 'blog/base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}
 Edit you feedback here!
 {% endblock %}
@@ -12,7 +14,7 @@ Edit you feedback here!
             Your feedback was submitted & is awaiting approval
             {% else %}
             <form method="post">
-                {{ form.as_p }}
+                {{ form|crispy }}
                 {% csrf_token %}
                 <p><input type="submit" value="Update reply">
                 </p>

@@ -7,7 +7,7 @@
 {% block content %}
 
 {% if request.user.is_authenticated %}
-    <div>
+    <div class="mx-auto pt-3 col-lg-6">
         <h1>{{ feedback_post.title }}</h1>
         <p class="date">
             Feedback {{ feedback_post.published }} by {{ feedback_post.author }}

@@ -1,12 +1,14 @@
 {% extends 'blog/base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}
 Submit your feedback here!
 {% endblock %}
 
 {% block content %}
 
-<div class="container my-auto">
+<div class="container mx-auto pt-3 col-lg-6">
     {% if request.user.is_authenticated %}
         <div>
             <h2>Add your feedback here:</h2>
@@ -14,7 +16,7 @@ Submit your feedback here!
             Your feedback was submitted & is awaiting approval
             {% else %}
             <form class="form-signin" action="{% url 'blog:feedback_submission' %}", method="post">
-                {{ form.as_p }}
+                {{ form|crispy }}
                 {% csrf_token %}
                 <p><input type="submit" value="Submit Feedback"></p>
             </form>
