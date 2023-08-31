@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.http import Http404
-# from django.views import generic
 from django.contrib import messages
 from .models import FeedbackPost, FeedbackReply
 from .forms import FeedbackSubmission, ReplyForm
@@ -24,7 +23,7 @@ def about(request):
 
 def feedback_submission(request):
     '''
-  
+    Form for user to submit feedback
     '''
     form = FeedbackSubmission()
     if request.method == 'POST':
@@ -32,14 +31,10 @@ def feedback_submission(request):
         form = FeedbackSubmission(request.POST)
         # feedback_submission = FeedbackSubmission(instance=request.user, data=request.POST)
         if form.is_valid():
-            # new_form = form.save()
-            # new_form.author = request.user
-            # new_form.save()
             feedback_added = True
             instance = form.save(commit=False)
             instance.author = request.user
             instance.save()
-            # form.save()
             ok_feedback = FeedbackPost.approved.all()
             messages.success(request, "Your feedback has been submitted")
             return render (request, 'blog/feedback_list.html',
@@ -53,14 +48,19 @@ def feedback_submission(request):
 
 
 def feedback_list(request):
+    '''
+    Display list of feedback posts, excluding posts that
+    have been dis-allowed
+    '''
     ok_feedback = FeedbackPost.approved.all()
     return render (request, 'blog/feedback_list.html',
                     {'ok_feedback': ok_feedback})
 
 
 def feedback_detail(request, slug):
-
-    
+    '''
+    Display single feedback post to user
+    '''
     feedback_post = get_object_or_404(FeedbackPost, slug=slug,
                                  feedback_approval=FeedbackPost.FeedbackApproval.OK)
 
@@ -103,7 +103,7 @@ def feedback_edit(request, slug):
 
 def delete_feedback(request, slug):
     '''
-    Allow user to delete own feedback
+    Allow user to delete own feedback post
     '''
     feedback = get_object_or_404(FeedbackPost, slug=slug)
 
