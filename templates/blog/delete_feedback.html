@@ -9,16 +9,20 @@ Delete Feedback
 {% comment %}
 https://www.arbcoms.com/19-how-to-delete-data-in-django-with-confirm-delete-prompt/
 {% endcomment %}
-<div class="mx-auto pt-3 col-lg-6">
-  <form method="POST" action="">
-    {% csrf_token %}
-    <h1>Do you really want to delete your feedback???</h1><br>
-    <input class="btn btn-danger" type="submit" value="YES - DELETE IT!" />
-  </form>
 
-  <a href="{% url 'blog:feedback_list' %}">
-    <button class="btn btn-success">Oops No!!</button>
-  </a>
+<div class="container">
+  <div class="mx-auto pt-3 col-md-6 text-center">
+    <form method="POST" action="">
+      {% csrf_token %}
+      <h3>Do you really want to delete your feedback?</h3>
+      <br>
+      <input class="btn btn-danger mb-3" type="submit" value="YES - DELETE IT!" />
+    </form>
+
+    <a href="{% url 'blog:feedback_list' %}">
+      <button class="btn btn-success">Oops No!!</button>
+    </a>
+  </div>
 </div>
 
 {% endblock content %}

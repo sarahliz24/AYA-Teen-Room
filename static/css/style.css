@@ -11,6 +11,18 @@
   background-color: rgb(252, 249, 243);
 }
 
+h3 {
+  color: rgb(123, 13, 20);
+}
+
+.callout-heading {
+  font-style: italic;
+}
+
+li {
+  font-size: larger;
+}
+
 /* Header style
 -------------------------------------------------- */
 .header-custom {

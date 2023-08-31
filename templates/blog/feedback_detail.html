@@ -12,9 +12,11 @@
         <p class="date">
             Feedback {{ feedback_post.published }} by {{ feedback_post.author }}
         </p>
+        <hr class="featurette-divider">
         {{ feedback_post.content|linebreaks }}
     
         <p>
+            <hr class="featurette-divider">
             {% if request.user == feedback_post.author %}
             <a href="{% url  'blog:feedback_edit' feedback_post.slug %}">
                 <button>Edit</button>
