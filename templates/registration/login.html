@@ -22,7 +22,7 @@ Log in
             {{ form|crispy }}
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}" />
-            <p><input type="submit" value="Log-in"></p>
+            <p><input class="btn btn-sm btn-info" type="submit" value="Log-in"></p>
         </form>
     </div>
 </div> 

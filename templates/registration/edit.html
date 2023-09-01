@@ -17,7 +17,7 @@ Add or change your profile details
                 {{ teen_user_profile|crispy }}
                 {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}" />
-            <p><input type="submit" value="Save Details"></p>
+            <p><input class="btn btn-sm btn-info" type="submit" value="Save Details"></p>
         </form>
     </div>
 </div> 
