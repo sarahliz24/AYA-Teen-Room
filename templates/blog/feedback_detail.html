@@ -31,7 +31,7 @@
                     <div>
                         {% if comments.count == 0 %}
                         <p>No replies yet - The AYA team usually reply within 24 hours</p>
-                        {% else %}
+                        {% endif %}
                     </div>
                     <div>
                         {% for comment in comments %}
@@ -43,24 +43,23 @@
                         {{ comment.content }}
                         <hr class="featurette-divider">
                         {% endfor %}
-                        <div>
-                            {% if request.user.is_staff %}
-                            <div class="mx-auto pt-3 col-lg-9">
-                                <h4>AYA staff: Reply to feedback</h4>
-                                <form method="post">
-                                    {{ comment_form|crispy }}
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                                </form>
-                                <br>
-                            </div>
 
-                            <a href="#">Edit</a>
-                            <a href="#">Delete</a>
-                            {% endif %}
+                        {% if request.user.is_staff %}
+                        <div>
+                            <h4>AYA staff: Reply to feedback</h4>
+                            <form method="post">
+                                {{ comment_form|crispy }}
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                            </form>
+                            <br>
                         </div>
+
+                        <a href="#">Edit</a>
+                        <a href="#">Delete</a>
                         {% endif %}
-                    </div>
+                    </div>    
+                </div>
             {% else %}
             <p>you do not have permission to view this page</p>
             {% endif %}
