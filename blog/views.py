@@ -114,6 +114,37 @@ def feedback_edit(request, slug):
     return render(request, 'blog/feedback_edit.html', context)
 
 
+def comment_edit(request, pk):
+    '''
+    Allow staff to update comment they have previously
+    created
+    '''
+    # comment = FeedbackComment.objects.filter(pk=pk)
+    comment = get_object_or_404(FeedbackComment, pk=pk)
+    comment_added = False
+
+    if request.method == 'POST' and comment.author == request.user:
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            comment_added = True
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
+            ok_feedback = FeedbackPost.approved.all()
+            messages.success(request, "Your edit was successful")
+            return render (request, 'blog/feedback_list.html',
+                    {'ok_feedback': ok_feedback})   
+        else:
+            messages.error(request, 'Oops, something went wrong!')
+
+    form = CommentForm(instance=comment)
+    context = {
+        'form': form
+    }
+    
+    return render(request, 'blog/comment_edit.html', context)
+
+
 def delete_feedback(request, slug):
     '''
     Allow user to delete own feedback post
@@ -144,6 +175,7 @@ def delete_comment(request, pk):
             {'ok_feedback': ok_feedback})
     
     return render(request, 'blog/delete_comment.html')
+
 
 
 

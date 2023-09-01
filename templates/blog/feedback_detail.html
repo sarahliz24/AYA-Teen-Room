@@ -41,7 +41,7 @@
                             </span>
                         </p>
                         {{ comment.content }}
-                        <a href="#">Edit</a>
+                        <a href="{% url 'blog:comment_edit' comment.pk %}">Edit</a>
                         <a href="{% url 'blog:delete_comment' comment.pk %}">Delete</a>
                         <hr class="featurette-divider">
                         {% endfor %}
