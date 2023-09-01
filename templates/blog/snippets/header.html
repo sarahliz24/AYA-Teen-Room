@@ -8,7 +8,7 @@
 
 <!-- https://stackoverflow.com/questions/39639264/django-highlight-current-page-in-navbar -->
 {% with url_name=request.resolver_match.url_name %}
-<nav class="navbar navbar-expand-md navbar-light header-custom">
+<nav class="navbar fixed-top navbar-expand-md navbar-light header-custom">
   <div class="align-items-center">
     <a class="navbar-brand" href="{% url 'home' %}">
       {% if request.user.is_authenticated %}
