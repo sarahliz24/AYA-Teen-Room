@@ -3,32 +3,32 @@
 {% block content %}
 
 <div class="container pt-5 mt-5">
-{% if request.user.is_authenticated %}
-<div>
-    <div class="mx-auto pt-3 col-lg-6">
-        <h1>TEEN ROOM FEEDBACK</h1>
-    </div>
-    <hr class="featurette-divider">
-    <div class="mx-auto col-lg-6">
-        {% for feedback_post in ok_feedback %}
-        <h2>
-            <a href="{% url 'blog:feedback_detail' feedback_post.slug %}">
-                {{ feedback_post.title }}
-            </a>
-        </h2>
-        <p class="post-descriptor">
-            Feedback by {{ feedback_post.author }} - Room: {{ feedback_post.room }} ({{ feedback_post.published }})
-        </p>
-        {{ feedback_post.content|truncatewords:20|linebreaks }}
+    {% if request.user.is_authenticated %}
+    <div>
+        <div class="mx-auto pt-3 col-lg-6">
+            <h1>TEEN ROOM FEEDBACK</h1>
+        </div>
         <hr class="featurette-divider">
-        {% empty %}
+        <div class="mx-auto col-lg-6">
+            {% for feedback_post in ok_feedback %}
+            <h2>
+                <a href="{% url 'blog:feedback_detail' feedback_post.slug %}">
+                    {{ feedback_post.title }}
+                </a>
+            </h2>
+            <p class="post-descriptor">
+                Feedback by {{ feedback_post.author }} - Room: {{ feedback_post.room }} ({{ feedback_post.published }})
+            </p>
+            {{ feedback_post.content|truncatewords:20|linebreaks }}
+            <hr class="featurette-divider">
+            {% empty %}
             <p>Sorry, no approved feedback just yet!</p>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-</div>
-{% else %}
+    {% else %}
     <p>you do not have permission to view this page</p>
-{% endif %}
+    {% endif %}
 </div>
 
 {% endblock content %}

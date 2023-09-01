@@ -9,27 +9,26 @@ from django.views.generic import ListView
 
 def home_view(request):
     '''
-    send user to home page
+    Send user to home page
     '''
     return render(request, "blog/home.html", {})
 
 
 def about(request):
     '''
-    send user to about page
+    Send user to about page
     '''
     return render(request, "blog/about.html")
 
 
 def feedback_submission(request):
     '''
-    Form for user to submit feedback
+    Allow user to enter & submit feedback post
     '''
     form = FeedbackSubmission()
     if request.method == 'POST':
         feedback_added = False
         form = FeedbackSubmission(request.POST)
-        # feedback_submission = FeedbackSubmission(instance=request.user, data=request.POST)
         if form.is_valid():
             feedback_added = True
             instance = form.save(commit=False)
@@ -37,8 +36,8 @@ def feedback_submission(request):
             instance.save()
             ok_feedback = FeedbackPost.approved.all()
             messages.success(request, "Your feedback has been submitted")
-            return render (request, 'blog/feedback_list.html',
-                    {'ok_feedback': ok_feedback})
+            return render(request, 'blog/feedback_list.html',
+                          {'ok_feedback': ok_feedback})
         else:
             messages.error(request, 'Oops, something went wrong!')
     else:
@@ -53,16 +52,17 @@ def feedback_list(request):
     have been dis-allowed
     '''
     ok_feedback = FeedbackPost.approved.all()
-    return render (request, 'blog/feedback_list.html',
-                    {'ok_feedback': ok_feedback})
+    return render(request, 'blog/feedback_list.html',
+                  {'ok_feedback': ok_feedback})
 
 
 def feedback_detail(request, slug):
     '''
-    Display single feedback post to user
+    Display single feedback post to user, including
+    any comments on that post
     '''
     feedback_post = get_object_or_404(FeedbackPost, slug=slug,
-                                 feedback_approval=FeedbackPost.FeedbackApproval.OK)
+                              feedback_approval=FeedbackPost.FeedbackApproval.OK)
     comments = feedback_post.comments.filter(allowed=True)
     new_comment = None
     if request.method == 'POST':
@@ -78,10 +78,10 @@ def feedback_detail(request, slug):
         comment_form = CommentForm()
 
     return render(request, 'blog/feedback_detail.html',
-                    {'feedback_post': feedback_post,
-                    'comments': comments,
-                    'new_comment': new_comment,
-                    'comment_form': comment_form })
+                  {'feedback_post': feedback_post,
+                   'comments': comments,
+                   'new_comment': new_comment,
+                   'comment_form': comment_form})
 
 
 def feedback_edit(request, slug):
@@ -99,11 +99,10 @@ def feedback_edit(request, slug):
             instance = form.save(commit=False)
             instance.author = request.user
             instance.save()
-            # form.save()
             ok_feedback = FeedbackPost.approved.all()
             messages.success(request, "Your edit was successful")
-            return render (request, 'blog/feedback_list.html',
-                    {'ok_feedback': ok_feedback})   
+            return render(request, 'blog/feedback_list.html',
+                          {'ok_feedback': ok_feedback})
         else:
             messages.error(request, 'Oops, something went wrong!')
 
@@ -119,10 +118,9 @@ def comment_edit(request, pk):
     Allow staff to update comment they have previously
     created
     '''
-    # comment = FeedbackComment.objects.filter(pk=pk)
     comment = get_object_or_404(FeedbackComment, pk=pk)
     comment_added = False
-    
+
     if request.method == 'POST' and comment.author == request.user.username:
         form = CommentForm(request.POST, instance=comment)
         if form.is_valid():
@@ -132,8 +130,8 @@ def comment_edit(request, pk):
             instance.save()
             ok_feedback = FeedbackPost.approved.all()
             messages.success(request, "Your edit was successful")
-            return render (request, 'blog/feedback_list.html',
-                    {'ok_feedback': ok_feedback})   
+            return render(request, 'blog/feedback_list.html',
+                          {'ok_feedback': ok_feedback})
         else:
             messages.error(request, 'Oops, something went wrong!')
 
@@ -141,7 +139,7 @@ def comment_edit(request, pk):
     context = {
         'form': form
     }
-    
+
     return render(request, 'blog/comment_edit.html', context)
 
 
@@ -155,15 +153,15 @@ def delete_feedback(request, slug):
         feedback.delete()
         ok_feedback = FeedbackPost.approved.all()
         messages.success(request, "Your deletion was successful")
-        return render (request, 'blog/feedback_list.html',
-            {'ok_feedback': ok_feedback})
-    
+        return render(request, 'blog/feedback_list.html',
+                      {'ok_feedback': ok_feedback})
+
     return render(request, 'blog/delete_feedback.html')
 
 
 def delete_comment(request, pk):
     '''
-    Allow user to delete own comment
+    Allow staff to delete own comment
     '''
     comment = FeedbackComment.objects.filter(pk=pk)
 
@@ -171,11 +169,7 @@ def delete_comment(request, pk):
         comment.delete()
         ok_feedback = FeedbackPost.approved.all()
         messages.success(request, "Your deletion was successful")
-        return render (request, 'blog/feedback_list.html',
-            {'ok_feedback': ok_feedback})
-    
+        return render(request, 'blog/feedback_list.html',
+                      {'ok_feedback': ok_feedback})
+
     return render(request, 'blog/delete_comment.html')
-
-
-
-

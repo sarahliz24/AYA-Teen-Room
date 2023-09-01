@@ -15,10 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
-from blog.views import (
-    home_view,
-)
+from blog.views import (home_view,)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,7 +23,4 @@ urlpatterns = [
     path('blog/', include('blog.urls', namespace='blog')),
     # path('feedback/', include('feedback.urls', namespace='feedback')),
     path('account/', include('account.urls')),
-    
-# path('registration/', include('templates/registration/signup.html'))
-# path('signup/', signup.view, include('account/signup.html'))
 ]

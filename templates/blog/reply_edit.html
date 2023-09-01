@@ -2,26 +2,23 @@
 
 {% load crispy_forms_tags %}
 
-{% block title %}
-Edit you feedback here!
-{% endblock %}
-
 {% block content %}
-    {% if request.user.is_authenticated %}
-        <div>
-            <h2>Edit your reply here:</h2>
-            {% if submitted %}
-            Your feedback was submitted & is awaiting approval
-            {% else %}
-            <form method="post">
-                {{ form|crispy }}
-                {% csrf_token %}
-                <p><input type="submit" value="Update reply">
-                </p>
-            </form>
-            {% endif %}
-        </div>
+{% if request.user.is_authenticated %}
+<div>
+    <h2>Edit your reply here:</h2>
+    {% if submitted %}
+    Your feedback was submitted & is awaiting approval
     {% else %}
-    <p>you do not have permission to view this page</p>
+    <form method="post">
+        {{ form|crispy }}
+        {% csrf_token %}
+        <p><input type="submit" value="Update reply">
+        </p>
+    </form>
     {% endif %}
+</div>
+{% else %}
+<p>you do not have permission to view this page</p>
+{% endif %}
+
 {% endblock content %}

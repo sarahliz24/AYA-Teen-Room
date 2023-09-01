@@ -6,65 +6,64 @@
 
 <div class="container pt-5 mt-5">
     <section class="mx-auto pt-3 col-lg-9">
-            {% if request.user.is_authenticated %}
+        {% if request.user.is_authenticated %}
+        <div>
+            <h1>{{ feedback_post.title }}</h1>
+            <p class="post-descriptor">
+                Feedback by {{ feedback_post.author }} - Room: {{ feedback_post.room }} ({{ feedback_post.published }})
+            </p>
+            <hr class="featurette-divider">
+            {{ feedback_post.content|linebreaks }}
+            {% if request.user == feedback_post.author %}
+            <a href="{% url  'blog:feedback_edit' feedback_post.slug %}">
+                <button class="btn btn-sm btn-info">Edit</button></a>
+            <a href="{% url  'blog:delete_feedback' feedback_post.slug %}">
+                <button class="btn btn-sm btn-info">Delete</button>
+                {% endif %}
+                <hr class="featurette-divider">
+                <hr class="featurette-divider">
+            </a>
+        </div>
+
+        <div class="container p-0">
+            <h3>Reply from AYA staff</h3>
+            <div>
+                {% if comments.count == 0 %}
+                <p>No replies yet - The AYA team usually reply within 24 hours</p>
+                {% endif %}
+            </div>
+            <div>
+                {% for comment in comments %}
+                <p>Reply by {{ comment.author }}, on
+                    <span>
+                        {{ comment.comment_made }}
+                    </span>
+                </p>
+                {{ comment.content }}
                 <div>
-                    <h1>{{ feedback_post.title }}</h1>
-                    <p class="post-descriptor">
-                        Feedback by {{ feedback_post.author }} - Room: {{ feedback_post.room }} ({{ feedback_post.published }}) 
-                    </p>
+                    <a class="btn btn-sm btn-info mt-3" href="{% url 'blog:comment_edit' comment.pk %}">Edit</a>
+                    <a class="btn btn-sm btn-info mt-3" href="{% url 'blog:delete_comment' comment.pk %}">Delete</a>
                     <hr class="featurette-divider">
-                    {{ feedback_post.content|linebreaks }}
-                    {% if request.user == feedback_post.author %}
-                    <a href="{% url  'blog:feedback_edit' feedback_post.slug %}">
-                        <button class="btn btn-sm btn-info">Edit</button></a>
-                    <a href="{% url  'blog:delete_feedback' feedback_post.slug %}">
-                        <button class="btn btn-sm btn-info">Delete</button>
-                        {% endif %}
-                        <hr class="featurette-divider">
-                        <hr class="featurette-divider">
-                    </a>
                 </div>
+                {% endfor %}
 
-
-                <div class="container p-0">
-                    <h3>Reply from AYA staff</h3>
-                    <div>
-                        {% if comments.count == 0 %}
-                        <p>No replies yet - The AYA team usually reply within 24 hours</p>
-                        {% endif %}
-                    </div>
-                    <div>
-                        {% for comment in comments %}
-                        <p>Reply by {{ comment.author }}, on
-                            <span>
-                                {{ comment.comment_made }}
-                            </span>
-                        </p>
-                        {{ comment.content }}
-                    <div>
-                        <a class="btn btn-sm btn-info mt-3" href="{% url 'blog:comment_edit' comment.pk %}">Edit</a>
-                        <a class="btn btn-sm btn-info mt-3" href="{% url 'blog:delete_comment' comment.pk %}">Delete</a>
-                        <hr class="featurette-divider">
-                    </div>
-                        {% endfor %}
-
-                        {% if request.user.is_staff %}
-                        <div>
-                            <h4>AYA staff: Reply to feedback</h4>
-                            <form method="post">
-                                {{ comment_form|crispy }}
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-sm btn-info">Submit</button>
-                            </form>
-                            <br>
-                        </div>
-                        {% endif %}
-                    </div>    
+                {% if request.user.is_staff %}
+                <div>
+                    <h4>AYA staff: Reply to feedback</h4>
+                    <form method="post">
+                        {{ comment_form|crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-info">Submit</button>
+                    </form>
+                    <br>
                 </div>
-            {% else %}
-            <p>you do not have permission to view this page</p>
-            {% endif %}
+                {% endif %}
+            </div>
+        </div>
+        {% else %}
+        <p>you do not have permission to view this page</p>
+        {% endif %}
     </section>
 </div>
-    
+
 {% endblock content %}

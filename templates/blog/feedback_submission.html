@@ -2,26 +2,22 @@
 
 {% load crispy_forms_tags %}
 
-{% block title %}
-Submit your feedback here!
-{% endblock %}
-
 {% block content %}
 
 <div class="container mx-auto pt-3 col-lg-6 pt-5 mt-5">
     {% if request.user.is_authenticated %}
-        <div>
-            <h2>Add your feedback here:</h2>
-            {% if submitted %}
-            Your feedback was submitted & is awaiting approval
-            {% else %}
-            <form class="form-signin" action="{% url 'blog:feedback_submission' %}", method="post">
-                {{ form|crispy }}
-                {% csrf_token %}
-                <p><input class="btn btn-sm btn-info" type="submit" value="Submit Feedback"></p>
-            </form>
-            {% endif %}
-        </div>
+    <div>
+        <h2>Add your feedback here:</h2>
+        {% if submitted %}
+        Your feedback was submitted & is awaiting approval
+        {% else %}
+        <form class="form-signin" action="{% url 'blog:feedback_submission' %}" method="post">
+            {{ form|crispy }}
+            {% csrf_token %}
+            <p><input class="btn btn-sm btn-info" type="submit" value="Submit Feedback"></p>
+        </form>
+        {% endif %}
+    </div>
     {% else %}
     <p>you do not have permission to view this page</p>
     {% endif %}

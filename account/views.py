@@ -2,11 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from .forms import FormLoggingIn, UserSignUp, EditUser, EditTeenUserProfile
+from .forms import UserSignUp, EditUser, EditTeenUserProfile
 from django.contrib.auth.decorators import login_required
 from .models import TeenUserProfile
-# from blog.views import feedback_detail
-
 
 """ def user_login(request):
     if request.method == "POST":
@@ -45,8 +43,12 @@ def feedback(request):
 
 
 def signup(request):
+    '''
+    Get user signup form, then assign user to profile model,
+    send user to profile edit form to complete profile details
+    '''
     if request.method == 'POST':
-        signup_form = UserSignUp(request.POST)  # create form instance
+        signup_form = UserSignUp(request.POST)
         if signup_form.is_valid():
             teen_user = signup_form.save(commit=False)
             teen_user.set_password(

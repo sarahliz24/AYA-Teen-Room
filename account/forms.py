@@ -3,12 +3,18 @@ from django.contrib.auth.models import User
 from .models import TeenUserProfile
 
 
-class FormLoggingIn(forms.Form):
+""" class FormLoggingIn(forms.Form):
+    '''
+    Log in form
+    '''
     username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput) """
 
 
 class UserSignUp(forms.ModelForm):
+    '''
+    User sign up form
+    '''
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     password_repeat = forms.CharField(label='Enter password again',
                                       widget=forms.PasswordInput)
@@ -25,6 +31,9 @@ class UserSignUp(forms.ModelForm):
 
 
 class EditUser(forms.ModelForm):
+    '''
+    Form to edit user details
+    '''
     class Meta:
         model = User
         fields = ['username', 'email']

@@ -17,7 +17,7 @@ import dj_database_url
 
 
 if os.path.isfile("env.py"):
-   import env
+    import env
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -34,13 +34,17 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-sarahliz24-ayateenroom-cfcm4na4b6n.ws-eu102.gitpod.io', 'aya-teen-room-1764987b8851.herokuapp.com', '8000-sarahliz24-ayateenroom-cfcm4na4b6n.ws-eu103.gitpod.io', '8000-sarahliz24-ayateenroom-cfcm4na4b6n.ws-eu104.gitpod.io', 'aya-teen-room.herokuapp.com', '8000-sarahliz24-ayateenroom-tb7irxuvi65.ws-eu104.gitpod.io', 'localhost']
+ALLOWED_HOSTS = [
+    'aya-teen-room-1764987b8851.herokuapp.com',
+    'aya-teen-room.herokuapp.com',
+    '8000-sarahliz24-ayateenroom-tb7irxuvi65.ws-eu104.gitpod.io',
+    'localhost']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'account.apps.AccountConfig', # first so django uses custom auth templates
+    'account.apps.AccountConfig',  # first so django uses custom auth templates
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -87,16 +91,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'aya_teen_room.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+""" Database
+https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
- #    'default': {
- #        'ENGINE': 'django.db.backends.sqlite3',
- #        'NAME': BASE_DIR / 'db.sqlite3',
- #    }
-#  }
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+ }
+ """
 
 DATABASES = {
    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
@@ -140,7 +144,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'  # noqa
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -153,8 +157,8 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/' # send user to feedback page if != 'next' in request
-LOGIN_URL = 'login' 
+LOGIN_REDIRECT_URL = '/'  # send user to feedback page if != 'next' in request
+LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
 MESSAGE_TAGS = {
@@ -164,4 +168,3 @@ MESSAGE_TAGS = {
         messages.WARNING: 'alert-warning',
         messages.ERROR: 'alert-danger',
  }
-
