@@ -16,8 +16,8 @@
                 {{ feedback_post.title }}
             </a>
         </h2>
-        <p class="date">
-            Feedback {{ feedback_post.published }} by {{ feedback_post.author }}
+        <p class="post-descriptor">
+            Feedback by {{ feedback_post.author }} - Room: {{ feedback_post.room }} ({{ feedback_post.published }})
         </p>
         {{ feedback_post.content|truncatewords:20|linebreaks }}
         <hr class="featurette-divider">

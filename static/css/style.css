@@ -45,6 +45,12 @@ li {
   background-color: rgb(102, 155, 188);
 }
 
+/* Feedback style
+-------------------------------------------------- */
+.post-descriptor {
+  font-style: italic;
+}
+
 /* Sticky footer style
 -------------------------------------------------- */
 html {

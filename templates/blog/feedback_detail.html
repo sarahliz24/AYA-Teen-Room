@@ -9,8 +9,8 @@
             {% if request.user.is_authenticated %}
                 <div>
                     <h1>{{ feedback_post.title }}</h1>
-                    <p class="date">
-                        Feedback by {{ feedback_post.author }}, on {{ feedback_post.published }}
+                    <p class="post-descriptor">
+                        Feedback by {{ feedback_post.author }} - Room: {{ feedback_post.room }} ({{ feedback_post.published }}) 
                     </p>
                     <hr class="featurette-divider">
                     {{ feedback_post.content|linebreaks }}
