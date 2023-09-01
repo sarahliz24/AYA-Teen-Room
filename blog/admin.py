@@ -15,6 +15,6 @@ class FeedbackPostAdmin(admin.ModelAdmin):
 
 @admin.register(FeedbackComment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['author', 'content', 'comment_made', 'allowed',]
+    list_display = ['author', 'content', 'comment_made', 'allowed', 'feedback_post']
     list_filter = ['allowed', 'comment_made', 'comment_updated']
     search_fields = ['author', 'content']
