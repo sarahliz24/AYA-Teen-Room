@@ -11,7 +11,7 @@
             {% if submitted %}
             Your feedback was submitted & is awaiting approval
             {% else %}
-            <form method="POST" action="">
+            <form method="POST">
                 {{ form|crispy }}
                 {% csrf_token %}
                 <p><input type="submit" value="Update comment">

@@ -19,7 +19,7 @@ urlpatterns = [
     path('<slug>/delete_feedback/', views.delete_feedback, 
          name='delete_feedback'),
 
-    path('delete_comment/(<pk>)', views.delete_comment, name='delete_comment'),
+    path('delete_comment/<pk>', views.delete_comment, name='delete_comment'),
 
-    path('comment_edit/(<pk>)', views.comment_edit, name='comment_edit'),
+    path('comment_edit/<pk>', views.comment_edit, name='comment_edit'),
 ]

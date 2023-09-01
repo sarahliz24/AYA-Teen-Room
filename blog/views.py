@@ -122,13 +122,13 @@ def comment_edit(request, pk):
     # comment = FeedbackComment.objects.filter(pk=pk)
     comment = get_object_or_404(FeedbackComment, pk=pk)
     comment_added = False
-
-    if request.method == 'POST' and comment.author == request.user:
+    
+    if request.method == 'POST' and comment.author == request.user.username:
         form = CommentForm(request.POST, instance=comment)
         if form.is_valid():
             comment_added = True
             instance = form.save(commit=False)
-            instance.author = request.user
+            instance.author = request.user.username
             instance.save()
             ok_feedback = FeedbackPost.approved.all()
             messages.success(request, "Your edit was successful")
