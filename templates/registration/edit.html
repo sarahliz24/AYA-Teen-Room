@@ -12,7 +12,7 @@
             {{ signup_form|crispy }}
             {{ teen_user_profile|crispy }}
             {% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}" />
+            <input type="hidden" name="next" value="{{ next }}"/>
             <p><input class="btn btn-sm btn-info" type="submit" value="Save Details"></p>
         </form>
     </div>
