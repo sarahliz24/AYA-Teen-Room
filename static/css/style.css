@@ -39,6 +39,11 @@ li {
   font-weight: 900;
 }
 
+.custom-list {
+  list-style-type: none;
+}
+
+
 /* Carosel style
 -------------------------------------------------- */
 .carosel-custom {

@@ -61,7 +61,6 @@ def signup(request):
                           {'teen_user': teen_user})
     else:
         signup_form = UserSignUp()
-        messages.error(request, 'Oops, something went wrong! Try again')
     return render(request, 'registration/signup.html',
                   {'signup_form': signup_form})
 
