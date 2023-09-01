@@ -29,7 +29,7 @@ class FeedbackPost(models.Model):
             GUH = 'GUH', 'Galway'
 
 
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=100, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                 related_name='feedback_post')
