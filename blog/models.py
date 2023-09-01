@@ -67,6 +67,14 @@ class FeedbackPost(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+
+        original_slug = self.slug
+        counter = 1
+        # https://www.benchatronics.com/detail/# how-to-create-unique-slug-no-duplicate-in-django-warning#google_vignette
+        while FeedbackPost.objects.filter(slug=self.slug).exclude(pk=self.pk).exists():
+            self.slug = f"{original_slug}-{counter}"
+            counter += 1
+
         return super().save(*args, **kwargs)
     
     
