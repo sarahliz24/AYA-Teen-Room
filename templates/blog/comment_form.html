@@ -2,7 +2,7 @@
 
 {% load crispy_forms_tags %}
 
-    <div class="mx-auto pt-3 col-lg-6">
+    <div class="mx-auto pt-3 col-lg-9">
     <h2>Reply to feedback</h2>
     <form action="{% url 'blog:comment' %}" method="post">
         {{ form|crispy }}

@@ -69,8 +69,11 @@ def feedback_detail(request, slug):
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
+            new_comment.author = request.user
             new_comment.feedback_post = feedback_post
             new_comment.save()
+            comment_form = CommentForm()
+            messages.success(request, "Your reply has been posted")
     else:
         comment_form = CommentForm()
 
