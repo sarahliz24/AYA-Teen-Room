@@ -19,5 +19,7 @@ urlpatterns = [
      path('<slug>/delete_feedback/', views.delete_feedback, 
          name='delete_feedback'),
 
+    path('delete_comment/(?P<pk>)', views.delete_comment, name='delete_comment'),
+
      # path('comment/', views.comment, name='comment'),
 ]

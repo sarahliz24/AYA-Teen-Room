@@ -129,3 +129,21 @@ def delete_feedback(request, slug):
     
     return render(request, 'blog/delete_feedback.html')
 
+
+def delete_comment(request, pk):
+    '''
+    Allow user to delete own comment
+    '''
+    comment = FeedbackComment.objects.filter(pk=pk)
+
+    if request.method == 'POST':
+        comment.delete()
+        ok_feedback = FeedbackPost.approved.all()
+        messages.success(request, "Your deletion was successful")
+        return render (request, 'blog/feedback_list.html',
+            {'ok_feedback': ok_feedback})
+    
+    return render(request, 'blog/delete_comment.html')
+
+
+
