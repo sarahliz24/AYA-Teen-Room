@@ -13,11 +13,11 @@ class TeenUserProfile(models.Model):
                                 on_delete=models.CASCADE,
                                 related_name='profile')
     date_of_birth = models.DateField(blank=False, null=True,
-                                     help_text='Format: mm/dd/yyyy')
+                                     help_text='Enter date as: mm/dd/yyyy')
     medical_id = models.CharField(blank=False,
                                   null=True,
                                   unique=True,
-                                  help_text="Required: 7 digit number"
+                                  help_text="Required: 7 digit number "
                                   "on your wristband",
                                   max_length=7,
                                   validators=[
