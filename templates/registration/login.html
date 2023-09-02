@@ -12,14 +12,14 @@
             {% if form.errors %}
             <p>Your log in details weren't correct - try again!</p>
             {% else %}
-            <p>(if you want to sign-up <a href="{% url 'signup' %}">click here)</a>
-            </p>
             {% endif %}
             {{ form|crispy }}
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}"/>
             <p><input class="btn btn-sm btn-info" type="submit" value="Log-in"></p>
         </form>
+        <p>if you want to sign-up click here: <a class="btn btn-sm btn-info mt-2" href="{% url 'signup' %}">Sign up</a>
+        </p>
     </div>
 </div>
 
