@@ -17,7 +17,7 @@
         <p>Give us your thoughts about the teen room facilities... all in a secure web-space!</p>
         {% if not request.user.is_authenticated %}
         <div class="d-flex">
-          <a href="{% url 'signup' %}" class="btn-get-started">Sign Up!</a>
+          <a href="{% url 'signup' %}" class="btn btn-sm btn-info">Sign Up!</a>
         </div>
         {% endif %}
       </div>
