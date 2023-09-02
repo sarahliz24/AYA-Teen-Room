@@ -61,8 +61,8 @@ def feedback_detail(request, slug):
     Display single feedback post to user, including
     any comments on that post
     '''
-    feedback_post = get_object_or_404(FeedbackPost, slug=slug,
-                              feedback_approval=FeedbackPost.FeedbackApproval.OK)
+    feedback_post = (get_object_or_404(FeedbackPost, slug=slug,
+                     feedback_approval=FeedbackPost.FeedbackApproval.OK))
     comments = feedback_post.comments.filter(allowed=True)
     new_comment = None
     if request.method == 'POST':
