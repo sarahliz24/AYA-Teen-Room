@@ -85,10 +85,3 @@ body {
   height: 60px;
   line-height: 30px;
 }
-
-/* FOR SCREEN SIZES from 400px and down------- */
-@media screen and (max-width: 500px) {
-  body {
-      width: fit-content;
-  }
-}
