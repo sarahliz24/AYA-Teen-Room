@@ -15,11 +15,11 @@
             <hr class="featurette-divider">
             {{ feedback_post.content|linebreaks }}
             {% if request.user == feedback_post.author %}
-                <a class="btn btn-sm btn-info" href="{% url  'blog:feedback_edit' feedback_post.slug %}">Edit</a>
-                <a class="btn btn-sm btn-info" href="{% url  'blog:delete_feedback' feedback_post.slug %}">Delete</a>
-                {% endif %}
-                <hr class="featurette-divider">
-                <hr class="featurette-divider">
+            <a class="btn btn-sm btn-info" href="{% url  'blog:feedback_edit' feedback_post.slug %}">Edit</a>
+            <a class="btn btn-sm btn-info" href="{% url  'blog:delete_feedback' feedback_post.slug %}">Delete</a>
+            {% endif %}
+            <hr class="featurette-divider">
+            <hr class="featurette-divider">
         </div>
 
         <div class="container p-0">
@@ -40,12 +40,12 @@
                 <hr class="featurette-divider">
 
                 {% if request.user.is_staff %}
-                    {% if request.user.username == comment.author %}
+                {% if request.user.username == comment.author %}
                 <div>
                     <a class="btn btn-sm btn-info mt-3" href="{% url 'blog:comment_edit' comment.pk %}">Edit</a>
                     <a class="btn btn-sm btn-info mt-3" href="{% url 'blog:delete_comment' comment.pk %}">Delete</a>
                 </div>
-                    {% endif %}
+                {% endif %}
                 {% endif %}
                 {% endfor %}
 
