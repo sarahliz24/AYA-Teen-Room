@@ -13,7 +13,7 @@ class TeenUserProfile(models.Model):
                                 on_delete=models.CASCADE,
                                 related_name='profile')
     date_of_birth = models.DateField(blank=False, null=True,
-                                     help_text='Format: 1900/12/31')
+                                     help_text='Format: mm/dd/yyyy')
     medical_id = models.CharField(blank=False,
                                   null=True,
                                   unique=True,
