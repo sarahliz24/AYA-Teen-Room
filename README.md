@@ -7,123 +7,213 @@
 1. [Introduction](#introduction)
 2. [User Experience](#user-experience)
 3. [Design](#design)
-4. [Features](#features)
-5. [Future Features](#future-features)
-6. [Testing](#testing)
+4. [Project Management](#projectd-management)
+5. [Features](#features)
+6. [Future Features](#future-features)
+7. [Testing](#testing)
     1. [Validator Testing](#validator-testing)
     2. [Manual Testing](#manual-testing)
-7. [Bugs](#bugs)
+8. [Bugs](#bugs)
     1. [Known Bugs](#known-bugs)
     2. [Solved Bugs](#solved-bugs)
-8. [Deployment](#deployment)
+9. [Deployment](#deployment)
     1. [Github](#github)
     2. [Heroku](#heroku)
-9. [Credits](#credits)
+10. [Credits](#credits)
     1. [Code Used](#code-used)
     2. [Content](#content)
     3. [Technologies Used](#technologies-used)
-10. [Acknowledgements](#acknowledgements)
+11. [Acknowledgements](#acknowledgements)
 
 ## Site Link: (https://#)
 
 
 # INTRODUCTION
 
-Intro text goes here
+AYA Teen Room is a website aimed at gathering feedback from AYA Teen Room Users in order to facilitate room owners to improve the rooms according to users needs.
+
+AYA Teen Rooms are rooms based on cancer wards in the 4 main centres that treat cancer for adolescents and young adults (AYAs) in Ireland. The teen rooms are lounge spaces solely for the use of AYAs who are staying in the ward for cancer treatment. These rooms give the AYAs a safe and relaxing space to spend time away from the ward rooms, which are often busy, noisy, and populated with either children or older adults (depending on the ward/hospital).
+
+The philosophy of the AYA treatment team is to always put the users at the centre of every decision made, and making sure the teen rooms are serving the needs of the user by ensuring teen feedback is received, and that the AYAs can see feedback being acted on,  demonstrates this to the AYAs clearly.  This helps to build trust with the treating team, and improves the treatment experience for the AYAs.
 
 # User Experience
 
 ## Target Audience
-Describe the target audience
+
+The target audience is AYA patients, who are aged between 13 - 24 years old, who are having cancer treatment at one of the 4 hospitals with an AYA teen room.
+
+## Site Aims
+
+* To provide a way to gather teen room user feedback on the teen rooms
+* To allow users to give feedback in a private way
+* To allow AYA staff to let users know how their feedback is being implemented
 
 ## User Stories
 
-### As a user I want to:
+### As a user:
 
-uSer stories go here
+1. As a teen room user I can be a registered site user so that I know only my teen room peers are on the site
 
-## As the site owner I want:
+2. As a teen room user I can edit my details so that i have control over my username and other details
 
-site owner goals go here
+3. As a teen room user I can change my password so that I know my log in details are secure
+
+4. As a teen room user I can reset my password via email so that it's easy to reset if I forget my password
+
+5. As a teen room user I can receive messages about login status so that i know if I have logged in or out successfully
+
+6. As a teen room user I can easily see if an event has already happened so that I am fully aware of event timetables
+
+7. As a teen room user I can add feedback on the teen room so that the owners know how to improve the room
+
+8. As a teen room user I can post anonymously so that I can be honest with my opinion without worrying people will know who I am
+
+9. As a teen room user I can see when feedback posts were last updated so that I know how recent they are
+
+10. As a teen room user I can see other peoples feedback so that I know what other users think about the room
+
+11. As a teen room user I can amend feedback I have left so that my feedback accurately reflects how I feel
+
+12. As a teen room user I can delete feedback I have given so that I have control over my feedback
+
+13. As a teen room user I can amend a comment i have made so that I can correct any mistakes I have made
+
+14. As a teen room user I can like other users feedback so that I can add weight to their feedback
+
+15. As a teen room user I can indicate if i'm interested in going to an event so that i can be involved in events
+
+24. As a teen room user I can log in to the site with my email address so that I don't have to remember a username
+
+## As the site/room owner:
+
+16. As a room owner I can view medical id of users so that I can engage in safeguarding if there is an issue with a post of concern
+
+17. As a room owner I can see the medical ID of the user posting feedback so that I can perform safeguarding duties if the content is of concern
+
+18. As a site owner I can comment on posted feedback so that I can let users know i have seen their feedback and what actions I am taking to enact it
+
+19. As a site owner I can comment on feedback given so that users can see their feedback is being considered
+
+20. As a site owner I can amend comments i made so that ensure they are accurate
+
+21. As a site owner I can delete comments I have given so that I am only giving comments I wish to
+
+22. As a room owner I can moderate feedback posts so that I can ensure feedback content is appropriate
+
+23. As a Room Owner I can post information about upcoming events so that users are aware of upcoming events
 
 # DESIGN
 
 ## Colour scheme
 
 <details><summary>Colour scheme</summary>
-    <img src="#">
+    <img src="readme_assets/pallete.jpg">
 </details>
 
-The colour scheme was chosen to....  A bright, contrasting colour palatte was selected, and then the yellow colour was manually edited to match the yellow from the background image, for a cohesive look.
+The colour scheme was chosen to complement the images supplied by the AYA team of the rooms, along with the supplied hero image.  A simple colour palatte was selected, to provide a cohesive mature look to the webpage without being boring.
 
 The colours chosen were:
-* Palatinate Blue #0043DE 
-* Poppy #DF2935
-* Sunglow #FDCA40
-* Platinum #E6E8E6
+* Barn Red #78000 - used for sub-headings to stand out
+* Moonstone #17A2B8 - used for buttons
+* Baby Powder #FCF9F3 - used for site background 
+* Air Superiority Blue - used for about carosel to draw attention
 
 ## Typograhy
 
-The primary font, used for the site heading, buttons and warnings, is ###. This is a fun pop-art style font that reflects the site ethos. A default font of cursive was set as this will still reflect the fun ethos of the site in case Bangers cannot be loaded.
-
-The secondary font used is...
+The system fonts were utilised in this site, and are efficient and resource friendly as they reduce the resource fetch load.   They give a clean clear and easy to read look to the site.  For Chrome and Android this loads Roboto as the primary font, whereas Segoe UI is loaded for Windows and Windows phones.    
 
 ## Imagery
 
-<details><summary>#</summary>
-    <img src="#">
-</details>
+The hero image is of two teens hanging out in a cool looking room.  It's bright and eye-catching, and sums up the point of the site - teens in a room!
 
-The background is set to a simple black and yellow image of repeating question marks.  This helps the user to quickly identify the purpose of the site (i.e. a quiz), and fits with the bright pop-art theme.  A background colour of Sunglow #FDCA40 (from the above colour palette) was added as the default background in case the image does not load, in order to maintain the colour scheme of the site, if needed.
 
 ## Wireframes
 
-Wireframes for the project are below.  Mobile and desktop wireframes were produced using Balsamiq.  Final product is consistent with the intention and design of the wireframe designs.
+Wireframes for the project are below.  Mobile and desktop wireframes were produced using Balsamiq.  Final product is broadly consistent with the intention and design of the wireframe designs.
 
  <details><summary>Home Page Mobile</summary>
-    <img src="#">
+    <img src="readme_assets/mobile_home_page.png">
 </details>
 
 <details><summary>Home Page Desktop</summary>
-    <img src="#">
+    <img src="readme_assets/desktop_home_page.png">
 </details>
 
-<details><summary>Feedback Page Mobile</summary>
-    <img src="#">
+<details><summary>Feedback Post Detail Mobile</summary>
+    <img src="readme_assets/mobile_feedback_page.png">
 </details>
 
-<details><summary>Feedback Page Desktop</summary>
-    <img src="#">
+<details><summary>Feedback Post Detail Desktop</summary>
+    <img src="readme_assets/desktop_detail_page.png">
 </details>
 
-<details><summary>About Mobile</summary>
-    <img src="#">
+<details><summary>Feedback List Desktop</summary>
+    <img src="readme_assets/desktop_feedback_page.png">
 </details>
 
-<details><summary>About Desktop</summary>
-    <img src="#">
+<details><summary>Sign Up Form Mobile
+</summary>
+    <img src="readme_assets/mobile_signup.png">
 </details>
+
+<details><summary>Submit Feedback Mobile</summary>
+    <img src="readme_assets/submit_feedback_mobile.png">
+</details>
+
 ---
+
 # Technical Design
 
-## Flowchart
+## Database schema
 
-Designed at planning stage of application, the chart was used to guide the development process while building the application.  The initial flowchart closely reflects the structure of the finished application.
-<details><summary>#  Flowchart</summary>
-    <img src="#">
+Designed at planning stage, the database models were used to guide the development process while building the application.  The initial schema closely reflects the structure of the finished application.
+
+<details><summary>Database schema</summary>
+    <img src="readme_assets/database.jpg">
 </details>
 
-## Data Models
-
+# Project Management
 ....
+
+## Agile Methodology
+
+This project was planned and mangaged using an Agile Framework. 
+
+User stories were documented, then placed into a project backlog. Each user story was given a title and a number, and acceptance criteria.  Milestones were created and stories attached to them. Work tracking was done using kanban boards - a separate project board was created for each iteration, and user stories populated to the board from the project backlog.  User stories that ended up as 'won't have' were then returned to the project backlog.  Each board had a to-do, in-progress and done section.
+
+MOSCOW prioritisation was applied to each user story at the outset, and then updated during the project as work progressed. Six prioritisation tasks were used (four for user stories and two for general task tracking):
+
+* Must Have
+* Should Have
+* Could Have
+* Won't Have
+* Bug (to track bugs)
+* Dev (for development tasks)
+
+<details><summary>Iteration 3 Kanban Board</summary>
+    <img src="readme_assets/kanban.jpg">
+</details>
+
+* <a href="https://github.com/users/sarahliz24/projects/6" target="_blank">Project 1 Kanban</a>
+* <a href="https://github.com/users/sarahliz24/projects/9" target="_blank">Project 2 Kanban</a>
+* <a href="https://github.com/users/sarahliz24/projects/8" target="_blank">Project 3 Kanban</a>
+* <a href="https://github.com/sarahliz24/AYA-Teen-Room/issues?q=is%3Aissue+is%3Aclosed" target="_blank">Issues List</a>
+
 
 # Features
 
-## Welcome page & Description
-Introduction: display logo, explain purpose of application, give menu option to enter application.
-* User story #
+## Nav bar
+The nav bar is a fixed nav bar.  It holds a greeting section - this says 'Hi Stranger' if a user is not logged in, and 'Hi Jim' (or relevant username) if the user is logged in - alerting user to log in status at all times.  The nav bar does not change across any page of the site.  It collapses to a hamburger on smaller screens.  Available nav tabs change depending on log in status - if a user is not logged in they only see the home and about tabs, along with a log-in and sign-up button.  A logged in user sees all the site tabs, and a logout button. 
 
-<details><summary>Welcome page</summary>
+<details><summary>Nav bar large logged in</summary>
+    <img src="#">
+</details>
+
+<details><summary>Nav bar large not logged in</summary>
+    <img src="#">
+</details>
+
+<details><summary>Nav bar small</summary>
     <img src="#">
 </details>
 
