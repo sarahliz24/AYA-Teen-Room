@@ -23,6 +23,10 @@ li {
   font-size: larger;
 }
 
+.btn {
+  color: black;
+}
+
 /* Header style
 -------------------------------------------------- */
 .header-custom {
