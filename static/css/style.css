@@ -50,7 +50,6 @@ li {
   z-index: 1;
 }
 
-
 /* Carosel style----------------------------- */
 .carosel-custom {
   background-color: rgb(102, 155, 188);
@@ -66,9 +65,12 @@ html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   margin-bottom: 60px;
+  width: fit-content;
 }
+
 .footer {
   position: absolute;
   bottom: 0;
