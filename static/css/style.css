@@ -43,6 +43,15 @@ li {
   list-style: none;
 }
 
+/* Messages style
+-------------------------------------------------- */
+
+.msg-position {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
 
 /* Carosel style
 -------------------------------------------------- */

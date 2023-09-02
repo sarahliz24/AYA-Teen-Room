@@ -1,7 +1,7 @@
 <!-- https://ordinarycoders.com/blog/article/django-messages-framework#google_vignette -->
 
 {% if messages %}
-<menu class="messages pl-0 pt-5 mt-5">
+<menu class="messages pl-0 pt-5 mt-5 msg-position">
   {% for message in messages %}
   <div class="container-fluid p-0">
     <div class="alert {{ message.tags }} alert-dismissible" role="alert">
