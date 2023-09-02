@@ -87,7 +87,7 @@ body {
 }
 
 /* FOR SCREEN SIZES from 400px and down------- */
-@media screen and (min-width: 577px) {
+@media screen and (max-width: 400px) {
 
   body {
       width: fit-content;
