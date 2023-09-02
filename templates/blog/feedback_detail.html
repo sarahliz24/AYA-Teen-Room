@@ -45,10 +45,12 @@
                     <a class="btn btn-sm btn-info mt-3" href="{% url 'blog:comment_edit' comment.pk %}">Edit</a>
                     <a class="btn btn-sm btn-info mt-3" href="{% url 'blog:delete_comment' comment.pk %}">Delete</a>
                 </div>
+                
                 {% endif %}
                 {% endif %}
                 {% endfor %}
 
+                <hr class="featurette-divider">
                 <hr class="featurette-divider">
 
                 {% if request.user.is_staff %}

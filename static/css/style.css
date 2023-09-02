@@ -69,6 +69,7 @@ html {
 body {
   margin-bottom: 60px;
   width: fit-content;
+  background-color: rgb(252, 249, 243);
 }
 
 .footer {
