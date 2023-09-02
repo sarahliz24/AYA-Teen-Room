@@ -3,14 +3,6 @@ from django.contrib.auth.models import User
 from .models import TeenUserProfile
 
 
-""" class FormLoggingIn(forms.Form):
-    '''
-    Log in form
-    '''
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput) """
-
-
 class UserSignUp(forms.ModelForm):
     '''
     User sign up form
