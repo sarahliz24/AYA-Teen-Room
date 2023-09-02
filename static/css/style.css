@@ -55,6 +55,13 @@ li {
   background-color: rgb(102, 155, 188);
 }
 
+/* Image style----------------------------- */
+img {
+  object-fit: contain;
+  width: 500px;
+  height: 400px;
+}
+
 /* Feedback style------------------------------ */
 .post-descriptor {
   font-style: italic;
@@ -68,7 +75,6 @@ html {
 
 body {
   margin-bottom: 60px;
-  width: fit-content;
   background-color: rgb(252, 249, 243);
 }
 
