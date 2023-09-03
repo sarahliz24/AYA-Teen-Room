@@ -61,21 +61,21 @@ The target audience is AYA patients, who are aged between 13 - 24 years old, who
 
 5. As a teen room user I can receive messages about login status so that i know if I have logged in or out successfully
 
-6. As a teen room user I can easily see if an event has already happened so that I am fully aware of event timetables
+* 6. As a teen room user I can easily see if an event has already happened so that I am fully aware of event timetables
 
-7. As a teen room user I can add feedback on the teen room so that the owners know how to improve the room
+* 7. As a teen room user I can add feedback on the teen room so that the owners know how to improve the room
 
 8. As a teen room user I can post anonymously so that I can be honest with my opinion without worrying people will know who I am
 
-9. As a teen room user I can see when feedback posts were last updated so that I know how recent they are
+* 9. As a teen room user I can see when feedback posts were last updated so that I know how recent they are
 
-10. As a teen room user I can see other peoples feedback so that I know what other users think about the room
+* 10. As a teen room user I can see other peoples feedback so that I know what other users think about the room
 
-11. As a teen room user I can amend feedback I have left so that my feedback accurately reflects how I feel
+* 11. As a teen room user I can amend feedback I have left so that my feedback accurately reflects how I feel
 
-12. As a teen room user I can delete feedback I have given so that I have control over my feedback
+* 12. As a teen room user I can delete feedback I have given so that I have control over my feedback
 
-13. As a teen room user I can amend a comment i have made so that I can correct any mistakes I have made
+* 13. As a teen room user I can amend a comment i have made so that I can correct any mistakes I have made
 
 14. As a teen room user I can like other users feedback so that I can add weight to their feedback
 
@@ -89,17 +89,17 @@ The target audience is AYA patients, who are aged between 13 - 24 years old, who
 
 17. As a room owner I can see the medical ID of the user posting feedback so that I can perform safeguarding duties if the content is of concern
 
-18. As a site owner I can comment on posted feedback so that I can let users know i have seen their feedback and what actions I am taking to enact it
+* 18. As a site owner I can comment on posted feedback so that I can let users know i have seen their feedback and what actions I am taking to enact it
 
-19. As a site owner I can comment on feedback given so that users can see their feedback is being considered
+* 19. As a site owner I can comment on feedback given so that users can see their feedback is being considered
 
-20. As a site owner I can amend comments i made so that ensure they are accurate
+* 20. As a site owner I can amend comments i made so that ensure they are accurate
 
-21. As a site owner I can delete comments I have given so that I am only giving comments I wish to
+* 21. As a site owner I can delete comments I have given so that I am only giving comments I wish to
 
-22. As a room owner I can moderate feedback posts so that I can ensure feedback content is appropriate
+* 22. As a room owner I can moderate feedback posts so that I can ensure feedback content is appropriate
 
-23. As a Room Owner I can post information about upcoming events so that users are aware of upcoming events
+* 23. As a Room Owner I can post information about upcoming events so that users are aware of upcoming events
 
 # DESIGN
 
@@ -294,7 +294,7 @@ After sign up, user is directed to a info page that explains they need to fill o
 
 ## Profile Page
 
-The user then goes to the profile page to complete their user profile.  Help text is present to guide the user, and required fields are starred. User is warned if errors in form.  User gets success message when successfully completed, then redirected to the home page as a logged in user.
+The user then goes to the profile page to complete their user profile.  Help text is present to guide the user, and required fields are starred. User is warned if errors in form.  User gets success message when successfully completed, then redirected to the home page as a logged in user.  The user must enter their medical id - this must be 7 digits or get an erroe message.  helper text is present to prompt user as to where to find their medical id, and how long it is.
 
 <details><summary>Profile Page</summary>
     <img src="readme_assets/profile.jpg">
@@ -334,7 +334,7 @@ Clicking on post title takes user to feedback detail page. Full feedback is show
 
 ## Submit Feedback
 
-Selecting submit feedback tab takes user to a submission form.  User enters title and feedback content.  If title is same as another title that exists already, user is warned to change it.  User can select room feedback pertains to from dropdown list. On successful submission user is returned to feedback list page with a success message.
+Selecting submit feedback tab takes user to a submission form.  User enters title and feedback content.  If title is same as another title that exists already, user is warned to change it.  User can select room feedback pertains to from dropdown list. On successful submission user is returned to feedback list page with a success message.  If user enters a post title the same as another, it is allowed (as the slug will auto-increment in the backend to compensate).
 
 <details><summary>Submit Feedback</summary>
     <img src="readme_assets/submit_feedback.jpg">
@@ -402,15 +402,27 @@ When a user clicks the log out button they are taken to a log our view, with opt
     <img src="readme_assets/logged_out.jpg">
 </details>
 
+## Admin panel
+
+Superuser can access admin panel to disaollow problematic posts, and view medical id within the teen user profile section (in case of safeguarding issues with a post).
+
+<details><summary>Admin Panel</summary>
+    <img src="readme_assets/admin1.jpg">
+</details>
+
+<details><summary>Admin Medical ID</summary>
+    <img src="readme_assets/admin2.jpg">
+</details>
+
 
 # Future Features
 
-* Users can "like" posts and comments
+* Users can "like" posts and comments - User Story 14, 15
 * Add pagination to feedback list
 * Add sorting and searching to feedback list e.g. filter by room
-* Add log in with email function so it's easier to remember (compared to a password)
-* Add reset password via email function
-* Allow users to add comments to posts
+* Add log in with email function so it's easier to remember (compared to a password) - User Story 24
+* Add reset password via email function - User Story 4
+* Allow users to add comments to posts - User Story 15
 
 # TESTING
 
@@ -423,17 +435,36 @@ The code was regularly tested using the Code Institute PEP Validator substitute
     <img src="#">
 </details>
 
-## Manual Testing
+# Manual Testing
 
-# Example...
-| Feature | Action | Expected Result | Actual Result |
-|---|---|---|---|
-| Main Menu | Select 0 to exit | Exits program | Works as expected |
-| Main Menu |  Select  1 to enter new staff member | Sends user to: Enter new staff member section  | Works as expected |
-| Main Menu |  Select  2 to update skills for  a staff member | Sends user to: Find staff member section | Works as expected |
-| Main Menu | Select 3 to search records by  skill or staff member | Sends user to: Search menu options section | Works as expected |
-| Main Menu | Select number other than 0-3 | Warning message to user:  "Please choose number 0 -3 from the menu" | Works as expected |
-| Main Menu | Select non-number input e.g. 'g' | Warning message to user: "Please choose a number (only) from the menu" | Works as expected |
+## Admin Testing
+| Feature | Action | Expected Result | Actual Result | User Story |
+|---|---|---|---|---|
+| Nav bar | User not logged in | View home & about pages only | ok |  |
+| Nav bar | User not logged in | sign up button visible, link active | ok |  |
+| Nav bar | User not logged in | Hi Stranger greeting displayed | ok | 5 |
+| Nav bar | responsive test | collapses responsively | ok |  |
+| Log in | Log in button | takes user to log in form | ok |  |
+| Log in | Log in form | sign up button takes user to sign up page | ok |  |
+| Log in form | user enters incorrect username or password | user warning | ok |  |
+| Log in form | user enters details correctly | user taken to home page, nav bar username greeting displayed | ok | 5 |
+| Edit profile form | user enters details incorrectly | user warning | ok |  |
+| Edit profile form | user enters details correctly | success message, user returned to home page | ok | 2, 8 |
+| Change password form | user enters details incorrectly | user warning | ok |  |
+| Change password form | User clicks go back home button | user returned to home page | ok |  |
+| Change password form | user enters details correctly | success message, user shown option to log out | ok | 3 |
+| Change password form | user can log out or use nav options | logged out or nav options work as user is still logged in | ok |  |
+| User sign up | user enters details incorrectly | user warning | ok |  |
+| User sign up | user enters details correctly | taken to profile info page | ok |  |
+| User sign up | user can choose username of choice | no need to enter real name | ok | 8 |
+| User sign up | User enters medical id | if id not 7 digits error message | ok | 16, 17 |
+| User sign up | user enters details incorrectly | user warning | ok |  |
+| User sign up | user enters details correctly | success message, user returned to home page | ok | 1 |
+| User log out | user clicks log out button | taken to log out page, options: log in or go home displayed | ok | 5 |
+| User log out | user clicks home button | user returned to home page | ok |  |
+| User log out | user clicks log in button | user taken to log in page | ok |  |
+
+## Feedback Posts
 
 
 
