@@ -424,9 +424,9 @@ Superuser can access admin panel to disaollow problematic posts, and view medica
 * Add reset password via email function - User Story 4
 * Allow users to add comments to posts - User Story 15, 13
 
-# TESTING
+ Validator Testing
 
-## Validator Testing
+# Python testing
 
 The code was regularly tested using the Code Institute PEP Validator substitute
 <a href="https://pep8ci.herokuapp.com/" target="_blank">CI Python Linter</a>.  All tests passed with no warnings or errors.
@@ -434,6 +434,73 @@ The code was regularly tested using the Code Institute PEP Validator substitute
 <details><summary>CI Python Linter Results</summary>
     <img src="#">
 </details>
+
+# HTML and CSS Testing
+
+The code was regularly tested using w3c validators for HTML and CSS throughout development, using these links:
+ 
+### HTML final testing results:
+
+[W3C HTML Validator](https://validator.w3.org/#validate_by_input); <details><summary>W3 html check</summary>
+    <img src="readme_assets/html_check.png">
+</details>
+
+### CSS final testing results:
+
+[W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
+<details><summary>CSS Validation</summary>
+    <img src="readme_assets/cssW3.jpg">
+</details>
+ 
+
+## Lighthouse testing
+
+Lighthouse testing was conducted at regular intervals during development, using the Lighthouse function inbuilt into the Chrome Inspector tool.
+
+### Lighthouse final testing results:
+
+<details><summary>Home Page</summary>
+    <img src="readme_assets/lighthouse1jpg.jpg">
+</details>
+
+<details><summary>About Page</summary>
+    <img src="readme_assets/lighthouse2jpg.jpg">
+</details>
+
+
+## Accessibility testing
+
+Accessibility testing was performed regularly throughout development utilising 'WAVE Web Accessibility Evaluation Tools', using this link: [WAVE Testing](https://wave.webaim.org/)
+
+This testing provided assistance on ensuring relevant issues were identified and resolved during development, such as ensuring the text and button colours were acceptable (changed button text to black to ensure high enough contrast).
+
+ 
+ <details><summary>Home Page</summary>
+    <img src="readme_assets/wave_test1.jpg">
+</details>
+
+<details><summary>About Page</summary>
+    <img src="readme_assets/wave_test2.jpg">
+</details>
+
+
+### Browser Compatibility Testing
+
+The site was successfully tested (i.e. no issues identified) on the following broswers to ensure intended functionality:
+
+* Mozilla Firefox Version 109.0 (64-bit)
+* Google Chrome Version 109.0.5414.120 (Official Build) (64-bit)
+* Microsoft Edge Version 109.0.1518.70 (Official build) (64-bit)
+
+### Device Testing
+
+Manual testing was performed successfully (i.e. no issues identified) using the following devices:
+
+* Huawei P30
+* Samsung Galaxy S22 Ultra
+* Microsoft Surface Pro 7
+* Acer desktop with HP 24 inch HD monitor
+* HP Notepad 
 
 # Manual Testing
 
@@ -506,15 +573,40 @@ The code was regularly tested using the Code Institute PEP Validator substitute
 | Admin panel | Super user can disallow posts | disallowed posts are not displayed to users | ok |  |
 | User Story | super user can view medical id in Teen User Profile section | super user can view medical id | ok |  |
 
-
-
 # BUGS
 
 ## Known Bugs
-...
+
+## Models
+
+1. There is an unused table in the feedback post model (show_feedback).  This was added in error at project development. Rather than delete the field, it was set to null=True and blank=True so that it could have empty data, and not included in any user feedback views.
+
+2. Email is collected sign up, however as email password reset was not implemented, it is not in use.  It remains in place for future development.
+
+3. Date format is different for user input at signup to how it is displayed at user profile edit.  Help text was added to the user profile edit and signup stage to direct the user in correct format, however it can be confusing. This issue should be resolved in an early upgrade of the site.
 
  ## Solved Bugs
-...
+
+1. Duplicate slug error: if a user entered a post with a duplicate title a duplcate slug error was generated, crashing the site. I implemented a slug incrementer into the FeedbackPost model to check for slug duplication and add an increment in case of duplication - this avoids the user having to rename their post title.
+
+<a href="https://www.benchatronics.com/detail/how-to-create-unique-slug-no-duplicate-in-django-warning#google_vignette
+" target="_blank">Slug duplication reference</a>
+
+
+2. When testing adding new post I found that one user could submit feedback, but when next user went to submit an integrity error was generated (Key(slug=() already exists)).  I solved this by checking the admin panel.  I found that when posts were being reviewed by admin (as they hadn't been set to auto-allow at that point) the slug-field was being generated only at that point.  This meant that if there was more than one post awaiting approval (and not allowed by admin) there was more than one post with a null slug value. I researched and implemented a slugify function to make the slug populate itself at point of post generation.
+
+<details><summary>Slug Bug</summary>
+    <img src="readme_assets/slug_bug.png">
+</details>
+
+<a href="https://www.kodnito.com/posts/slugify-urls-django/" target="_blank">Slug duplication reference</a>
+https://www.kodnito.com/posts/slugify-urls-django/
+
+
+2. Messages were pushing the page down when they appears and when they were dismissed, the page did not revert until it was refreshed (which could cause loss of data in case of form entry).  This was due to the CSS styling being applied - I changed the message CSS to absolute position, gave the messages a z-index of 1, and changed the right position so the message was not full screen, using a custom css class to overwrite the bootstrap message css.
+
+3. Staff could edit/delete each other's comments:  To solve I applied a nested if statement of {% if request.user.is_staff %} followed by {% if request.user.username == comment.author %} to apply a check that the user was both staff AND the comment author to ensure only a staff who authored a comment could edit/delete that comment.
+
 
 # DEPLOYMENT
 
@@ -542,48 +634,101 @@ The site github link is here:
 ## Heroku
 
 ### In Github
-1. Ensure all input methods have a new line at the end of the text (due to software behaviour of the mock terminal)
-2. Create requirements.txt file so Heroku can load required dependancies
-    - in workspace terminal, type 'Pip3 freeze > requirements.txt' to automatically update the requirements.txt file
-    - push to GitHub
+Ensure project set up appropriately for Django:
+* add env.py to gitignore
+* pip3 install django gunicorn
+* pip install dj_database_url psycopg2
+* pip install dj-3-cloudinary-storage (or other image API platform)
+* pip freeze --local > requirements.txt (to automatically update the requirements.txt file)
+* django-admin startproject project_name . (to start project)
+* python manage.py startapp app_name (to create project app)
+* populate 'installed apps' (settings.py) with app name/s
+* python manage.py make migrations (to prepare changes for migration)
+* python manage.py migrate (to migrate changes)
+* python manage.py runserver (to test local environment is working)
 
 ### In Heroku
-1. In Heroku dashboard click **Create New App** button
-2. Give app a unique name
-3. Select region e.g. **Europe**
-4. Click **Create App**
-5. Go to **Settings** tab
-6. Add **Config Vars**:
+*  In Heroku dashboard click **Create New App** button
+*  Give app a unique name
+*  Select region e.g. **Europe**
+*  Click **Create App**
+*  Go to **Resources** tab
+    1. from add-ons select 'Heroku Postgres'
+*  Go to **Settings** tab
+*  Add **Config Vars**:
     1. Click on **Reveal Config Vars** button
-    2. Type **CREDS** in the **KEY** field
-    3. Copy & paste the contents of the **creds.json** file from github workspace into the **VALUE** field
-    4. Click **Add* button
-    5. In the next config var row, type **PORT** in the **KEY** field, and add **8000** to the **VALUE** field
-7. Add **Buildpacks**:
-    1. Click **Add Buildpack** button
-    2. Click **Python** in pop-up window and click **Save changes**
-    3. Click **Add Buildpack** button again
-    4. Click **nodejs** in pop-up window and click **Save changes**
-    5. Ensure python buildpack is first in the list (click and drag to re-order if needed)
-8. Go to **Deploy** tab
-    1. Click on **Github** icon
-    2. Click on **Connect to Github** button
-    3. In search field, search for repo name and click **Search**
-    4. Click **Connect** button
-    5. Scroll to bottom of page to select deployment method
-        * Click **Deploy Branch** to manually deploy, ensuring desired branch is selected
-        * Click **Enable Automatic Deploys** to enable automatic deployment based on every git push (ensuring desired branch is selected)
-        6. Click **View** to go to deployed link
+    2. Copy the contents of the **DATABASE_URL** file 
+    3. Click **Add* button
+
+### In Github
+* add env.py file to the root directory
+* add to the gitignore file: 
+    1. env.py
+    2. os.environ["DATABASE_URL"] = "the database link copied from Heroku above"
+    3. os.environ["SECRET_KEY"] = "any secret key (maybe use an online generator)"
+
+### In Heroku
+*  Go to **Settings** tab, then **Config Vars**
+* in key box enter "SECRET_KEY", in adjoining box paste your secret key from above
+
+### In Github
+* in the root settings.py file add:
+
+    from pathlib import Path
+    import os
+    import dj_database_url
+
+    if os.path.isfile("env.py"):
+        import env
+
+* Secret key
+    1. delete the current key from settings.py
+    2. Add the following in it's place: SECRET_KEY = os.environ.get(SECRET_KEY)
+
+### In Cloudinary
+* Go the the dashboard & copy your cloudinary URL
+
+### In Heroku
+*  Go to **Settings** tab, then **Config Vars**
+* Enter: DISABLE_COLLECTSTATIC, value of '1'
+
+### In Github 
+* populate 'installed apps' (settings.py) with:
+        'cloudinary_storage'
+        'django.contrib.staticfiles''
+        'cloudinary'
+* Comment out the database settings and add:
+        DATABASES = {
+        'default': 
+        dj_database_url.parse(os.environ.get("DATABASE_URL"))
+        }`
+* Amend the templates array to read: 
+        'DIRS': [TEMPLATES_DIR]
+* Add Heroku host address to 'allowed hosts':
+        eg 'aya-teen-room.herokuapp.com', localhost'
+* perform initial git commit and git push
+
+### In Heroku
+* Go to deplot tab within your add
+* Select 'github' for deployment method
+* Use search box to search for your repsitory, then connect to link Heroku & Github
+
+### Production Deploy Heroku
+* Ensure DEBUG set to False in settings.py (Github)
+* In Heroku disable collect-static (set to 0)
+* Manually deploy by selecting 'Deploy Branch'
+* Click view once the option appears to go to live site
 
 # CREDITS
 
 ## Code
 
-- Idea for truth value testing to solve 'Solved Bug #5' from <a href="https://flexiple.com/python/check-if-list-is-empty-python/#section2" target="_blank">flexiple</a>
+- Slug duplication code: <a href="https://www.benchatronics.com/detail/how-to-create-unique-slug-no-duplicate-in-django-warning#google_vignette
+" target="_blank">Slug duplication reference</a>
 
-- Working with lists and dictionaries was initally guided by <a href="https://blog.finxter.com/python-list-of-lists/" target="_blank">finxter</a>
+- Slugify code: <a href="https://www.kodnito.com/posts/slugify-urls-django/" target="_blank">Slug reference</a>
 
-- List to dictionary conversions were informed by <a href="https://builtin.com/software-engineering-perspectives/convert-list-to-dictionary-python" target="_blank">builtin</a>
+- <a href="https://codingwithmitch.com/" target="_blank">Coding with Mitch</a> guided me through many of the basic concepts of building with Django when I was feeling lost
 
 - Code Institute django walk-throughs - set-up and deployment
 

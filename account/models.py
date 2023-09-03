@@ -6,7 +6,6 @@ from django.core.validators import MinLengthValidator, int_list_validator
 class TeenUserProfile(models.Model):
     '''
     User Profile model
-    
     How to fix medical_id length from:
     https://stackoverflow.com/questions/57131043/how-to-make-integer-field-fixed-to-ten-numbers-output-in-models
     '''
