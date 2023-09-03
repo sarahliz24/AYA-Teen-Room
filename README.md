@@ -1,8 +1,8 @@
 #  AYA Teen Room
 
-![Welcome image](#)
+![Welcome image](readme_assets/responsive.jpg)
 
-## Site Link: <a href="" target="_blank">#</a>
+Site Link: <a href="https://aya-teen-room-1764987b8851.herokuapp.com/" target="_blank">AYA Teen Room</a>
 
 1. [Introduction](#introduction)
 2. [User Experience](#user-experience)
@@ -25,7 +25,7 @@
     3. [Technologies Used](#technologies-used)
 11. [Acknowledgements](#acknowledgements)
 
-## Site Link: (https://#)
+Site Link: <a href="https://aya-teen-room-1764987b8851.herokuapp.com/" target="_blank">AYA Teen Room</a>
 
 # INTRODUCTION
 
@@ -33,7 +33,7 @@ AYA Teen Room is a website aimed at gathering feedback from AYA Teen Room Users 
 
 AYA Teen Rooms are rooms based on cancer wards in the 4 main centres that treat cancer for adolescents and young adults (AYAs) in Ireland. The teen rooms are lounge spaces solely for the use of AYAs who are staying in the ward for cancer treatment. These rooms give the AYAs a safe and relaxing space to spend time away from the ward rooms, which are often busy, noisy, and populated with either children or older adults (depending on the ward/hospital).
 
-The philosophy of the AYA treatment team is to always put the users at the centre of every decision made, and making sure the teen rooms are serving the needs of the user by ensuring teen feedback is received, and that the AYAs can see feedback being acted on,  demonstrates this to the AYAs clearly.  This helps to build trust with the treating team, and improves the treatment experience for the AYAs.
+The philosophy of the AYA treatment team is to always put the users at the centre of every decision made. Making sure the teen rooms are serving the needs of the user by ensuring teen feedback is sought and received, and that the AYAs can see feedback being acted on, demonstrates this to the AYAs clearly.  This helps to build trust with the treating team, and improves the treatment experience for the AYAs.
 
 # User Experience
 
@@ -201,7 +201,7 @@ MOSCOW prioritisation was applied to each user story at the outset, and then upd
 # Features
 
 ## Nav bar
-The nav bar is a fixed nav bar.  It holds a greeting section - this says 'Hi Stranger' if a user is not logged in, and 'Hi Jim' (or relevant username) if the user is logged in - alerting user to log in status at all times.  The nav bar does not change across any page of the site.  It collapses to a hamburger on smaller screens.  Available nav tabs change depending on log in status - if a user is not logged in they only see the home and about tabs, along with a log-in and sign-up button.  A logged in user sees all the site tabs, and a logout button. The active page the user is on is emphasised in bold.
+The nav bar is a fixed nav bar.  It holds a greeting section - this says 'Hi Stranger' if a user is not logged in, and 'Hi Jim' (or relevant username) if the user is logged in - alerting user to log in status at all times.  The nav bar does not change across any page of the site.  It collapses to a hamburger on smaller screens.  Available nav tabs change depending on log in status - if a user is not logged in they only see the home and about tabs, along with a log-in and sign-up button.  A logged in user sees all the site tabs, and a logout button. The active page the user is on is emphasised in bold. If the user clicks on the greeting this is also a link that will take them to the homepage.
 
 <details><summary>Nav bar large logged in</summary>
     <img src="readme_assets/nav_desktop_logged_in.jpg">
@@ -231,7 +231,7 @@ The hero section has simple text introducing the site and it's purpose.  The her
     <img src="readme_assets/hero_mobile.jpg">
 </details>
 
-Home Page Section 1 - About Carousel
+Home Page Section 2 - About Carousel
 
 Below the hero section is a blue carousel that catches the eye.  This has three slides, which quickly explain the basics a user needs to know - why we want feedback, why the feedback is private, and what a teen room is.
 
@@ -247,7 +247,7 @@ Below the hero section is a blue carousel that catches the eye.  This has three 
     <img src="readme_assets/carosel3.jpg">
 </details>
 
-Home Page Section 1 - Room Featurettes
+Home Page Section 3 - Room Featurettes
 
 The last section is a featurette section, with pictures and descriptions of the four teen rooms (and their locations).  
 
@@ -431,10 +431,6 @@ Superuser can access admin panel to disaollow problematic posts, and view medica
 The code was regularly tested using the Code Institute PEP Validator substitute
 <a href="https://pep8ci.herokuapp.com/" target="_blank">CI Python Linter</a>.  All tests passed with no warnings or errors.
 
-<details><summary>CI Python Linter Results</summary>
-    <img src="#">
-</details>
-
 # HTML and CSS Testing
 
 The code was regularly tested using w3c validators for HTML and CSS throughout development, using these links:
@@ -452,7 +448,6 @@ The code was regularly tested using w3c validators for HTML and CSS throughout d
     <img src="readme_assets/cssW3.jpg">
 </details>
  
-
 ## Lighthouse testing
 
 Lighthouse testing was conducted at regular intervals during development, using the Lighthouse function inbuilt into the Chrome Inspector tool.
@@ -467,6 +462,9 @@ Lighthouse testing was conducted at regular intervals during development, using 
     <img src="readme_assets/lighthouse2jpg.jpg">
 </details>
 
+## Responsiveness testing
+
+The site was tested using the responsive tool in developer (chrome, firefox and edge).  There was one issue noted at screen sizes under 400px (as described in the bugs section).  The site is fully responsive.
 
 ## Accessibility testing
 
@@ -497,7 +495,7 @@ The site was successfully tested (i.e. no issues identified) on the following br
 Manual testing was performed successfully (i.e. no issues identified) using the following devices:
 
 * Huawei P30
-* Samsung Galaxy S22 Ultra
+* Samsung Galaxy S23 Ultra
 * Microsoft Surface Pro 7
 * Acer desktop with HP 24 inch HD monitor
 * HP Notepad 
@@ -592,7 +590,6 @@ Manual testing was performed successfully (i.e. no issues identified) using the 
 <a href="https://www.benchatronics.com/detail/how-to-create-unique-slug-no-duplicate-in-django-warning#google_vignette
 " target="_blank">Slug duplication reference</a>
 
-
 2. When testing adding new post I found that one user could submit feedback, but when next user went to submit an integrity error was generated (Key(slug=() already exists)).  I solved this by checking the admin panel.  I found that when posts were being reviewed by admin (as they hadn't been set to auto-allow at that point) the slug-field was being generated only at that point.  This meant that if there was more than one post awaiting approval (and not allowed by admin) there was more than one post with a null slug value. I researched and implemented a slugify function to make the slug populate itself at point of post generation.
 
 <details><summary>Slug Bug</summary>
@@ -603,10 +600,11 @@ Manual testing was performed successfully (i.e. no issues identified) using the 
 https://www.kodnito.com/posts/slugify-urls-django/
 
 
-2. Messages were pushing the page down when they appears and when they were dismissed, the page did not revert until it was refreshed (which could cause loss of data in case of form entry).  This was due to the CSS styling being applied - I changed the message CSS to absolute position, gave the messages a z-index of 1, and changed the right position so the message was not full screen, using a custom css class to overwrite the bootstrap message css.
+3. Messages were pushing the page down when they appears and when they were dismissed, the page did not revert until it was refreshed (which could cause loss of data in case of form entry).  This was due to the CSS styling being applied - I changed the message CSS to absolute position, gave the messages a z-index of 1, and changed the right position so the message was not full screen, using a custom css class to overwrite the bootstrap message css.
 
-3. Staff could edit/delete each other's comments:  To solve I applied a nested if statement of {% if request.user.is_staff %} followed by {% if request.user.username == comment.author %} to apply a check that the user was both staff AND the comment author to ensure only a staff who authored a comment could edit/delete that comment.
+4. Staff could edit/delete each other's comments:  To solve I applied a nested if statement of {% if request.user.is_staff %} followed by {% if request.user.username == comment.author %} to apply a check that the user was both staff AND the comment author to ensure only a staff who authored a comment could edit/delete that comment.
 
+5. When displayed on screen sizes less than 400px wide the containers were being pushed to the left so there was a long right margin down the body underneath the header.  I researched this for a long time, and tried enabling a media query in the css, but not successfully.  I contacted tutor support who helped me identify that I needed to set overflow: auto on my html and body classes in the CSS, which resolved the issue.  The site is now fully responsive on all screen sizes. 
 
 # DEPLOYMENT
 
@@ -752,7 +750,6 @@ During the creation of this site I used the following technologies:
 - <a href="https://cloudinary.com/" target="_blank">Cloudinary</a>Image and video API platform for image hosting.
 -  <a href="https://www.lucidchart.com/pages/templates/login-or-sign-up-page-wireframe">Lucid Charts</a> for database schema creation during devlopment phase.
 - <a href="https://tablesgenerator.com/markdown_tables" target="_blank">Tables Generator</a> used to create tables in manual testing section for README.
-
 
 # Acknowledgements
 Thanks to my mentors Spencer Barrilball and Medale Oluwafemi for their advice and support, and my family and colleagues for bearing with me.
