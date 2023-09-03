@@ -69,11 +69,13 @@ img {
 html {
   position: relative;
   min-height: 100%;
+  overflow: auto;
 }
 
 body {
   margin-bottom: 60px;
   background-color: rgb(252, 249, 243);
+  overflow: auto;
 }
 
 .footer {
@@ -88,5 +90,10 @@ body {
 @media screen and (min-width: 500px) {
   body {
     width: 100%;
+    overflow: auto;
+  }
+
+  html {
+    overflow: auto;
   }
 }
