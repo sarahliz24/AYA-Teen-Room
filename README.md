@@ -203,79 +203,109 @@ MOSCOW prioritisation was applied to each user story at the outset, and then upd
 # Features
 
 ## Nav bar
-The nav bar is a fixed nav bar.  It holds a greeting section - this says 'Hi Stranger' if a user is not logged in, and 'Hi Jim' (or relevant username) if the user is logged in - alerting user to log in status at all times.  The nav bar does not change across any page of the site.  It collapses to a hamburger on smaller screens.  Available nav tabs change depending on log in status - if a user is not logged in they only see the home and about tabs, along with a log-in and sign-up button.  A logged in user sees all the site tabs, and a logout button. 
+The nav bar is a fixed nav bar.  It holds a greeting section - this says 'Hi Stranger' if a user is not logged in, and 'Hi Jim' (or relevant username) if the user is logged in - alerting user to log in status at all times.  The nav bar does not change across any page of the site.  It collapses to a hamburger on smaller screens.  Available nav tabs change depending on log in status - if a user is not logged in they only see the home and about tabs, along with a log-in and sign-up button.  A logged in user sees all the site tabs, and a logout button. The active page the user is on is emphasised in bold.
 
 <details><summary>Nav bar large logged in</summary>
-    <img src="#">
+    <img src="readme_assets/nav_desktop_logged_in.jpg">
 </details>
 
 <details><summary>Nav bar large not logged in</summary>
-    <img src="#">
+    <img src="readme_assets/nav_desktop_not_logged_in.jpg">
 </details>
 
-<details><summary>Nav bar small</summary>
-    <img src="#">
+<details><summary>Nav bar mobile</summary>
+    <img src="readme_assets/nav_mobile_logged_in.jpg">
 </details>
 
-## Menu options
-* User story #
+## Home Page
 
-There are two main menus, allowing the user to select options to proceed, or return to main menu. Menu options and headings are displayed in blue for consistency and to highlight purpose to user. 
-* User story 15
-<details><summary>Main menu</summary>
-    <img src="#">
-</details>
-<details><summary>Search menu</summary>
-    <img src="#">
-</details>
 
-## Add new staff member
-User can enter a new staff member, adding first name, last name, and position (with prompts for position). User cannot enter a duplicate staff member.
-* User story 5
+There are three sections to the home page.
 
-<details><summary>#</summary>
-    <img src="#">
+Home Page Section 1 - Welcome/Hero
+
+The hero section has simple text introducing the site and it's purpose.  The hero image is bright, eye-catching and engaging, whilst clearly supporting the purpose of the site. A user who is not logged in will see a call to sign up here (not visible for a logged in user).  The format changes to stacked on smaller screens.
+
+<details><summary>Home Page - Hero Desktop</summary>
+    <img src="readme_assets/hero_section.jpg">
 </details>
 
-## Update staff skills
-* User story #
-* User story #
-
-User can search for an existing staff member, and when successfully found, can enter a new skill for that staff member. Staff members current skill status is displayed to user, along with a list of available skills to add. After skill entry user is prompted to enter another skill or return to main menu.  User cannot enter duplicate skills for the staff member.
-<details><summary>Enter skills</summary>
-    <img src="#">
+<details><summary>Home Page - Hero Mobile</summary>
+    <img src="readme_assets/hero_mobile.jpg">
 </details>
 
-## Search by staff member
-* User story #
-* User story #
-* User story #
+Home Page Section 1 - About Carousel
 
-User can search for a staff member and see a list of their assigned skills.  User given option to search for another staff member or update that staff member's skills. 
-<details><summary>#</summary>
-    <img src="#">
+Below the hero section is a blue carousel that catches the eye.  This has three slides, which quickly explain the basics a user needs to know - why we want feedback, why the feedback is private, and what a teen room is.
+
+<details><summary>Home Page - Carousel 1</summary>
+    <img src="readme_assets/carosel1.jpg">
 </details>
 
-## Search by skill
-* User story #
-* User story #
-* User story #
-
-User can search by skill.  User is presented with a list of skill to choose from.  Then presented with a list of staff assigned that skill. Staff position is displayed in this list as it can assist with decision making in rostering situations to ensure correct skill mix. User then given option to search for another skill or search by staff member. User cannot search for a skill that is not on the list.
-<details><summary>#</summary>
-    <img src="#">
+<details><summary>Home Page - Carousel 2</summary>
+    <img src="readme_assets/carosel2.jpg">
 </details>
-<details><summary>#</summary>
-    <img src="#">
+
+<details><summary>Home Page - Carousel 3</summary>
+    <img src="readme_assets/carosel3.jpg">
+</details>
+
+Home Page Section 1 - Room Featurettes
+
+The last section is a featurette section, with pictures and descriptions of the four teen rooms (and their locations).  
+
+<details><summary>Home Page Room Details</summary>
+    <img src="readme_assets/room_details.jpg">
+</details>
+
+
+## Footer
+
+The footer is consistent with the header in style.  It is a fixed footer, and consistent across every page,. It anchors the page visually, and contains the site author details.
+
+<details><summary>Footer</summary>
+    <img src="readme_assets/footer.jpg">
+</details>
+
+## About Page
+
+The about page is accessible by all users (logged in or not).  It contains a more detailed list of information about AYAs and the teen rooms, contains links to some relevant websites, and contact details for the AYA team.
+
+<details><summary>About 1</summary>
+    <img src="readme_assets/about1.jpg">
+</details>
+
+<details><summary>About 2</summary>
+    <img src="readme_assets/about2.jpg">
+</details>
+
+## Sign Up Page
+
+User can access sign up page from button on hero section or from nav bar button.  Users are reqested for username, email and password on this page. A success message is given if sign up is successful.  Warnings are given if issues with completing form.  Duplicate usernames are not allowed and generate warning text.
+
+<details><summary>Sign up
+</summary>
+    <img src="readme_assets/signup.jpg">
+</details>
+
+## Sign Up Success
+
+After sign up, user is directed to a info page that explains they need to fill out profile details.  This allows the user to be informed on the reason for collecting the medical ID in this section.
+
+<details><summary>Sign up success</summary>
+    <img src="readme_assets/success_signup.jpg">
+</details>
+
+## Profile Page
+
+The user then goes to the profile page to complete their user profile.  Help text is present to guide the user, and required fields are starred.
+
+<details><summary>Profile Page</summary>
+    <img src="readme_assets/profile.jpg">
 </details>
 
 ## Warnings
-* User story #
-* User story #
-* User story #
-* User story #
-
-Throughout the application the user is given warnings for incorrect entries such as entering numbers out of range, entering letters instead of numbers (and vice versa), failed searches (e.g. no staff found by name entered), entering duplicate information.  Warnings are displayed in red to highlight to user.  After each warning a new input is requested or a menu selection is provided.
+*
 <details><summary>#</summary>
     <img src="#">
 </details>
