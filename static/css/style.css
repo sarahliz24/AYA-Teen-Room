@@ -58,8 +58,6 @@ li {
 /* Image style----------------------------- */
 img {
   object-fit: contain;
-  width: 500px;
-  height: 400px;
 }
 
 /* Feedback style------------------------------ */
@@ -84,4 +82,11 @@ body {
   width: 100%;
   height: 60px;
   line-height: 30px;
+}
+
+/* Media query------------------------- */
+@media screen and (min-width: 500px) {
+  body {
+    width: 100%;
+  }
 }
