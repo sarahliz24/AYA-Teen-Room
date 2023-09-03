@@ -27,7 +27,6 @@
 
 ## Site Link: (https://#)
 
-
 # INTRODUCTION
 
 AYA Teen Room is a website aimed at gathering feedback from AYA Teen Room Users in order to facilitate room owners to improve the rooms according to users needs.
@@ -199,7 +198,6 @@ MOSCOW prioritisation was applied to each user story at the outset, and then upd
 * <a href="https://github.com/users/sarahliz24/projects/8" target="_blank">Project 3 Kanban</a>
 * <a href="https://github.com/sarahliz24/AYA-Teen-Room/issues?q=is%3Aissue+is%3Aclosed" target="_blank">Issues List</a>
 
-
 # Features
 
 ## Nav bar
@@ -218,7 +216,6 @@ The nav bar is a fixed nav bar.  It holds a greeting section - this says 'Hi Str
 </details>
 
 ## Home Page
-
 
 There are three sections to the home page.
 
@@ -257,7 +254,6 @@ The last section is a featurette section, with pictures and descriptions of the 
 <details><summary>Home Page Room Details</summary>
     <img src="readme_assets/room_details.jpg">
 </details>
-
 
 ## Footer
 
@@ -298,65 +294,113 @@ After sign up, user is directed to a info page that explains they need to fill o
 
 ## Profile Page
 
-The user then goes to the profile page to complete their user profile.  Help text is present to guide the user, and required fields are starred.
+The user then goes to the profile page to complete their user profile.  Help text is present to guide the user, and required fields are starred. User is warned if errors in form.  User gets success message when successfully completed, then redirected to the home page as a logged in user.
 
 <details><summary>Profile Page</summary>
     <img src="readme_assets/profile.jpg">
 </details>
 
-## Warnings
-*
-<details><summary>#</summary>
-    <img src="#">
-</details>
-<details><summary>#</summary>
-    <img src="#">
-</details>
-<details><summary>#</summary>
-    <img src="#">
-</details>
-<details><summary>#</summary>
-    <img src="#">
-</details>
-<details><summary>#</summary>
-    <img src="#">
+## Edit Profile
+
+User can access edit profile section from account dropdown on the nav bar. Form is pre-filled with current details.  User sent to home page, with success message, if successful entry.  Warning text if incorrectly filling out fields.
+
+<details><summary>Edit Profile</summary>
+    <img src="readme_assets/edit_profile.jpg">
 </details>
 
-## User feedback
-* User story #
-* User story #
-* User story #
-* User story #
+## Change Password
 
-User is given feedback through the application.  Feedback is displayed in green for user experience.  User is informed when information is successfully stored (with a short time delay added to give the impression the system is doing "work"). User entries are displayed to user at all times to check user is satisfied with their input before further action.
-<details><summary>#</summary>
-    <img src="#">
-</details>
-    <details><summary>#</summary>
-    <img src="#">
-</details>
-<details><summary>#</summary>
-    <img src="#">
-</details>
-<details><summary>#</summary>
-    <img src="#">
+User can access change password section from account dropdown on the nav bar. User sent to home page, with success message, if successful entry.  Warning text if incorrectly filling out fields. Button to return to home page quickly if entered page in error.
+
+<details><summary>Change Password</summary>
+    <img src="readme_assets/change_password.jpg">
 </details>
 
-## Google Sheets
-* User story #
+## View Feedback List
 
-Google sheets showing data entry.  Can be used for reference if testing the application (i.e. to find existing users or skills etc).
-<details><summary>#/summary>
-    <img src="#">
-</details>
-<details><summary>#</summary>
-    <img src="#">
-</details>
-<details><summary>#</summary>
-    <img src="#">
+Logged in users can view list of feedback given by other users.  This is in order of most recent at top of page. Title and details of user, room it's about, and when posted are displayed.  User can click on title to see full post and other post related options.
+
+<details><summary>Feedback List</summary>
+    <img src="readme_assets/feedback_list.jpg">
 </details>
 
+## View Feedback Detail
 
+Clicking on post title takes user to feedback detail page. Full feedback is shown (if it is longer than the snippet shown on the list page).
+
+<details><summary>Feedback Detail</summary>
+    <img src="readme_assets/feedback_post.jpg">
+</details>
+
+## Submit Feedback
+
+Selecting submit feedback tab takes user to a submission form.  User enters title and feedback content.  If title is same as another title that exists already, user is warned to change it.  User can select room feedback pertains to from dropdown list. On successful submission user is returned to feedback list page with a success message.
+
+<details><summary>Submit Feedback</summary>
+    <img src="readme_assets/submit_feedback.jpg">
+</details>
+
+## Edit/Delete Feedback
+
+If logged in user is the author of the feedback post, edit and delete buttons are displayed below their own post.  These buttons are not present if the user is not the post author.  
+
+If user selects edit post the post submission form is opened, pre-populated with the post details.  On successful submission a success message is shown, and user taken back to details page.
+
+If user selects delete, they are taken to a warning page.  The colours of these buttons differ from the rest of the site to make them stand out more to the user.  If the user selects 'Oops No!' they are redirected to the feedback list.  If the select delete they are redirected to the feedback list with a successful deletion message displayed.
+
+<details><summary>Feedback Options</summary>
+    <img src="readme_assets/feedback_options.jpg">
+</details>
+
+<details><summary>Edit Feedback Form</summary>
+    <img src="readme_assets/edit_feedback.jpg">
+</details>
+
+<details><summary>Delete Feedback</summary>
+    <img src="templates/blog/delete_feedback2.jpg">
+</details>
+
+## Feedback comments
+
+If a post has no comments there is a message underneath it to say this, and to expect a reply within 24 hours.
+
+If a staff user is logged in they will see a submit-comment form under the post (not visible to standard users). On successful submission user is returned to feedback post with a success message.
+
+<details><summary>No Comments Yet</summary>
+    <img src="readme_assets/post_no_comments.jpg">
+</details>
+
+<details><summary>Comment Form</summary>
+    <img src="readme_assets/comment_form.jpg">
+</details>
+
+<details><summary>Comment Example</summary>
+    <img src="readme_assets/comment_with_success.jpg">
+</details>
+
+## Comment Edit/Delete
+
+If a user is staff, and also the comment author, they will see an edit & delete button under the comment.  The process for edit and deleting a comment is the same as that for a feedback post.
+
+<details><summary>Feedback Comment Example</summary>
+    <img src="readme_assets/comment_with_success.jpg">
+</details>
+
+<details><summary>Edit Comment</summary>
+    <img src="readme_assets/edit_comment.jpg">
+</details>
+
+<details><summary>Delete Comment</summary>
+    <img src="templates/blog/delete_comment.jpg">
+</details>
+
+## Log out
+
+When a user clicks the log out button they are taken to a log our view, with options to log in or return to home page.
+
+<details><summary></summary>
+    <img src="readme_assets/logged_out.jpg">
+</details>
 
 
 # Future Features
