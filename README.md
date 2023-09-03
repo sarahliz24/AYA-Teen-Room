@@ -61,21 +61,21 @@ The target audience is AYA patients, who are aged between 13 - 24 years old, who
 
 5. As a teen room user I can receive messages about login status so that i know if I have logged in or out successfully
 
-* 6. As a teen room user I can easily see if an event has already happened so that I am fully aware of event timetables
+6. As a teen room user I can easily see if an event has already happened so that I am fully aware of event timetables
 
-* 7. As a teen room user I can add feedback on the teen room so that the owners know how to improve the room
+7. As a teen room user I can add feedback on the teen room so that the owners know how to improve the room
 
 8. As a teen room user I can post anonymously so that I can be honest with my opinion without worrying people will know who I am
 
-* 9. As a teen room user I can see when feedback posts were last updated so that I know how recent they are
+9. As a teen room user I can see when feedback posts were last updated so that I know how recent they are
 
-* 10. As a teen room user I can see other peoples feedback so that I know what other users think about the room
+10. As a teen room user I can see other peoples feedback so that I know what other users think about the room
 
-* 11. As a teen room user I can amend feedback I have left so that my feedback accurately reflects how I feel
+11. As a teen room user I can amend feedback I have left so that my feedback accurately reflects how I feel
 
-* 12. As a teen room user I can delete feedback I have given so that I have control over my feedback
+12. As a teen room user I can delete feedback I have given so that I have control over my feedback
 
-* 13. As a teen room user I can amend a comment i have made so that I can correct any mistakes I have made
+13. As a teen room user I can amend a comment i have made so that I can correct any mistakes I have made
 
 14. As a teen room user I can like other users feedback so that I can add weight to their feedback
 
@@ -89,17 +89,17 @@ The target audience is AYA patients, who are aged between 13 - 24 years old, who
 
 17. As a room owner I can see the medical ID of the user posting feedback so that I can perform safeguarding duties if the content is of concern
 
-* 18. As a site owner I can comment on posted feedback so that I can let users know i have seen their feedback and what actions I am taking to enact it
+18. As a site owner I can comment on posted feedback so that I can let users know i have seen their feedback and what actions I am taking to enact it
 
-* 19. As a site owner I can comment on feedback given so that users can see their feedback is being considered
+19. As a site owner I can comment on feedback given so that users can see their feedback is being considered
 
-* 20. As a site owner I can amend comments i made so that ensure they are accurate
+20. As a site owner I can amend comments i made so that ensure they are accurate
 
-* 21. As a site owner I can delete comments I have given so that I am only giving comments I wish to
+21. As a site owner I can delete comments I have given so that I am only giving comments I wish to
 
-* 22. As a room owner I can moderate feedback posts so that I can ensure feedback content is appropriate
+22. As a room owner I can moderate feedback posts so that I can ensure feedback content is appropriate
 
-* 23. As a Room Owner I can post information about upcoming events so that users are aware of upcoming events
+23. As a Room Owner I can post information about upcoming events so that users are aware of upcoming events
 
 # DESIGN
 
@@ -422,7 +422,7 @@ Superuser can access admin panel to disaollow problematic posts, and view medica
 * Add sorting and searching to feedback list e.g. filter by room
 * Add log in with email function so it's easier to remember (compared to a password) - User Story 24
 * Add reset password via email function - User Story 4
-* Allow users to add comments to posts - User Story 15
+* Allow users to add comments to posts - User Story 15, 13
 
 # TESTING
 
@@ -465,6 +465,46 @@ The code was regularly tested using the Code Institute PEP Validator substitute
 | User log out | user clicks log in button | user taken to log in page | ok |  |
 
 ## Feedback Posts
+
+| Feature | Action | Expected Result | Actual Result | User Story |
+|---|---|---|---|---|
+| View feedback list | View feedback link selected | Feedback list displayed | ok |  |
+| View feedback list | Look for post details | Username, room & date posted displayed under post title | ok | 9 |
+| View feedback list | Look for post details | Truncated content visible | ok |  |
+| View feedback list | Click on feedback title | Feedback detail display opens | ok |  |
+| View feedback detail | Read feedback | Full feedback content displayed | ok | 6, 10 |
+| View comments | Look for comment on feedback | 'Reply from AYA' text present under feedback | ok |  |
+| View comments | No comments given yet | 'No replies yet...' text present | ok |  |
+| View comments | Comments exist | Comment, with details of commenter & time/date posted displayed | ok | 9, 10 |
+| User submit feedback | user clicks feedback submit link | feedback form displays | ok |  |
+| User submit feedback | user enters form incorrectly (missing fields) | warning displayed | ok |  |
+| User submit feedback | user enters form  with duplicate title | success message, return to feedback list | ok | 7, 23 |
+| User submit feedback | user submits feedback | success message, return to feedback list | ok | 7, 23 |
+| User Edit Feedback | User did not post the feedback | no edit or delete option available | ok |  |
+| User Edit Feedback | User did post the feedback | edit and delete option available | ok |  |
+| User Edit Feedback | User clicks edit button | Feedback form displayed with prev. feedback in it | ok |  |
+| User Edit Feedback | User submits amended feedback | User returned to feedback list, success message displayed | ok | 11 |
+| User Delete Feedback | User clicks delete button | do you want to delete warning displayed w 2 options | ok |  |
+| User Delete Feedback | User selected not to delete | user returns to feedback list page | ok |  |
+| User Delete Feedback | User selected to delete | user returns to feedback list page, success message displayed | ok | 12 |
+| Staff add comment | Staff looks for comment form | comment form is visible under the feedback section | ok |  |
+| Staff add comment | user is not staff | no comment form visible | ok |  |
+| Staff add comment | staff submits comment | success message, return to feedback list | ok | 18, 19 |
+| Staff edit comment | staff looks for edit button | only visible under comment if the staff = the comment author | ok |  |
+| Staff edit comment | staff clicks comment edit button | comment form displayed with prev. comment in it | ok |  |
+| Staff edit comment | staff submits amended comment | returned to feedback list, success message displayed | ok | 20 |
+| Staff delete comment | staff clicks delete button | do you want to delete warning displayed w 2 options | ok |  |
+| Staff delete comment | staff selected not to delete | user returns to feedback list page | ok |  |
+| Staff delete comment | staff selected to delete | user returns to feedback list page, success message displayed | ok | 21 |
+
+## Misc
+
+| Feature | Action | Expected Result | Actual Result | User Story |
+|---|---|---|---|---|
+| Nav bar | Active page is obvious to user | Nav tab in bold is congruent with active page | ok |  |
+| About page links | user clicks links on bottom of about pager | links open on new page, work correctly | ok |  |
+| Admin panel | Super user can disallow posts | disallowed posts are not displayed to users | ok |  |
+| User Story | super user can view medical id in Teen User Profile section | super user can view medical id | ok |  |
 
 
 
