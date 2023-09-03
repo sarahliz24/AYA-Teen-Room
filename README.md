@@ -405,11 +405,12 @@ When a user clicks the log out button they are taken to a log our view, with opt
 
 # Future Features
 
-* ...
-* ...
-* ...
-
-
+* Users can "like" posts and comments
+* Add pagination to feedback list
+* Add sorting and searching to feedback list e.g. filter by room
+* Add log in with email function so it's easier to remember (compared to a password)
+* Add reset password via email function
+* Allow users to add comments to posts
 
 # TESTING
 
@@ -507,45 +508,35 @@ The site github link is here:
 
 ## Code
 
-- Guidance on the use of colorama was from <a href="https://www.pythonpool.com/python-colorama/" target="_blank">pythonpool</a>
-
 - Idea for truth value testing to solve 'Solved Bug #5' from <a href="https://flexiple.com/python/check-if-list-is-empty-python/#section2" target="_blank">flexiple</a>
 
 - Working with lists and dictionaries was initally guided by <a href="https://blog.finxter.com/python-list-of-lists/" target="_blank">finxter</a>
 
 - List to dictionary conversions were informed by <a href="https://builtin.com/software-engineering-perspectives/convert-list-to-dictionary-python" target="_blank">builtin</a>
 
-- Code Institute Love Sandwiches walk-through - API set-up, scoping, creds
+- Code Institute django walk-throughs - set-up and deployment
 
 ## Contents
-All written content was created by the site author based on professional knowledge.  All code was written by the site author.
+All written content was created by the site author based on professional knowledge.
 
 ## Technologies Used
 
 Languages
 - <a href="https://www.python.org/" target="_blank">Python</a>
 
-Libraries
-- <a href="https://docs.python.org/3/library/os.html" target="_blank">OS</a> Gives functions for interacting with the operating system.  Allows use of clear screen function (used to improve user experience to declutter screen).
-- <a href="https://docs.python.org/3/library/sys.html" target="_blank">Sys</a> Interacts with the runtime environment. Allows program exit function to run.
-- <a href="https://docs.python.org/3/library/datetime.html" target="_blank">Datetime</a> For getting & manipulation dates & time.  The date is added to the database when user adds a skill.  The date display (attached to a skill & user) will be implemented in user display in future versions of the applicationn.
-- <a href="https://docs.python.org/3/library/time.html" target="_blank">Time </a> Sleep was imported from Time to give a delay when sending information to worksheets, to enhance user experience (gives impression program is doing "work".)
-- <a href="https://docs.gspread.org/en/v5.7.2/" target="_blank">Gspread</a> An API for google sheets, used to enable interaction between sheet and application.
-- <a href="https://pypi.org/project/colorama/" target="_blank">Colorama</a> Used to enhance user experience & expectations by colouring warnings red, menus and important information in blue, and input sections in green.
-- <a href="https://google-auth.readthedocs.io/en/master/reference/google.oauth2.service_account.html" target="_blank">google-auth</a> Enables service account between application and google service.
-
+Frameworks
+- <a href="https://www.djangoproject.com/" target="_blank">Django</a>Python web framework (backend)
+- <a href="https://www.python.org/" target="_blank">Bootstrap 4</a>Front-end web framework
 
 During the creation of this site I used the following technologies:
 
 - <a href="https://github.com/" target="_blank">Git Hub</a> used for online programming, change tracking and storage respository for this project.
 - <a href="https://www.heroku.com/" target="_blank">Heroku</a> cloud platform service to deploy, use & manage the application.
-- <a href="https://www.google.com/sheets/about/" target="_blank">Google Sheets</a> used as online spreadsheet editor to store application data.
-- <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Services</a> used as public cloud service.
--  <a href="https://app.diagrams.net/">Draw.io</a> for flowchart creation during devlopment phase.
+- <a href="https://www.elephantsql.com/" target="_blank">Elephant SQL</a> Postgres SQL database service.
+- <a href="https://cloudinary.com/" target="_blank">Cloudinary</a>Image and video API platform for image hosting.
+-  <a href="https://www.lucidchart.com/pages/templates/login-or-sign-up-page-wireframe">Lucid Charts</a> for database schema creation during devlopment phase.
 - <a href="https://tablesgenerator.com/markdown_tables" target="_blank">Tables Generator</a> used to create tables in manual testing section for README.
 
 
 # Acknowledgements
-Thanks to my mentor Spencer Barrilball for his advice and support, and my fellow students on Slack for advice and colleagiality.
-
-<a href="" target="_blank">#</a>
+Thanks to my mentors Spencer Barrilball and Medale Oluwafemi for their advice and support, and my family and colleagues for bearing with me.
